@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PyZap ⚡ — Python Quiz</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=JetBrains+Mono:wght@400;700;800&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ── RESET & BASE ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -76,18 +76,32 @@ body::before {
   z-index: 1;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 40px 48px;
+  border-radius: 20px;
+  padding: 44px 52px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  width: 340px;
+  gap: 18px;
+  width: 360px;
+  box-shadow: 0 0 60px rgba(200,241,53,0.06), 0 20px 40px rgba(0,0,0,0.4);
 }
-.login-brand { font-size: 42px; font-weight: 800; color: var(--accent); letter-spacing: -1px; line-height: 1; }
-.login-bolt  { font-size: 36px; }
-.login-sub   { font-size: 12px; letter-spacing: 0.5px; text-transform: none; color: var(--accent2); margin-top: -4px; text-align: center; font-style: italic; font-weight: 600; max-width: 260px; line-height: 1.4; }
-.login-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 700; align-self: flex-start; }
+.login-brand {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 46px; font-weight: 800; color: var(--accent);
+  letter-spacing: -2px; line-height: 1;
+}
+.login-bolt  { font-size: 40px; }
+.login-sub   {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px; letter-spacing: 0.3px; text-transform: none;
+  color: var(--accent2); margin-top: -6px; text-align: center;
+  font-style: italic; font-weight: 600; max-width: 280px; line-height: 1.5;
+}
+.login-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted); font-weight: 700; align-self: flex-start;
+}
 .login-input {
   width: 100%;
   background: var(--code-bg);
@@ -95,12 +109,12 @@ body::before {
   border-radius: 8px;
   padding: 12px 16px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
   color: var(--text);
   outline: none;
   text-align: center;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   transition: border-color 0.15s;
 }
 .login-input:focus { border-color: var(--accent); }
@@ -120,7 +134,7 @@ body::before {
 }
 .login-btn:hover { background: #d4f53f; }
 .login-error  { color: var(--red); font-size: 12px; font-weight: 600; min-height: 16px; text-align: center; }
-.login-credit { font-size: 11px; color: var(--accent2); letter-spacing: 1px; opacity: 0.8; }
+.login-credit { font-family: 'Syne', sans-serif; font-size: 11px; color: var(--muted); letter-spacing: 1.5px; opacity: 0.7; font-style: italic; }
 
 /* ── LAYOUT ─────────────────────────────────────────────────── */
 #app {
@@ -188,7 +202,7 @@ header {
 .score-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .score-value { font-family: 'JetBrains Mono', monospace; font-size: clamp(15px, 1.6vw, 20px); font-weight: 800; color: var(--gold); line-height: 1.1; }
 .streak-badge { font-size: 10px; color: var(--green); font-weight: 700; letter-spacing: 1px; min-height: 13px; animation: pulse 2s ease infinite; }
-.credit { font-size: 10px; color: var(--muted); letter-spacing: 1px; white-space: nowrap; opacity: 0.5; line-height: 1.4; }
+.credit { font-size: 11px; color: var(--accent2); letter-spacing: 0.5px; white-space: nowrap; opacity: 0.9; line-height: 1.4; font-weight: 600; }
 
 /* ── SETTINGS BAR ───────────────────────────────────────────── */
 .settings-bar {
@@ -270,7 +284,7 @@ header {
   background: var(--card); transition: all 0.15s; user-select: none;
 }
 .chk-label:hover { border-color: var(--accent); color: var(--accent); }
-.chk-label input[type=checkbox] { accent-color: var(--accent); width: 13px; height: 13px; }
+.chk-label input[type=checkbox], .chk-label input[type=radio] { accent-color: var(--accent); width: 13px; height: 13px; }
 
 /* ── MAIN ────────────────────────────────────────────────────── */
 main {
@@ -293,7 +307,6 @@ main {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  animation: fadeSlide 0.25s ease;
 }
 .q-card-header {
   flex-shrink: 0;
@@ -319,10 +332,10 @@ main {
 .dot-g { background: #4ADE80; }
 .q-prompt {
   flex-shrink: 0;
-  font-size: 13px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--accent2);
-  padding: 8px 14px 6px;
+  padding: 10px 14px 6px;
   letter-spacing: 0.3px;
 }
 
@@ -343,25 +356,27 @@ main {
 .gutter {
   flex-shrink: 0;
   align-self: stretch;
-  padding: 14px 10px 14px 8px;
+  padding: 16px 12px 16px 10px;
   background: #080C14;
   border-right: 1px solid var(--border);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: clamp(13px, 1.6vw, 18px);
+  font-family: 'Fira Mono', 'Courier New', monospace;
+  font-size: clamp(18px, 2.2vw, 26px);
   color: var(--cmt);
-  line-height: 1.7;
+  line-height: 1.8;
   text-align: right;
-  min-width: 36px;
+  min-width: 40px;
   user-select: none;
 }
 .gutter-num { display: block; }
 .code-lines {
   flex: 1;
-  padding: 14px 18px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: clamp(13px, 1.6vw, 18px);
-  line-height: 1.7;
+  padding: 16px 20px;
+  font-family: 'Fira Mono', 'Courier New', monospace;
+  font-size: clamp(18px, 2.2vw, 26px);
+  line-height: 1.8;
   overflow-x: auto;
+  font-variant-ligatures: none;
+  font-feature-settings: 'liga' 0, 'calt' 0;
 }
 .code-line { display: block; white-space: pre; }
 .code-lines::-webkit-scrollbar { height: 3px; }
@@ -369,12 +384,12 @@ main {
 .code-lines::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
 /* Syntax colours */
-.kw   { color: var(--kw); }
-.str  { color: var(--str); }
-.num  { color: var(--num); }
-.punc { color: var(--punc); }
-.cmt  { color: var(--cmt); }
-.plain{ color: var(--text); }
+.kw   { color: var(--kw);    font-family:inherit; }
+.str  { color: var(--str);   font-family:inherit; }
+.num  { color: var(--num);   font-family:inherit; }
+.punc { color: var(--accent); font-weight:800; font-family:inherit; }
+.cmt  { color: var(--cmt);   font-family:inherit; }
+.plain{ color: var(--text);  font-family:inherit; }
 
 /* ── ANSWER ROW ─────────────────────────────────────────────── */
 .ans-row { flex-shrink: 0; display: flex; gap: 10px; align-items: stretch; }
@@ -441,10 +456,10 @@ main {
 .btn:active { transform: scale(0.97); }
 .btn-check  { background: var(--accent); color: #000; }
 .btn-check:hover  { background: #d4f53f; }
-.btn-reveal { background: #7C3AED; color: #fff; }
-.btn-reveal:hover { background: #6D28D9; }
-.btn-next   { background: var(--accent2); color: #000; }
-.btn-next:hover   { background: #62cafc; }
+.btn-reveal { background: #0E7490; color: #fff; }
+.btn-reveal:hover { background: #0C6478; }
+.btn-next   { background: #059669; color: #fff; }
+.btn-next:hover   { background: #047857; }
 .btn-reset  { background: #7F1D1D; border: none; color: #FCA5A5; margin-left: auto; }
 .btn-reset:hover  { background: #991B1B; color: #fff; }
 .btn:disabled { opacity: 0.4; cursor: not-allowed; }
@@ -498,111 +513,118 @@ main {
 .panel-title { background: var(--card); padding: 6px 12px; font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
 .panel-body { padding: 10px; }
 
-/* ══════════════════════════════════════════════════════════════
-   RESPONSIVE — Mobile / Tablet / Laptop
-══════════════════════════════════════════════════════════════ */
-
-/* ── Tablet (≤ 768px) ─────────────────────────────────────── */
-@media (max-width: 768px) {
-  html, body { overflow: auto; }
-
-  #app {
-    height: auto;
-    min-height: 100vh;
-    overflow: visible;
-    padding: 0 12px;
-  }
-
-  /* Header: stack brand + score, hide proverb */
-  header {
-    flex-wrap: wrap;
-    gap: 6px;
-    padding: 8px 0 6px;
-  }
+@media (max-width: 1023px) {
+  html, body { overflow-x: hidden; overflow-y: auto; height: auto; }
+  #app { height: auto; min-height: 100svh; overflow: visible; padding: 0 14px 16px; }
+  header { flex-wrap: nowrap; padding: 8px 0 7px; gap: 8px; }
   .proverb { display: none; }
-  .brand-name { font-size: 20px; }
-  .brand-bolt { font-size: 18px; }
-  .brand-sub  { font-size: 8px; }
-  .score-value { font-size: 15px; }
-  .credit { display: none; }
-
-  /* Settings: wrap rows, smaller buttons */
-  .settings-bar { padding: 6px 0; }
-  .settings-row { gap: 5px; flex-wrap: wrap; }
-  .settings-label { font-size: 9px; }
-  .settings-divider { display: none; }
-  .tog { font-size: 10px; padding: 4px 8px; }
-  .chk-label { font-size: 10px; padding: 4px 8px; }
-
-  /* Main: allow scroll */
-  main {
-    overflow: visible;
-    height: auto;
-    gap: 10px;
-    padding: 8px 0;
-  }
-
-  /* Question card: auto height */
-  .q-card {
-    flex: none;
-    height: auto;
-  }
+  .credit  { display: none; }
+  main { flex: none; height: auto; overflow: visible; gap: 10px; padding: 8px 0 4px; }
+  .q-card { flex: none; height: auto; min-height: 0; }
   .q-card-header { padding: 8px 12px; }
-  .q-prompt { font-size: 13px; padding: 8px 12px 4px; }
-
-  /* Code block: auto height, bigger font */
-  .code-wrap {
-    flex: none;
-    height: auto;
-    margin: 0 8px 10px;
-  }
-  .gutter { font-size: 15px; padding: 12px 8px; line-height: 1.8; }
-  .code-lines { font-size: 15px; padding: 12px 14px; line-height: 1.8; overflow-x: auto; }
-
-  /* Answer input */
-  .ans-card { padding: 10px 12px; }
-  .ans-input { font-size: 16px; padding: 10px 12px; }
+  .q-prompt { font-size: 14px; padding: 8px 12px 5px; }
+  .code-wrap { flex: none; height: auto; min-height: 80px; margin: 4px 8px 10px; }
+  .ans-card { padding: 8px 12px 10px; }
   .ans-label { font-size: 10px; }
-
-  /* Feedback */
-  .feedback { font-size: 13px; padding: 10px 14px; }
-
-
-  /* Buttons: 2x2 grid */
+  .ans-input { font-size: 16px; padding: 10px 12px; }
+  .ans-input::placeholder { font-size: 13px; }
+  .feedback { font-size: 13px; padding: 10px 14px; min-height: 38px; }
   .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .btn { font-size: 12px; padding: 10px 8px; text-align: center; }
+  .btn { padding: 14px 10px; font-size: 13px; text-align: center; }
   .btn-reset { margin-left: 0; }
+  .settings-bar { gap: 8px; padding: 8px 0 6px; }
+  .settings-row { gap: 8px; }
+  .sgroup { padding: 7px 10px 9px; }
+  .sgroup-label { font-size: 10px; margin-bottom: 4px; }
+  .tog { font-size: 12px; padding: 6px 11px; }
+  .chk-label { font-size: 12px; padding: 6px 11px; }
+  .qtype-inline { gap: 6px; }
+  .inline-label { font-size: 10px; }
 }
-
-/* ── Mobile (≤ 480px) ─────────────────────────────────────── */
-@media (max-width: 480px) {
-  #app { padding: 0 10px; }
-
-  header { padding: 6px 0; }
+@media (max-width: 479px) {
+  #app { padding: 0 10px 12px; }
+  header { padding: 7px 0; gap: 6px; }
   .brand-name { font-size: 18px; }
-  .score-pill { min-width: 52px; padding: 3px 8px; }
-  .score-value { font-size: 13px; }
-
-  .tog { font-size: 9px; padding: 3px 7px; }
-  .settings-label { font-size: 8px; letter-spacing: 1px; }
-
-  .gutter  { font-size: 14px; padding: 10px 6px; }
-  .code-lines { font-size: 14px; padding: 10px 10px; }
-  .q-prompt { font-size: 12px; }
-
-  .ans-input { font-size: 15px; }
-  .feedback  { font-size: 12px; }
-
-  /* Stack buttons vertically on very small screens */
-  .btn-row { grid-template-columns: 1fr 1fr; }
-  .btn { font-size: 11px; padding: 9px 6px; }
+  .brand-bolt { font-size: 16px; }
+  .brand-sub  { font-size: 9px; max-width: 130px; }
+  .score-pill { padding: 4px 10px; min-width: 58px; }
+  .score-label { font-size: 9px; }
+  .score-value { font-size: 14px; }
+  .tog { font-size: 11px; padding: 5px 9px; }
+  .chk-label { font-size: 11px; padding: 5px 9px; }
+  .sgroup { padding: 6px 8px 8px; }
+  .gutter { font-size: 15px; padding: 12px 8px; line-height: 1.75; min-width: 30px; }
+  .code-lines { font-size: 15px; padding: 12px 12px; line-height: 1.75; }
+  .q-prompt { font-size: 13px; }
+  .ans-input { font-size: 16px; padding: 11px 12px; }
+  .btn-row { grid-template-columns: 1fr 1fr; gap: 7px; }
+  .btn { padding: 13px 8px; font-size: 12px; }
 }
-
-/* ── Large screens (≥ 1200px) ────────────────────────────── */
-@media (min-width: 1200px) {
-  .gutter     { font-size: clamp(16px, 2vh, 26px); }
-  .code-lines { font-size: clamp(16px, 2vh, 26px); }
-  .ans-input  { font-size: clamp(15px, 1.8vw, 22px); }
+@media (min-width: 480px) and (max-width: 767px) {
+  .brand-name { font-size: 22px; }
+  .brand-sub  { font-size: 9px; }
+  .gutter { font-size: 16px; line-height: 1.8; }
+  .code-lines { font-size: 16px; line-height: 1.8; }
+  .btn-row { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .btn { padding: 13px 10px; font-size: 13px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  #app { padding: 0 20px 16px; }
+  .brand-name { font-size: 26px; }
+  .brand-bolt { font-size: 22px; }
+  .brand-sub  { font-size: 10px; max-width: 180px; }
+  .score-value { font-size: 17px; }
+  .tog { font-size: 13px; padding: 7px 13px; }
+  .chk-label { font-size: 13px; padding: 7px 13px; }
+  .gutter { font-size: 17px; line-height: 1.8; }
+  .code-lines { font-size: 17px; line-height: 1.8; }
+  .q-prompt { font-size: 15px; }
+  .ans-input { font-size: 18px; }
+  .btn-row { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .btn { padding: 14px 10px; font-size: 13px; }
+}
+@media (min-width: 1024px) {
+  html, body { height: 100%; overflow: hidden; }
+  #app { height: 100vh; overflow: hidden; padding: 0 24px; }
+  main { flex: 1; min-height: 0; overflow: hidden; }
+  .q-card { flex: 1; min-height: 0; }
+  .code-wrap { flex: 1; min-height: 0; }
+  .gutter { font-size: clamp(14px, 1.7vh, 20px); line-height: 1.75; }
+  .code-lines { font-size: clamp(14px, 1.7vh, 20px); line-height: 1.75; }
+  .q-prompt { font-size: clamp(13px, 1.4vw, 16px); }
+  .ans-input { font-size: clamp(15px, 1.3vw, 18px); }
+  .btn-row { display: flex; gap: 8px; }
+  .btn { padding: 11px 20px; font-size: 13px; }
+}
+@media (min-width: 1440px) {
+  #app { max-width: 1600px; padding: 0 40px; }
+  .brand-name { font-size: 32px; }
+  .brand-bolt { font-size: 28px; }
+  .brand-sub  { font-size: 12px; }
+  .score-value { font-size: 22px; }
+  .score-pill { padding: 6px 18px; min-width: 80px; }
+  .tog { font-size: 15px; padding: 8px 16px; }
+  .chk-label { font-size: 15px; padding: 8px 16px; }
+  .sgroup-label { font-size: 12px; }
+  .gutter { font-size: clamp(16px, 1.8vh, 24px); }
+  .code-lines { font-size: clamp(16px, 1.8vh, 24px); }
+  .q-prompt { font-size: 18px; }
+  .q-num { font-size: 15px; }
+  .ans-input { font-size: 20px; padding: 11px 16px; }
+  .feedback { font-size: 17px; padding: 10px 18px; }
+  .btn { padding: 13px 26px; font-size: 15px; }
+}
+@media (min-width: 2000px) {
+  #app { max-width: 1800px; }
+  .brand-name { font-size: 38px; }
+  .score-value { font-size: 26px; }
+  .tog { font-size: 17px; padding: 10px 20px; }
+  .gutter { font-size: 26px; }
+  .code-lines { font-size: 26px; }
+  .q-prompt { font-size: 22px; }
+  .ans-input { font-size: 24px; padding: 14px 20px; }
+  .feedback { font-size: 20px; }
+  .btn { padding: 16px 32px; font-size: 18px; }
 }
 </style>
 </head>
@@ -634,7 +656,6 @@ main {
     <div class="brand">
       <span class="brand-name">PyZap</span>
       <span class="brand-bolt">⚡</span>
-      <span class="brand-sub" id="brand-tagline">Python Quiz</span>
     </div>
     <div class="proverb" id="proverb"></div>
     <div class="score-box">
@@ -650,9 +671,8 @@ main {
   <!-- SETTINGS BAR — always visible -->
   <div class="settings-bar" id="settings-bar">
 
-    <!-- Main row: two labelled boxes side by side -->
+    <!-- Row 1: Data Type -->
     <div class="settings-row" id="row-main">
-
       <div class="sgroup">
         <div class="sgroup-label">Data Type</div>
         <div class="btn-group" id="dtype-group">
@@ -663,44 +683,38 @@ main {
           <button class="tog dt-Mixed"  data-dtype="Mixed">Mixed</button>
         </div>
       </div>
+    </div>
 
-      <div class="sgroup sgroup-qtype">
+    <!-- Row 2: Question Type | Difficulty | Indexing Mode as own sgroup boxes -->
+    <div class="settings-row" id="row-qtype">
+      <div class="sgroup">
         <div class="sgroup-label">Question Type</div>
-        <div class="qtype-inline">
-          <div class="btn-group" id="qtype-group">
-            <button class="tog qt-Indexing active"  data-qtype="Indexing">Indexing</button>
-            <button class="tog qt-Slicing"           data-qtype="Slicing">Slicing</button>
-            <button class="tog qt-SliceIdx"          data-qtype="SliceIdx">Slice+Index</button>
-            <button class="tog qt-Functions"         data-qtype="Functions">Functions</button>
-            <button class="tog qt-Membership"        data-qtype="Membership">Membership</button>
-            <button class="tog qt-Comparison"        data-qtype="Comparison">Comparison</button>
-            <button class="tog qt-Expressions"       data-qtype="Expressions">Expressions</button>
-            <button class="tog qt-TypeFunctions"     data-qtype="TypeFunctions">Type Functions</button>
-            <button class="tog qt-Mixed"             data-qtype="Mixed">Mixed</button>
-          </div>
-          <!-- Difficulty inline — only visible when Expressions/TypeFunctions selected -->
-          <div class="vdivider" id="diff-divider" style="display:none"></div>
-          <div class="diff-inline" id="row-difficulty" style="display:none">
-            <span class="inline-label">Difficulty</span>
-            <div class="btn-group" id="diff-group">
-              <button class="tog df-Basic active"   data-diff="Basic">Basic</button>
-              <button class="tog df-Intermediate"   data-diff="Intermediate">Intermediate</button>
-              <button class="tog df-Advanced"       data-diff="Advanced">Advanced</button>
-              <button class="tog df-Mixed"          data-diff="Mixed">Mixed</button>
-            </div>
-          </div>
-          <!-- Indexing mode inline -->
-          <div class="vdivider" id="idx-divider" style="display:none"></div>
-          <div class="diff-inline" id="row-indexing" style="display:none">
-            <span class="inline-label">Mode</span>
-            <div class="btn-group">
-              <label class="chk-label"><input type="checkbox" id="chk-single" checked> Single</label>
-              <label class="chk-label"><input type="checkbox" id="chk-nested"> Nested</label>
-            </div>
-          </div>
+        <div class="btn-group" id="qtype-group">
+          <button class="tog qt-Indexing active"  data-qtype="Indexing">Indexing</button>
+          <button class="tog qt-Slicing"           data-qtype="Slicing">Slicing</button>
+          <button class="tog qt-SliceIdx"          data-qtype="SliceIdx">Slice+Index</button>
+          <button class="tog qt-Functions"         data-qtype="Functions">Functions</button>
+          <button class="tog qt-Membership"        data-qtype="Membership">Membership</button>
+          <button class="tog qt-Comparison"        data-qtype="Comparison">Comparison</button>
+          <button class="tog qt-Expressions"       data-qtype="Expressions">Expressions</button>
+          <button class="tog qt-TypeFunctions"     data-qtype="TypeFunctions">Type Functions</button>
+          <button class="tog qt-Mixed"             data-qtype="Mixed">Mixed</button>
         </div>
       </div>
-
+      <div class="sgroup" id="row-difficulty" style="display:none">
+        <div class="sgroup-label">Difficulty</div>
+        <div class="btn-group" id="diff-group">
+          <label class="chk-label"><input type="checkbox" id="diff-Basic" value="Basic" checked> Basic</label>
+          <label class="chk-label"><input type="checkbox" id="diff-Intermediate" value="Intermediate"> Intermediate</label>
+        </div>
+      </div>
+      <div class="sgroup" id="row-indexing" style="display:none">
+        <div class="sgroup-label">Indexing Mode</div>
+        <div class="btn-group">
+          <label class="chk-label"><input type="checkbox" id="chk-single" checked> Single</label>
+          <label class="chk-label"><input type="checkbox" id="chk-nested"> Nested</label>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -1518,7 +1532,7 @@ function genStringFunction() {
       else if(isStr) ar="'"+ans+"'";
       else ar=String(ans);
       let expected = isStr&&up ? String(ans) : ar;
-      let line1 = s!=null ? "x = '"+s+"'" : "# join";
+      let line1 = s!=null ? "x = '"+s+"'" : "x = 'hello'";
       let line2 = up ? "print("+expr+")" : ">>> "+expr;
       return {lines:[line1,line2], answer:ar, expected:expected,
               isStr:isStr||typeof ans==="string", up};
@@ -1591,7 +1605,7 @@ function genListFunction() {
       let [lst,expr,ans,isStr,mutating]=rnd(makers)();
       let up=chance(0.85);
       let ar=pyRepr(ans);
-      let line1 = lst!=null ? "x = "+pyRepr(lst) : "# list";
+      let line1 = lst!=null ? "x = "+pyRepr(lst) : "x = [1, 2, 3]";
       if(mutating){
         return {lines:[line1,expr,"print(x)"], answer:ar, expected:ar, isStr:false, up:true};
       }
@@ -1635,7 +1649,7 @@ function genTupleFunction() {
       if(Array.isArray(ans)) ar=pyReprTuple(ans);
       else ar=String(ans);
       let expected=ar;
-      let line1 = t!=null ? "x = "+pyReprTuple(t) : "# tuple";
+      let line1 = t!=null ? "x = "+pyReprTuple(t) : "x = (1, 2, 3)";
       let line2 = up?"print("+expr+")":">>> "+expr;
       if(!up) expected=ar;
       return {lines:[line1,line2], answer:ar, expected:expected, isStr:false, up};
@@ -1965,12 +1979,12 @@ function genExpression(difficulty) {
       else if(typeof ans==="string") ar="'"+ans+"'";
       else ar=String(ans);
       let expected=typeof ans==="string"?ans:ar;
-      return {lines:["# "+diff.toLowerCase()+" expression", exprLine],
+      return {lines:[exprLine],
               answer:ar, expected:String(expected), isStr:typeof ans==="string", up:true};
     }catch(e){}
   }
   // fallback
-  return {lines:["# expression","print(True and False)"],answer:"False",expected:"False",isStr:false,up:true};
+  return {lines:["print(True and False)"],answer:"False",expected:"False",isStr:false,up:true};
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -2042,11 +2056,11 @@ function genTypeFunction(difficulty) {
       let expected=isStr?String(ans):ar;
       let up=chance(0.85);
       let line2=up?"print("+expr+")":">>> "+expr;
-      return {lines:["# "+diff.toLowerCase()+" — type functions",line2],
+      return {lines:[line2],
               answer:ar,expected:String(expected),isStr:isStr,up};
     }catch(e){}
   }
-  return {lines:["# type function","print(int(7.5))"],answer:"7",expected:"7",isStr:false,up:true};
+  return {lines:["print(int(7.5))"],answer:"7",expected:"7",isStr:false,up:true};
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -2123,7 +2137,7 @@ let state = {
   checked:false, qcount:0, q:null,
   dtype:"String", qtype:"Indexing",
   indexMode:"single",   // "single", "nested", "both"
-  difficulty:"Mixed"
+  difficulty:"Basic"
 };
 
 // ═══════════════════════════════════════════════════════════════
@@ -2144,11 +2158,11 @@ function renderQuestion() {
   // Q number
   document.getElementById("q-num").textContent = "Question "+state.qcount;
 
-  // Re-animate card
-  const card = document.getElementById("q-card");
-  card.style.animation="none";
-  void card.offsetHeight;
-  card.style.animation="fadeSlide 0.25s ease";
+  // Animate only code lines, not the whole card
+  const codeDisplay = document.getElementById("code-display");
+  codeDisplay.style.animation="none";
+  void codeDisplay.offsetHeight;
+  codeDisplay.style.animation="fadeSlide 0.2s ease";
 }
 
 function renderScore() {
@@ -2210,6 +2224,7 @@ function revealAnswer() {
 
 function resetScore() {
   state.score=0; state.total=0; state.streak=0; state.wrong=0; state.bestStreak=0;
+  state.qcount=0;
   renderScore();
   newQuestion();
 }
@@ -2224,7 +2239,8 @@ document.addEventListener("keydown", e=>{
     else newQuestion();
   }
   if(e.code==="Enter") {
-    checkAnswer();
+    if(!state.checked) checkAnswer();
+    else newQuestion();
   }
 });
 
@@ -2247,8 +2263,7 @@ function updateSubRows() {
   const showDiff = isExpr;
   document.getElementById("row-indexing").style.display   = showIdx  ? "flex" : "none";
   document.getElementById("row-difficulty").style.display = showDiff ? "flex" : "none";
-  document.getElementById("idx-divider").style.display    = showIdx  ? "block" : "none";
-  document.getElementById("diff-divider").style.display   = showDiff ? "block" : "none";
+  if(!showDiff){ state.difficulty="Basic"; const r=document.getElementById("diff-Basic"); if(r) r.checked=true; }
 }
 
 // Data Type
@@ -2303,14 +2318,17 @@ document.getElementById("chk-single").addEventListener("change", updateIndexMode
 document.getElementById("chk-nested").addEventListener("change", updateIndexMode);
 
 // Difficulty
-document.querySelectorAll("#diff-group .tog").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    document.querySelectorAll("#diff-group .tog").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    state.difficulty = btn.dataset.diff;
-    newQuestion();
+(function(){
+  const diffs = document.querySelectorAll("#diff-group input[type=checkbox]");
+  diffs.forEach(cb=>{
+    cb.addEventListener("change", ()=>{
+      diffs.forEach(o=>{ if(o!==cb) o.checked=false; });
+      if(!cb.checked) cb.checked=true;
+      state.difficulty = cb.value;
+      newQuestion();
+    });
   });
-});
+})();
 
 // ═══════════════════════════════════════════════════════════════
 //  PROVERB — rotate every 3 minutes
