@@ -102,7 +102,22 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;back
 .toast.info{background:var(--blue);color:#fff;}
 
 /* ─── APP SHELL ─── */
-#app{position:relative;z-index:1;display:flex;flex-direction:column;min-height:100dvh;max-width:920px;margin:0 auto;padding:0 20px 32px;}
+#app{position:relative;z-index:1;display:flex;flex-direction:column;min-height:100dvh;max-width:1200px;margin:0 auto;padding:0 20px 32px;}
+
+/* Desktop: sidebar layout */
+@media(min-width:768px){
+  #app{display:grid;grid-template-columns:200px 1fr;grid-template-rows:auto auto 1fr;grid-template-areas:"header header" "tabs tabs" "main main";padding:0;max-width:100%;}
+  #app > header{grid-area:header;padding:14px 28px 0;}
+  .main-tabs{grid-area:tabs;padding:0 28px;margin-top:0;}
+  .main-panel{padding:20px 28px 32px;}
+  #app > .main-tabs + .main-panel,
+  .main-panel.active{padding:20px 28px 32px;}
+}
+
+/* Full bleed on large screens */
+@media(min-width:1280px){
+  #app{max-width:1280px;margin:0 auto;}
+}
 
 /* ─── HEADER ─── */
 header{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:14px 0 0;gap:12px;}
@@ -125,7 +140,7 @@ header{flex-shrink:0;display:flex;align-items:center;justify-content:space-betwe
 .main-tab{padding:8px 18px;border-radius:8px 8px 0 0;font-size:13px;font-weight:600;cursor:pointer;color:var(--text2);background:transparent;border:none;transition:all .12s;position:relative;bottom:-1px;}
 .main-tab.active{background:var(--surf);color:var(--gold);border:1px solid var(--bdr);border-bottom-color:var(--surf);font-weight:700;}
 .main-tab:not(.active):hover{color:var(--text);}
-.main-panel{display:none;flex:1;flex-direction:column;}
+.main-panel{display:none;flex-direction:column;width:100%;}
 .main-panel.active{display:flex;}
 
 /* ═══════════════════════════════
@@ -802,42 +817,73 @@ document.getElementById("modal-cancel").addEventListener("click",  function() { 
 document.getElementById("modal-confirm").addEventListener("click", function() { document.getElementById("modal").classList.add("hidden"); if (_modalFn) _modalFn(); });
 
 // ═══ AUTH ═══
-var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-auth.onAuthStateChanged(function(user) {
-  if (user) {
-    S.uid = user.uid;
-    showScreen("loading");
-    document.getElementById("load-text").textContent = "Setting up your account...";
-    user.getIdToken().then(function(token) {
-      S.idToken = token;
-      setInterval(function() { user.getIdToken(true).then(function(t) { S.idToken = t; }); }, 50*60*1000);
-      return db.collection("users").doc(user.uid).get();
-    }).then(function(snap) {
-      if (!snap.exists || !snap.data().phone) {
-        document.getElementById("p-name").value = user.displayName || "";
-        showScreen("profile");
-      } else {
-        S.userData = snap.data();
-        S.plan     = S.userData.plan || "free";
+function handleUser(user) {
+  S.uid = user.uid;
+  showScreen("loading");
+  document.getElementById("load-text").textContent = "Setting up your account...";
+  user.getIdToken(true).then(function(token) {
+    S.idToken = token;
+    // Refresh token every 50 minutes
+    setInterval(function() { user.getIdToken(true).then(function(t) { S.idToken = t; }); }, 50*60*1000);
+    return db.collection("users").doc(user.uid).get();
+  }).then(function(snap) {
+    if (!snap.exists || !snap.data().phone) {
+      document.getElementById("p-name").value = user.displayName || "";
+      showScreen("profile");
+    } else {
+      S.userData = snap.data();
+      S.plan     = S.userData.plan || "free";
+      // Fetch settings from server to get latest freeConceptsAllowed
+      db.collection("settings").doc("config").get().then(function(cfg) {
+        if (cfg.exists) {
+          var d = cfg.data();
+          if (d.freeConceptsAllowed && d.freeConceptsAllowed.length)
+            S.freeConceptsAllowed = d.freeConceptsAllowed;
+          if (d.freeQuestionsPerConcept)
+            S.freeQuestionsPerConcept = d.freeQuestionsPerConcept;
+          if (d.paidPrice) P.basePrice = P.finalAmount = d.paidPrice;
+        }
+      }).catch(function(){}).finally(function() {
         updateLoginStats(user.uid);
         launchApp();
-      }
-    }).catch(function(e) { console.error("Auth error:", e); showScreen("login"); });
+      });
+    }
+  }).catch(function(e) { console.error("Auth error:", e); showScreen("login"); });
+}
+
+auth.onAuthStateChanged(function(user) {
+  if (user) {
+    handleUser(user);
   } else {
-    S.uid = null; S.idToken = null; showScreen("login");
+    // Handle redirect result first (mobile/cross-origin redirect flow)
+    auth.getRedirectResult().then(function(result) {
+      if (result && result.user) {
+        handleUser(result.user);
+      } else {
+        S.uid = null; S.idToken = null; showScreen("login");
+      }
+    }).catch(function(e) {
+      console.error("Redirect result error:", e);
+      S.uid = null; S.idToken = null; showScreen("login");
+    });
   }
 });
+
 document.getElementById("btn-google").addEventListener("click", function() {
   var provider = new firebase.auth.GoogleAuthProvider();
-  document.getElementById("btn-google").textContent = "Signing in...";
-  var p = auth.signInWithRedirect(provider);
-  p.catch && p.catch(function(e) {
-    document.getElementById("btn-google").innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Continue with Google';
-    if (e.code !== "auth/popup-closed-by-user") console.error(e.code);
+  provider.setCustomParameters({ prompt: "select_account" });
+  var btn = document.getElementById("btn-google");
+  btn.textContent = "Redirecting...";
+  btn.disabled = true;
+  auth.signInWithRedirect(provider).catch(function(e) {
+    btn.disabled = false;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Continue with Google';
+    if (e.code !== "auth/popup-closed-by-user") showToast("Sign in failed. Try again.", "error");
   });
 });
+
 document.getElementById("logout-btn").addEventListener("click", function() {
-  auth.signOut(); S.uid = null; S.idToken = null; showScreen("login");
+  auth.signOut().then(function() { S.uid = null; S.idToken = null; showScreen("login"); });
 });
 
 // ═══ PROFILE FORM ═══
@@ -1062,10 +1108,12 @@ function updateProgressUI() {
   var wrap=document.getElementById("prog-wrap");
   if (S.plan==="paid") { wrap.style.display="none"; return; }
   wrap.style.display="flex";
-  var used=S.lastSeen+1, total=S.freeQuestionsPerConcept;
-  document.getElementById("prog-lbl").textContent=S.dtype;
-  document.getElementById("prog-fill").style.width=Math.min(100,(used/total)*100)+"%";
-  document.getElementById("prog-count").textContent=used+" / "+total;
+  // lastSeen is 0-based index of current question; +1 gives count shown so far
+  var used  = S.lastSeen + 1;
+  var total = S.freeQuestionsPerConcept || S.questions.length;
+  document.getElementById("prog-lbl").textContent  = S.dtype;
+  document.getElementById("prog-fill").style.width = Math.min(100, (used / total) * 100) + "%";
+  document.getElementById("prog-count").textContent = used + " / " + total;
 }
 
 // ═══ MAIN TABS ═══
@@ -1094,8 +1142,13 @@ document.querySelectorAll(".sub-tab").forEach(function(tab) {
 // ═══ LAUNCH ═══
 function launchApp() {
   showScreen("app");
-  document.getElementById("logout-btn").style.display="";
+  document.getElementById("logout-btn").style.display = "";
   applyPlanUI();
+  // For free students: default to first admin-allowed concept
+  // For paid: default to String or current dtype
+  if (S.plan !== "paid" && S.freeConceptsAllowed.length > 0 && !S.freeConceptsAllowed.includes(S.dtype)) {
+    S.dtype = S.freeConceptsAllowed[0];
+  }
   loadDtype(S.dtype);
 }
 
@@ -1143,18 +1196,41 @@ function fetchFromServer(dtype) {
 }
 
 function showNextQuestion() {
-  S.lastSeen++;
-  if (S.plan!=="paid" && S.lastSeen>=S.questions.length) { showUpgrade("You've completed all free questions for '"+S.dtype+"' today. Come back tomorrow or upgrade!"); return; }
-  if (S.plan==="paid" && S.lastSeen>=S.questions.length) { fetchFromServer(S.dtype); return; }
-  var filtered=[];
-  for (var i=S.lastSeen;i<S.questions.length;i++) {
-    if (S.qtype==="Mixed"||!S.questions[i].qtype||S.questions[i].qtype===S.qtype) filtered.push({q:S.questions[i],idx:i});
+  // Advance pointer — start from next unseen question
+  var nextIdx = S.lastSeen + 1;
+
+  // Batch exhausted
+  if (nextIdx >= S.questions.length) {
+    if (S.plan !== "paid") {
+      showUpgrade("You've completed all free questions for '" + S.dtype + "' today. Come back tomorrow or upgrade!");
+    } else {
+      fetchFromServer(S.dtype);
+    }
+    return;
   }
-  if (filtered.length===0) { setFB("No more "+S.qtype+" questions in this batch. Switch question type.","wrong"); return; }
-  S.lastSeen=filtered[0].idx; saveBatch(S.dtype);
-  var q=filtered[0].q;
-  S.checked=false; S.sel=null; S.qcount++;
-  renderPracticeQuestion(q); updateProgressUI();
+
+  // Filter from nextIdx onward for requested qtype
+  var filtered = [];
+  for (var i = nextIdx; i < S.questions.length; i++) {
+    if (S.qtype === "Mixed" || !S.questions[i].qtype || S.questions[i].qtype === S.qtype) {
+      filtered.push({ q: S.questions[i], idx: i });
+    }
+  }
+
+  if (filtered.length === 0) {
+    setFB("No more " + S.qtype + " questions in this batch. Try 'Mixed' or switch type.", "wrong");
+    return;
+  }
+
+  // Advance to the matched question
+  S.lastSeen = filtered[0].idx;
+  saveBatch(S.dtype);
+
+  S.checked = false;
+  S.sel     = null;
+  S.qcount++;
+  renderPracticeQuestion(filtered[0].q);
+  updateProgressUI();
 }
 
 function hl(line) {
