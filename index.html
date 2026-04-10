@@ -102,22 +102,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;back
 .toast.info{background:var(--blue);color:#fff;}
 
 /* ─── APP SHELL ─── */
-#app{position:relative;z-index:1;display:flex;flex-direction:column;min-height:100dvh;max-width:1200px;margin:0 auto;padding:0 20px 32px;}
-
-/* Desktop: sidebar layout */
-@media(min-width:768px){
-  #app{display:grid;grid-template-columns:200px 1fr;grid-template-rows:auto auto 1fr;grid-template-areas:"header header" "tabs tabs" "main main";padding:0;max-width:100%;}
-  #app > header{grid-area:header;padding:14px 28px 0;}
-  .main-tabs{grid-area:tabs;padding:0 28px;margin-top:0;}
-  .main-panel{padding:20px 28px 32px;}
-  #app > .main-tabs + .main-panel,
-  .main-panel.active{padding:20px 28px 32px;}
-}
-
-/* Full bleed on large screens */
-@media(min-width:1280px){
-  #app{max-width:1280px;margin:0 auto;}
-}
+#app{position:relative;z-index:1;display:flex;flex-direction:column;min-height:100dvh;width:100%;max-width:1100px;margin:0 auto;padding:0 24px 40px;}
 
 /* ─── HEADER ─── */
 header{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:14px 0 0;gap:12px;}
@@ -140,8 +125,9 @@ header{flex-shrink:0;display:flex;align-items:center;justify-content:space-betwe
 .main-tab{padding:8px 18px;border-radius:8px 8px 0 0;font-size:13px;font-weight:600;cursor:pointer;color:var(--text2);background:transparent;border:none;transition:all .12s;position:relative;bottom:-1px;}
 .main-tab.active{background:var(--surf);color:var(--gold);border:1px solid var(--bdr);border-bottom-color:var(--surf);font-weight:700;}
 .main-tab:not(.active):hover{color:var(--text);}
-.main-panel{display:none;flex-direction:column;width:100%;}
+.main-panel{display:none;flex-direction:column;width:100%;min-height:0;}
 .main-panel.active{display:flex;}
+#panel-practice{gap:0;}
 
 /* ═══════════════════════════════
    PRACTICE PANEL
