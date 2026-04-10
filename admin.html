@@ -784,11 +784,11 @@ function renderStudentsPage() {
   if (!page.length) { tbody.innerHTML = '<tr><td colspan="7" class="tbl-empty">No students found.</td></tr>'; return; }
   tbody.innerHTML = page.map(function(s) {
     var banBtn = s.banned
-      ? '<button class="tbl-btn upgrade" onclick="unbanStudent(''+s.uid+'')">Unblock</button>'
-      : '<button class="tbl-btn ban" onclick="banStudent(''+s.uid+'',''+esc(s.name||"Student")+'')">Ban</button>';
+      ? '<button class="tbl-btn upgrade" onclick="unbanStudent(\"'+s.uid+'\")">Unblock</button>'
+      : '<button class="tbl-btn ban" onclick="banStudent(\"'+s.uid+'\",\"'+esc(s.name||'Student')+'\")">Ban</button>';
     var planBtn = s.plan!=="paid"
-      ? '<button class="tbl-btn upgrade" onclick="upgradeStudent(''+s.uid+'')">Upgrade</button>'
-      : '<button class="tbl-btn ban" onclick="downgradeStudent(''+s.uid+'')">Downgrade</button>';
+      ? '<button class="tbl-btn upgrade" onclick="upgradeStudent(\"'+s.uid+'\")">Upgrade</button>'
+      : '<button class="tbl-btn ban" onclick="downgradeStudent(\"'+s.uid+'\")">Downgrade</button>';
     var bannedBadge = s.banned ? ' <span style="font-size:10px;color:var(--red);font-weight:700">BANNED</span>' : '';
     return '<tr'+( s.banned?' style="opacity:.5"':'')+'>'+
       '<td style="font-weight:600">'+esc(s.name||"—")+bannedBadge+'</td>'+
@@ -1203,3 +1203,9 @@ function deleteTest(id, title) {
 }
 function activateTest(id) {
   db.collectio
+  .then(function(){ showToast("Test activated!","success"); loadPublishedTests(); })
+  .catch(function(e){ showToast("Error: "+e.message,"error"); });
+}
+</script>
+</body>
+</html>
