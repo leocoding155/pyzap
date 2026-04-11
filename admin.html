@@ -1001,7 +1001,7 @@ function loadAnnouncements() {
       '</div>';
     });
     el.innerHTML = html;
-  }).catch(function(e){ showToast("Error loading announcements: "+e.message,"error"); });
+  }).catch(function(e){ console.error("loadAnnouncements:", e.message); });
 }
 // Preview
 document.getElementById("ann-type").addEventListener("change", function() {
@@ -1169,9 +1169,14 @@ function loadPublishedTests() {
   var tbody=document.getElementById("pub-tests-tbody");
   if (!tbody) return;
   tbody.innerHTML='<tr><td colspan="6" class="loading-row"><div class="spinner"></div></td></tr>';
-  db.collection("adminTests").orderBy("createdAt","desc").limit(20).get()
+  db.collection("adminTests").get()
   .then(function(snap) {
     if (snap.empty) { tbody.innerHTML='<tr><td colspan="6" class="tbl-empty">No tests published yet.</td></tr>'; return; }
+    // Sort by createdAt client-side to avoid needing a Firestore index
+    var docs = [];
+    snap.forEach(function(doc){ docs.push({id:doc.id, data:doc.data()}); });
+    docs.sort(function(a,b){ var at=a.data.createdAt, bt=b.data.createdAt; if(!at||!bt) return 0; return (bt.seconds||0)-(at.seconds||0); });
+    snap = { forEach: function(fn){ docs.forEach(function(d){ fn({id:d.id, data:function(){return d.data;}}); }); } };
     var rows=[];
     snap.forEach(function(doc) {
       var t=doc.data(), id=doc.id;
