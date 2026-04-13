@@ -349,8 +349,7 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 .opt-pill.on{background:var(--gdim);border-color:var(--gold);color:var(--gold);font-weight:800;}
 .btn-gen{padding:12px 28px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border:none;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:800;cursor:pointer;}
 
-/* ─── ANNOUNCEMENT BANNER ─── */
-#ann-banner{display:none;margin-bottom:10px;padding:10px 14px;border-radius:9px;font-size:12px;font-weight:600;flex-shrink:0;align-items:center;gap:10px;justify-content:space-between;}
+
 
 /* ─── HIDDEN ─── */
 .hidden{display:none!important;}
@@ -396,6 +395,71 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 #loading-screen.hidden{display:none;}
 .load-logo{font-family:'Playfair Display',serif;font-size:36px;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 #load-text{font-size:13px;color:var(--muted);}
+
+/* ─── LEGACY CLASS ALIASES (HTML uses these) ─── */
+/* Login */
+.lcard{background:var(--surf);border:1px solid var(--bdr2);border-radius:20px;padding:40px 32px;width:100%;max-width:360px;text-align:center;box-shadow:0 0 0 1px rgba(245,166,35,.06),0 32px 64px rgba(0,0,0,.7);}
+.l-credit{font-size:10px;color:var(--muted);margin-top:10px;opacity:.5;}
+/* Profile form */
+.overlay{position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;overflow-y:auto;padding:16px;}
+.overlay.hidden{display:none!important;}
+.pcard{background:var(--surf);border:1px solid var(--bdr2);border-radius:18px;padding:28px;width:100%;max-width:440px;}
+.pcard-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:var(--gold);margin-bottom:4px;}
+.pcard-sub{font-size:12px;color:var(--muted);margin-bottom:20px;line-height:1.5;}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.fgrid.one{grid-template-columns:1fr;}
+.fg{display:flex;flex-direction:column;}
+.flbl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);margin-bottom:5px;}
+.finp{padding:9px 12px;background:var(--card);border:1.5px solid var(--bdr2);border-radius:8px;color:var(--text);font-family:'Outfit',sans-serif;font-size:13px;outline:none;transition:border-color .12s;width:100%;}
+.finp:focus{border-color:var(--gold);}
+.fsel{padding:9px 12px;background:var(--card);border:1.5px solid var(--bdr2);border-radius:8px;color:var(--text);font-family:'Outfit',sans-serif;font-size:13px;outline:none;cursor:pointer;appearance:none;width:100%;}
+.fsel option{background:var(--surf);}
+.ferr{font-size:12px;color:var(--red);font-weight:600;}
+/* Upgrade popup */
+.ucard{background:var(--surf);border:1px solid var(--bdr2);border-radius:18px;padding:28px;width:100%;max-width:380px;position:relative;text-align:center;}
+.u-icon{font-size:32px;margin-bottom:8px;}
+.u-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;}
+.u-msg{font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.5;}
+.u-feats{text-align:left;margin-bottom:16px;}
+.u-feat{font-size:12px;color:var(--text2);padding:5px 0;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:8px;}
+.u-feat::before{content:'✓';color:var(--green);font-weight:800;flex-shrink:0;}
+.u-price{font-size:18px;color:var(--text2);margin-bottom:14px;}
+.u-price span{font-size:12px;color:var(--muted);}
+.btn-upgrade{width:100%;padding:12px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border:none;border-radius:10px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-bottom:8px;}
+.btn-close-up{display:block;width:100%;padding:8px;background:transparent;border:none;color:var(--muted);font-family:'Outfit',sans-serif;font-size:12px;cursor:pointer;}
+.btn-close-up:hover{color:var(--text);}
+/* Test attempt */
+.ta-shell{display:flex;flex-direction:column;height:100%;}
+.ta-card{flex:1;overflow-y:auto;background:var(--surf);margin:12px 16px;border-radius:12px;border:1px solid var(--bdr);}
+.ta-card-hdr{padding:10px 14px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;}
+.ta-qnum{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);}
+.ta-qtype{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);background:var(--gdim);padding:2px 8px;border-radius:999px;}
+.ta-code-wrap{display:flex;background:#060A14;padding:12px 0;}
+.ta-gutter{padding:0 12px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#3D5070;text-align:right;user-select:none;line-height:1.8;flex-shrink:0;}
+.ta-code{flex:1;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.8;padding:0 16px 0 0;white-space:pre;}
+.ta-mcq{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 14px;}
+.ta-btn-row{padding:12px 16px;border-top:1px solid var(--bdr);display:flex;align-items:center;gap:8px;background:var(--surf);}
+.ta-btn{padding:8px 16px;border-radius:8px;border:1.5px solid var(--bdr2);background:var(--card);color:var(--text2);font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .12s;}
+.ta-btn:disabled{opacity:.35;cursor:default;}
+.ta-btn:not(:disabled):hover{border-color:var(--gold);color:var(--gold);}
+.ta-btn.submit{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border-color:transparent;margin-left:auto;}
+/* Result */
+.rs-shell{display:flex;flex-direction:column;min-height:100%;}
+.rs-header{padding:14px 16px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:var(--surf);}
+.rs-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.rs-test-title{font-size:13px;font-weight:700;color:var(--text2);}
+.score-card{display:flex;gap:16px;justify-content:space-around;flex-wrap:wrap;background:var(--surf);border:1px solid var(--bdr);border-radius:14px;padding:18px;margin:14px 16px 0;}
+.rs-sec{background:var(--surf);border:1px solid var(--bdr);border-radius:14px;padding:18px;margin:10px 16px 0;}
+.email-notice{font-size:12px;color:var(--green);text-align:center;padding:10px;}
+.rs-actions{padding:14px 16px;border-top:1px solid var(--bdr);display:flex;gap:8px;justify-content:center;margin-top:10px;}
+.rs-btn{padding:10px 24px;border-radius:9px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid var(--bdr2);background:transparent;color:var(--text2);transition:all .12s;}
+.rs-btn:hover{border-color:var(--gold);color:var(--gold);}
+.rs-btn.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border-color:transparent;}
+@media(max-width:767px){
+  .fgrid{grid-template-columns:1fr;}
+  .ta-mcq{grid-template-columns:1fr;}
+}
+
 </style>
 </head>
 <body>
@@ -609,63 +673,65 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
     </div>
   <!-- ═══ PRACTICE PANEL ═══ -->
   <div class="main-panel active" id="panel-practice">
-    <!-- Announcement banner -->
-    <div id="ann-banner" style="display:none;margin-bottom:12px;padding:12px 16px;border-radius:12px;font-size:13px;font-weight:600;flex-shrink:0;align-items:center;gap:10px;justify-content:space-between;">
-      <span id="ann-banner-msg"></span>
-      <button onclick="document.getElementById('ann-banner').style.display='none'" style="background:none;border:none;color:inherit;font-size:16px;cursor:pointer;padding:0 4px;opacity:.7;flex-shrink:0">&#x2715;</button>
-    </div>
-    <!-- Free banner: compact, only for free students -->
-    <div class="free-banner" id="free-banner" style="display:none">
-      <div class="free-banner-row" id="free-banner-concepts"></div>
-      <div class="free-banner-footer">
-        Resets daily at midnight
-        <button class="free-banner-upgrade" onclick="showUpgrade('Upgrade to Pro for unlimited practice!')">Upgrade for unlimited &#x2192;</button>
-      </div>
-    </div>
 
-    <!-- Mode toggle -->
+    <!-- Combined control box: Free limit + Mode + Stats -->
     <div class="sbar" style="margin-bottom:8px;">
-      <div class="srow">
-        <div class="sg-lbl">Mode</div>
-        <div class="mode-toggle">
-          <button class="mode-btn active" data-mode="mcq">&#x229E; MCQ</button>
-          <button class="mode-btn"        data-mode="type">&#x270E; Type</button>
+      <!-- Free banner row: hidden for paid -->
+      <div id="free-banner" style="display:none">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+          <div class="sg-lbl">Today's Limit</div>
+          <button class="free-banner-upgrade" onclick="showUpgrade('Upgrade to Pro for unlimited practice!')">Upgrade &#x2192;</button>
+        </div>
+        <div class="free-banner-row" id="free-banner-concepts" style="margin-bottom:4px;"></div>
+        <div style="font-size:9px;color:var(--muted);">Resets daily at midnight</div>
+        <div style="height:1px;background:var(--bdr);margin:8px -2px 0;"></div>
+      </div>
+      <!-- Mode + Stats row -->
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+        <div>
+          <div class="sg-lbl" style="margin-bottom:5px;">Mode</div>
+          <div class="mode-toggle">
+            <button class="mode-btn active" data-mode="mcq">&#x229E; MCQ</button>
+            <button class="mode-btn"        data-mode="type">&#x270E; Type</button>
+          </div>
+        </div>
+        <div style="display:flex;gap:5px;">
+          <div class="app-sb-stat"><div class="app-sb-stat-val" id="hs-done">0</div><div class="app-sb-stat-lbl">Done</div></div>
+          <div class="app-sb-stat sc"><div class="app-sb-stat-val" id="hs-correct">0</div><div class="app-sb-stat-lbl">Correct</div></div>
+          <div class="app-sb-stat sw"><div class="app-sb-stat-val" id="hs-wrong">0</div><div class="app-sb-stat-lbl">Wrong</div></div>
+          <div class="app-sb-stat ss"><div class="app-sb-stat-val" id="hs-streak">0</div><div class="app-sb-stat-lbl">Streak</div></div>
         </div>
       </div>
     </div>
 
     <!-- Topic -->
     <div class="sbar" style="margin-bottom:8px;">
-      <div class="srow">
-        <div class="sg-lbl">Topic</div>
-        <div class="bgrp" id="dtype-group">
-          <button class="tog dt-String active" data-dtype="String">String</button>
-          <button class="tog dt-List"           data-dtype="List">List</button>
-          <button class="tog dt-Tuple"          data-dtype="Tuple">Tuple</button>
-          <button class="tog dt-Dict"           data-dtype="Dictionary">Dict</button>
-          <button class="tog dt-Mixed"          data-dtype="Mixed">Mixed</button>
-          <button class="tog dt-Functions locked" data-dtype="Functions">Functions &#x1F512;</button>
-          <button class="tog dt-Modules locked"   data-dtype="Modules">Modules &#x1F512;</button>
-          <button class="tog dt-Exception locked" data-dtype="Exception">Exception &#x1F512;</button>
-        </div>
+      <div class="sg-lbl" style="margin-bottom:6px;">Topic</div>
+      <div class="bgrp" id="dtype-group">
+        <button class="tog dt-String active" data-dtype="String">String</button>
+        <button class="tog dt-List"           data-dtype="List">List</button>
+        <button class="tog dt-Tuple"          data-dtype="Tuple">Tuple</button>
+        <button class="tog dt-Dict"           data-dtype="Dictionary">Dict</button>
+        <button class="tog dt-Mixed"          data-dtype="Mixed">Mixed</button>
+        <button class="tog dt-Functions locked" data-dtype="Functions">Functions &#x1F512;</button>
+        <button class="tog dt-Modules locked"   data-dtype="Modules">Modules &#x1F512;</button>
+        <button class="tog dt-Exception locked" data-dtype="Exception">Exception &#x1F512;</button>
       </div>
     </div>
 
     <!-- Question Type (hidden for Python topics) -->
     <div class="sbar" id="qtype-sbar" style="margin-bottom:8px;">
-      <div class="srow">
-        <div class="sg-lbl">Question Type</div>
-        <div class="bgrp" id="qtype-group">
-          <button class="tog qt-Indexing"      data-qtype="Indexing">Indexing</button>
-          <button class="tog qt-Slicing"       data-qtype="Slicing">Slicing</button>
-          <button class="tog qt-SliceIdx"      data-qtype="SliceIdx">Slice+Index</button>
-          <button class="tog qt-Functions"     data-qtype="Functions">Functions</button>
-          <button class="tog qt-Membership"    data-qtype="Membership">Membership</button>
-          <button class="tog qt-Comparison"    data-qtype="Comparison">Comparison</button>
-          <button class="tog qt-Expressions"   data-qtype="Expressions">Expressions</button>
-          <button class="tog qt-BuiltinMath"   data-qtype="BuiltinMath">Built-in</button>
-          <button class="tog qt-Mixed active"  data-qtype="Mixed">Mixed</button>
-        </div>
+      <div class="sg-lbl" style="margin-bottom:6px;">Question Type</div>
+      <div class="bgrp" id="qtype-group">
+        <button class="tog qt-Indexing"      data-qtype="Indexing">Indexing</button>
+        <button class="tog qt-Slicing"       data-qtype="Slicing">Slicing</button>
+        <button class="tog qt-SliceIdx"      data-qtype="SliceIdx">Slice+Index</button>
+        <button class="tog qt-Functions"     data-qtype="Functions">Functions</button>
+        <button class="tog qt-Membership"    data-qtype="Membership">Membership</button>
+        <button class="tog qt-Comparison"    data-qtype="Comparison">Comparison</button>
+        <button class="tog qt-Expressions"   data-qtype="Expressions">Expressions</button>
+        <button class="tog qt-BuiltinMath"   data-qtype="BuiltinMath">Built-in</button>
+        <button class="tog qt-Mixed active"  data-qtype="Mixed">Mixed</button>
       </div>
     </div>
 
@@ -798,6 +864,8 @@ var S = {
   allQuestions: {},
   // Progress per concept: { String:{used:3,completed:false}, ... }
   dailyProgress: {},
+  // Actual answers given this session per concept (source of truth for free limit UI)
+  answeredToday: {},  // { String:3, List:0 }
   freeConceptsAllowed: ["String","List"], freeQuestionsPerConcept: 10,
   // Per-concept resume tracking
   conceptIdx: {},
@@ -1140,8 +1208,13 @@ document.querySelectorAll(".sub-tab").forEach(function(tab){
 });
 
 // ═══ FREE BANNER ═══
-function getConceptUsed(concept){return(S.dailyProgress[concept]&&S.dailyProgress[concept].used)||0;}
-function isConceptCompleted(concept){return!!(S.dailyProgress[concept]&&S.dailyProgress[concept].completed);}
+function getConceptUsed(concept){
+  // Use answeredToday — actual answers given, NOT server-side progress
+  return S.answeredToday[concept] || 0;
+}
+function isConceptCompleted(concept){
+  return getConceptUsed(concept) >= S.freeQuestionsPerConcept;
+}
 function allConceptsDone(){
   if(S.plan==="paid")return false;
   return S.freeConceptsAllowed.every(function(c){return isConceptCompleted(c);});
@@ -1197,33 +1270,6 @@ function renderProfile(){
 }
 
 // ═══ LAUNCH ═══
-function loadAnnouncements(){
-  db.collection("announcements").where("active","==",true).orderBy("createdAt","desc").limit(1).get()
-  .then(function(snap){
-    if(snap.empty)return;
-    var a=snap.docs[0].data();
-    // Check expiry
-    if(a.expiresAt){
-      var exp=a.expiresAt.toDate?a.expiresAt.toDate():new Date(a.expiresAt);
-      if(exp<new Date())return;
-    }
-    var banner=document.getElementById("ann-banner");
-    var msg=document.getElementById("ann-banner-msg");
-    if(!banner||!msg)return;
-    msg.textContent=a.message||"";
-    // Style by type
-    var styles={
-      info:    {bg:"var(--bldim)",  border:"rgba(94,174,255,.3)",  color:"var(--blue)"},
-      warning: {bg:"var(--ambdim)", border:"rgba(255,184,48,.3)",  color:"var(--amber)"},
-      success: {bg:"var(--gndim)",  border:"rgba(34,211,160,.3)",  color:"var(--green)"},
-    };
-    var s=styles[a.type]||styles.info;
-    banner.style.background=s.bg;
-    banner.style.border="1px solid "+s.border;
-    banner.style.color=s.color;
-    banner.style.display="flex";
-  }).catch(function(e){console.warn("announcements:",e.message);});
-}
 
 function launchApp(){
   showScreen("app");
@@ -1237,7 +1283,6 @@ function launchApp(){
   if(S.plan!=="paid"&&S.freeConceptsAllowed.length>0&&!S.freeConceptsAllowed.includes(S.dtype)){
     S.dtype=S.freeConceptsAllowed[0];
   }
-  loadAnnouncements();
   fetchAllQuestions();
 }
 
@@ -1392,10 +1437,19 @@ function loadDailyProgressFromFirestore(callback){
   var today = getTodayStr();
   db.collection("users").doc(S.uid).collection("dailyProgress").doc("progress").get()
   .then(function(snap){
-    if(snap.exists && snap.data().date === today) S.dailyProgress = snap.data().concepts || {};
-    else S.dailyProgress = {};
+    if(snap.exists && snap.data().date === today){
+      S.dailyProgress = snap.data().concepts || {};
+      // Load answeredToday from Firestore progress
+      S.answeredToday = {};
+      Object.keys(S.dailyProgress).forEach(function(concept){
+        S.answeredToday[concept] = S.dailyProgress[concept].used || 0;
+      });
+    } else {
+      S.dailyProgress = {};
+      S.answeredToday = {};
+    }
     callback();
-  }).catch(function(){ S.dailyProgress = {}; callback(); });
+  }).catch(function(){ S.dailyProgress = {}; S.answeredToday = {}; callback(); });
 }
 
 function startPractice(){
@@ -1412,7 +1466,7 @@ function loadConceptQuestions(dtype){
   document.querySelectorAll("#dtype-group .tog").forEach(function(b){ b.classList.toggle("active", b.dataset.dtype===dtype); });
   applyQtypeLocks();
 
-  // Free: concept completed?
+  // Free: concept completed? Only block if student has actually answered the full quota
   if(S.plan !== "paid" && isConceptCompleted(dtype)){
     var avail = S.freeConceptsAllowed.filter(function(c){ return !isConceptCompleted(c); });
     setCardLoading(avail.length > 0
@@ -1420,6 +1474,8 @@ function loadConceptQuestions(dtype){
       : "You've completed all free questions for today! Come back tomorrow or upgrade to Pro.");
     updateFreeBanner(); applyDtypeLocks(); return;
   }
+  // Reset currentIdx when switching concept — don't resume old position
+  // (resumePos logic below handles this correctly)
 
   // Build filtered list using per-concept idx
   S.currentQuestions = buildFilteredList(dtype, S.qtype);
@@ -1450,16 +1506,13 @@ function buildFilteredList(dtype, qtype){
 
 // ─── Show current question ───
 function showCurrentQuestion(){
-  // Free limit check
-  if(S.plan !== "paid"){
-    var used = getConceptUsed(S.dtype);
-    if(used >= S.freeQuestionsPerConcept){
-      var avail = S.freeConceptsAllowed.filter(function(c){ return !isConceptCompleted(c); });
-      setCardLoading(avail.length > 0
-        ? "You've completed all '" + S.dtype + "' questions today. Switch to " + avail.join(" or ") + "!"
-        : "You've completed all free questions for today! Come back tomorrow or upgrade to Pro.");
-      updateFreeBanner(); applyDtypeLocks(); return;
-    }
+  // Free limit check — only based on actual answers given
+  if(S.plan !== "paid" && isConceptCompleted(S.dtype)){
+    var avail = S.freeConceptsAllowed.filter(function(c){ return !isConceptCompleted(c); });
+    setCardLoading(avail.length > 0
+      ? "You've completed all '" + S.dtype + "' questions today. Switch to " + avail.join(" or ") + "!"
+      : "You've completed all free questions for today! Come back tomorrow or upgrade to Pro.");
+    updateFreeBanner(); applyDtypeLocks(); return;
   }
 
   // Batch exhausted for this concept
@@ -1601,10 +1654,14 @@ function checkAns(){
   else{S.streak=0;S.wrong++;setFB("\u2717  Wrong \u2014 Answer: "+correct,"wrong");}
   document.getElementById("btn-check").disabled=true;lockOpts(correct);showExpl(q.explanation);updHdr();
   if(S.plan!=="paid"){
-    if(!S.dailyProgress[S.dtype])S.dailyProgress[S.dtype]={used:0,completed:false};
-    S.dailyProgress[S.dtype].used=Math.min((S.dailyProgress[S.dtype].used||0)+1,S.freeQuestionsPerConcept);
-    if(S.dailyProgress[S.dtype].used>=S.freeQuestionsPerConcept)S.dailyProgress[S.dtype].completed=true;
-    updateFreeBanner();applyDtypeLocks();
+    // Increment answeredToday — this is the ONLY trigger for free limit
+    if(!S.answeredToday[S.dtype]) S.answeredToday[S.dtype] = 0;
+    S.answeredToday[S.dtype]++;
+    updateFreeBanner();
+    // Lock concept button if limit reached
+    if(S.answeredToday[S.dtype] >= S.freeQuestionsPerConcept){
+      applyDtypeLocks();
+    }
   }
 }
 

@@ -283,7 +283,7 @@ tr:hover td{background:rgba(245,166,35,.02);}
       <div class="nav-item" data-page="settings"><span class="nav-icon">&#x2699;</span> Settings</div>
       <div class="nav-item" data-page="email"><span class="nav-icon">&#x2709;</span> Email Marketing</div>
       <div class="nav-item" data-page="promos"><span class="nav-icon">&#x1F3F7;</span> Promo Codes</div>
-      <div class="nav-item" data-page="announce"><span class="nav-icon">&#x1F4E3;</span> Announcements</div>
+      
       <div class="nav-item" data-page="testbuilder"><span class="nav-icon">&#x1F4CB;</span> Test Builder</div>
     </div>
     <div class="sb-footer">
@@ -452,41 +452,7 @@ tr:hover td{background:rgba(245,166,35,.02);}
       </div>
 
       <!-- ANNOUNCEMENTS -->
-      <div class="page" id="page-announce">
-        <div style="display:flex;gap:16px;flex-wrap:wrap">
-          <div class="ann-form" style="flex:1;min-width:260px">
-            <div class="setting-title" style="margin-bottom:12px">New Announcement</div>
-            <div class="form-row"><div class="form-lbl">Type</div>
-              <select class="form-sel" id="ann-type">
-                <option value="info">Info (blue)</option>
-                <option value="warning">Warning (amber)</option>
-                <option value="success">Success (green)</option>
-              </select>
-            </div>
-            <div class="form-row"><div class="form-lbl">Message</div><input class="form-inp" id="ann-msg" placeholder="e.g. New questions added for Tuple!"></div>
-            <div class="form-row"><div class="form-lbl">Expires After</div>
-              <select class="form-sel" id="ann-expiry">
-                <option value="1">1 day</option>
-                <option value="3">3 days</option>
-                <option value="7" selected>7 days</option>
-                <option value="30">30 days</option>
-                <option value="0">Never</option>
-              </select>
-            </div>
-            <button class="btn-save-settings" id="btn-send-ann">Publish Announcement</button>
-            <div class="divider"></div>
-            <div class="setting-title" style="font-size:13px">Preview</div>
-            <div class="ann-banner info" id="ann-preview">&#x2139;&#xFE0F; Your announcement will appear here.</div>
-          </div>
-          <div class="ann-form" style="flex:1;min-width:260px">
-            <div class="setting-title">Active Announcements</div>
-            <div id="active-anns"><div class="loading-row"><div class="spinner"></div></div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TEST BUILDER -->
-      <div class="page" id="page-testbuilder">
+    <div class="page" id="page-testbuilder">
         <div class="tb-steps">
           <div class="tb-step active" id="tb-step-1"><div class="tb-step-num">1</div> Generate</div>
           <div class="tb-step" id="tb-step-2"><div class="tb-step-num">2</div> Review</div>
@@ -686,7 +652,6 @@ function initAdmin() {
   loadStudents();
   loadSettings();
   loadPromos();
-  loadAnnouncements();
   loadTestBuilder();
 }
 
@@ -1005,53 +970,7 @@ function deletePromo(id) {
 }
 
 // ANNOUNCEMENTS
-function loadAnnouncements() {
-  db.collection("announcements").where("active","==",true).get()
-  .then(function(snap) {
-    var el = document.getElementById("active-anns");
-    if (snap.empty) { el.innerHTML='<div style="color:var(--muted);font-size:13px">No active announcements.</div>'; return; }
-    var html="";
-    snap.forEach(function(doc) {
-      var a=doc.data();
-      var expired = a.expiresAt && (a.expiresAt.toDate ? a.expiresAt.toDate() : new Date(a.expiresAt)) < new Date();
-      var expiryStr = "";
-      if(a.expiresAt){try{var d=a.expiresAt.toDate?a.expiresAt.toDate():new Date(a.expiresAt);expiryStr=" · Expires "+d.toLocaleDateString("en-IN",{day:"2-digit",month:"short"});}catch(e){}}
-      html+='<div class="ann-banner '+(a.type||"info")+'" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'+
-        '<span style="flex:1">'+esc(a.message||"")+(expired?' <span style="font-size:10px;opacity:.6">(Expired)</span>':'')+(expiryStr?'<span style="font-size:10px;opacity:.6">'+expiryStr+'</span>':'')+'</span>'+
-        '<button class="tbl-btn ban" onclick="deleteAnn(\''+doc.id+'\')" style="font-size:10px;padding:3px 8px;margin-left:8px;flex-shrink:0">Delete</button>'+
-      '</div>';
-    });
-    el.innerHTML = html;
-  }).catch(function(e){ console.error("loadAnnouncements:", e.message); });
-}
-// Preview
-document.getElementById("ann-type").addEventListener("change", function() {
-  document.getElementById("ann-preview").className = "ann-banner " + this.value;
-});
-document.getElementById("ann-msg").addEventListener("input", function() {
-  document.getElementById("ann-preview").textContent = this.value || "Your announcement will appear here.";
-});
-document.getElementById("btn-send-ann").addEventListener("click", function() {
-  var type   = document.getElementById("ann-type").value;
-  var msg    = document.getElementById("ann-msg").value.trim();
-  var expiry = parseInt(document.getElementById("ann-expiry").value);
-  if (!msg) { showToast("Enter a message","error"); return; }
-  var data = { type:type, message:msg, active:true, createdAt:firebase.firestore.FieldValue.serverTimestamp() };
-  if (expiry > 0) { var exp=new Date(); exp.setDate(exp.getDate()+expiry); data.expiresAt=firebase.firestore.Timestamp.fromDate(exp); }
-  db.collection("announcements").add(data)
-  .then(function(){ showToast("Announcement published","success"); document.getElementById("ann-msg").value=""; loadAnnouncements(); })
-  .catch(function(e){ showToast("Error: "+e.message,"error"); });
-});
-function deleteAnn(id) {
-  db.collection("announcements").doc(id).delete()
-  .then(function(){ showToast("Announcement deleted","info"); loadAnnouncements(); })
-  .catch(function(e){ showToast("Error: "+e.message,"error"); });
-}
 
-// TEST BUILDER
-var CF_BASE_TB = "https://asia-south1-pyzap-297ad.cloudfunctions.net";
-var CF_GENERATE_TB = CF_BASE_TB + "/generateQuestions";
-var TB = { step:1, dtype:"String", count:20, generated:[], approved:[], rejected:0 };
 
 function loadTestBuilder() { loadPublishedTests(); }
 
