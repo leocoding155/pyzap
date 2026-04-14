@@ -66,7 +66,7 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 .topbar-plan-badge.paid{background:var(--gdim);color:var(--gold);border:1px solid rgba(245,166,35,.25);}
 
 /* ─── PANELS ─── */
-.main-panel{display:none;flex-direction:column;flex:1;padding:16px 18px 28px;}
+.main-panel{display:none;flex-direction:column;flex:1;padding:10px 12px 12px;overflow:hidden;}
 .main-panel.active{display:flex;}
 
 /* ─── COMPACT FREE BANNER ─── */
@@ -82,12 +82,12 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 .free-banner-upgrade{background:none;border:none;color:var(--gold);font-size:10px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;padding:0;}
 
 /* ─── SBAR ─── */
-.sbar{flex-shrink:0;background:var(--surf);border:1px solid var(--bdr);border-radius:12px;padding:12px 14px;margin-bottom:12px;display:flex;flex-direction:column;gap:10px;}
+.sbar{flex-shrink:0;background:var(--surf);border:1px solid var(--bdr);border-radius:10px;padding:8px 10px;margin-bottom:6px;display:flex;flex-direction:column;gap:10px;}
 .srow{display:flex;flex-direction:column;gap:5px;}
 .srow-divider{height:1px;background:var(--bdr);margin:0 -2px;}
 .sg-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
 .bgrp{display:flex;flex-wrap:wrap;gap:5px;}
-.tog{padding:5px 11px;border-radius:6px;background:var(--card);border:1.5px solid var(--bdr2);color:var(--text2);font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .12s;white-space:nowrap;}
+.tog{padding:4px 8px;border-radius:5px;background:var(--card);border:1.5px solid var(--bdr2);color:var(--text2);font-family:'Outfit',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .12s;white-space:nowrap;}
 .tog:hover{border-color:var(--gold);color:var(--gold);}
 .tog.active{background:var(--gdim);border-color:var(--gold);color:var(--gold);font-weight:700;}
 .tog.locked{opacity:.45;cursor:not-allowed;}
@@ -100,7 +100,7 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 .mode-btn:hover:not(.active){border-color:var(--gold);color:var(--gold);}
 
 /* ─── QUESTION CARD ─── */
-.qcard{flex:1;background:var(--surf);border:1px solid var(--bdr);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-height:300px;}
+.qcard{flex:1;background:var(--surf);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-height:0;}
 .q-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;flex:1;padding:32px;text-align:center;}
 .q-loading-txt{font-size:13px;color:var(--text2);line-height:1.5;max-width:320px;}
 .spinner{width:24px;height:24px;border:2.5px solid var(--bdr2);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;}
@@ -463,9 +463,9 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 
 /* ─── 3-COLUMN CONTROL BOX ─── */
 .ctrl-box{background:var(--surf);border:1px solid var(--bdr);border-radius:14px;overflow:hidden;margin-bottom:10px;flex-shrink:0;display:flex;align-items:stretch;}
-.ctrl-col{flex:1;padding:12px 14px;border-right:1px solid var(--bdr);display:flex;flex-direction:column;}
+.ctrl-col{flex:1;padding:8px 10px;border-right:1px solid var(--bdr);display:flex;flex-direction:column;}
 .ctrl-col:last-child{border-right:none;}
-.ctrl-col-title{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);margin-bottom:10px;}
+.ctrl-col-title{font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);margin-bottom:6px;}
 /* Mode col */
 .mode-toggle-v{display:flex;gap:6px;flex-wrap:wrap;}
 .mode-btn-v{padding:6px 14px;border-radius:7px;background:var(--card);border:1.5px solid var(--bdr2);color:var(--text2);font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .12s;white-space:nowrap;}
@@ -473,9 +473,9 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 .mode-btn-v:hover:not(.active){border-color:var(--gold);color:var(--gold);}
 /* Progress col - 2x2 grid */
 .prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-.prog-cell{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:7px 10px;text-align:center;}
-.prog-cell-val{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:700;color:var(--text2);line-height:1;}
-.prog-cell-lbl{font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+.prog-cell{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:5px 7px;text-align:center;}
+.prog-cell-val{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--text2);line-height:1;}
+.prog-cell-lbl{font-size:8px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-top:2px;}
 .prog-cell.sc .prog-cell-val{color:var(--green);}
 .prog-cell.sw .prog-cell-val{color:var(--red);}
 .prog-cell.ss .prog-cell-val{color:var(--gold);}
@@ -1182,14 +1182,18 @@ function applyDtypeLocks(){
       btn.classList.toggle("locked", S.plan!=="paid");
       return;
     }
-    if(S.plan==="paid"){btn.classList.remove("locked");return;}
+    if(S.plan==="paid"){btn.classList.remove("locked");if(btn.dataset.orig)btn.textContent=btn.dataset.orig;return;}
+    if(!btn.dataset.orig) btn.dataset.orig=btn.textContent;
+    var orig2=btn.dataset.orig;
     // Free: only todaysConcepts unlocked
     if(S.todaysConcepts.indexOf(dt) < 0){
       btn.classList.add("locked");
+      btn.textContent=orig2+" 🔒";
       return;
     }
     // Lock if all 9 qtypes done for this concept
-    btn.classList.toggle("locked", isConceptDone(dt));
+    if(isConceptDone(dt)){btn.classList.add("locked");btn.textContent=orig2+" 🔒";
+    }else{btn.classList.remove("locked");btn.textContent=orig2;}
   });
   applyQtypeLocks();
 }
@@ -1221,9 +1225,12 @@ function applyQtypeLocks(){
   document.querySelectorAll("#qtype-group .tog").forEach(function(btn){
     var qt = btn.dataset.qtype;
     btn.style.display = "";
-    if(S.plan==="paid"){btn.classList.remove("locked");return;}
+    if(!btn.dataset.orig) btn.dataset.orig=btn.textContent;
+    var qorig=btn.dataset.orig;
+    if(S.plan==="paid"){btn.classList.remove("locked");btn.textContent=qorig;return;}
     // Free: lock if this qtype is fully done
-    btn.classList.toggle("locked", isQtypeDone(S.dtype, qt));
+    if(isQtypeDone(S.dtype,qt)){btn.classList.add("locked");btn.textContent=qorig+" 🔒";
+    }else{btn.classList.remove("locked");btn.textContent=qorig;} //ignore_toggle, isQtypeDone(S.dtype, qt));
   });
 }
 
@@ -1270,11 +1277,11 @@ function updateFreeBanner(){
     var answered = getTotalAnswered(dtype);
     var pct  = total > 0 ? Math.min(100, Math.round((answered/total)*100)) : 0;
     var done = isConceptDone(dtype);
-    var color= done?"var(--muted)":pct>=80?"var(--green)":pct>=50?"var(--amber)":"var(--gold)";
+    var color = done?"var(--muted)":pct>=90?"#22D3A0":pct>=50?"#1ab88a":"#0f9e73";
     parts += '<div class="limit-concept-row'+(done?" limit-concept-done":"")+'">'+
       '<span class="limit-concept-name">'+(done?"🔒 ":"")+dtype+'</span>'+
       '<div class="limit-concept-bar"><div class="limit-concept-fill" style="width:'+pct+'%;background:'+color+'"></div></div>'+
-      '<span class="limit-concept-count">'+answered+'/'+total+'</span>'+
+      '<span class="limit-concept-count">'+(done?"100%":pct+"%")+'</span>'+
     '</div>';
   });
   container.innerHTML = parts;
@@ -1731,7 +1738,7 @@ function updateFreeBanner(){
     parts += '<div class="limit-concept-row'+(done?" limit-concept-done":'')+'">'+
       '<span class="limit-concept-name">'+(done?"🔒 ":"")+dtype+'</span>'+
       '<div class="limit-concept-bar"><div class="limit-concept-fill" style="width:'+pct+'%;background:'+color+'"></div></div>'+
-      '<span class="limit-concept-count">'+answered+'/'+total+'</span>'+
+      '<span class="limit-concept-count">'+(done?"100%":pct+"%")+'</span>'+
     '</div>';
   });
   container.innerHTML = parts;
@@ -1772,7 +1779,11 @@ function renderCode(lines,gEl,cEl){
 
 function renderPracticeQuestion(q){
   renderCode(q.lines||[],document.getElementById("gutter"),document.getElementById("code"));
-  document.getElementById("qnum").textContent="Question "+S.qcount;
+  if(S.plan!=="paid"){
+    document.getElementById("qnum").textContent="Q "+(getQtypeSeen(S.dtype,S.qtype)+1)+"/"+S.freeQuestionsPerQtype;
+  } else {
+    document.getElementById("qnum").textContent="Question "+S.qcount;
+  }
   document.getElementById("qbadge").textContent=q.qtype||"Predict Output";
   document.getElementById("qprompt").textContent=S.mode==="mcq"?"What does this print?":"Type the exact output:";
   var grid=document.getElementById("mcq-grid");grid.innerHTML="";
