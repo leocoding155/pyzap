@@ -267,7 +267,7 @@ tr:hover td{background:rgba(255,255,255,.02);}
       <div class="nav-item" data-page="testbuilder"><span class="nav-icon">&#x1F4CB;</span> Test Builder</div>
     </div>
     <div class="sb-footer">
-      <div class="sb-admin" id="sb-admin-email">admin@example.com</div>
+      <div class="sb-admin" id="sb-admin-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3756535a5e5977524f565a475b521954585a">[email&#160;protected]</a></div>
       <button class="sb-logout" id="btn-logout">Sign Out</button>
     </div>
   </nav>
@@ -368,6 +368,28 @@ tr:hover td{background:rgba(255,255,255,.02);}
           <button class="btn-save-settings" onclick="previewEmailRecipients()">Preview Recipients</button>
           <div style="margin-top:8px;font-size:12px;color:var(--text2);">Matched: <strong id="email-matched-count" style="color:var(--acc)">—</strong> students</div>
         </div>
+        <div class="setting-card" style="margin-bottom:14px;">
+          <div class="setting-title">Assign Targeted Promo (Optional)</div>
+          <div class="setting-desc">If selected, assigns this promo to filtered students. Only targeted promos appear here.</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap;">
+            <select class="form-sel" id="email-promo-select" style="flex:1;">
+              <option value="">— No promo —</option>
+            </select>
+            <button class="btn-save-settings" onclick="assignPromoToFiltered()" style="padding:7px 14px;">Assign Promo to Filtered</button>
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin-top:6px;" id="email-promo-status"></div>
+        </div>
+        <div class="setting-card" style="margin-bottom:14px;">
+          <div class="setting-title">Assign Targeted Promo <span style="font-size:10px;color:var(--muted);font-weight:400;">(optional)</span></div>
+          <div class="setting-desc">Assigns a targeted promo code to filtered students. Only they can use it.</div>
+          <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;align-items:center;">
+            <select class="form-sel" id="email-promo-select" style="flex:1;min-width:180px;">
+              <option value="">— No promo —</option>
+            </select>
+            <button class="btn-save-settings" onclick="assignPromoToFiltered()" style="padding:7px 14px;white-space:nowrap;">Assign to Filtered</button>
+          </div>
+          <div style="font-size:11px;color:var(--green);margin-top:6px;min-height:16px;" id="email-promo-status"></div>
+        </div>
         <div class="setting-card">
           <div class="setting-title">Compose Email</div>
           <div class="form-row" style="margin-top:8px;"><div class="form-lbl">Subject</div>
@@ -462,9 +484,15 @@ tr:hover td{background:rgba(255,255,255,.02);}
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
             <div class="form-row"><div class="form-lbl">Code</div><input class="form-inp" id="promo-code" placeholder="LAUNCH50" style="text-transform:uppercase"></div>
             <div class="form-row"><div class="form-lbl">Type</div>
-              <select class="form-sel" id="promo-type">
+              <select class="form-sel" id="promo-type" onchange="document.getElementById('promo-discount-row').style.display=this.value==='free'?'none':'';">
                 <option value="discount">Discount %</option>
                 <option value="free">Free Upgrade</option>
+              </select>
+            </div>
+            <div class="form-row"><div class="form-lbl">Reach</div>
+              <select class="form-sel" id="promo-category">
+                <option value="general">General — anyone can use</option>
+                <option value="targeted">Targeted — assigned students only</option>
               </select>
             </div>
             <div class="form-row"><div class="form-lbl">Discount %</div><input class="form-inp" id="promo-discount" type="number" min="1" max="100" placeholder="50"></div>
@@ -568,30 +596,29 @@ tr:hover td{background:rgba(255,255,255,.02);}
             <div class="pub-row"><div class="pub-lbl">Scheduled Date &amp; Time</div><input class="pub-inp" type="datetime-local" id="pub-schedule"></div>
             <div class="pub-row"><div class="pub-lbl">Description (optional)</div><input class="pub-inp" id="pub-desc" placeholder="Brief description..."></div>
             <div style="display:flex;gap:8px;margin-top:4px">
+     in-top:4px">
               <button class="btn-tb outline" id="btn-tb-back-review">&#x2190; Back to Review</button>
               <button class="btn-tb primary" id="btn-tb-publish">Publish Test &#x1F680;</button>
             </div>
           </div>
           <div class="pub-tests-wrap">
-            <div style="padding:14px 16px;border-bottom:1px solid var(--bdr);font-family:var(--head);font-size:14px;font-weight:700">Published Tests</div>
-            <table>
-              <thead><tr>
-                <th>Title</th><th>Access</th><th>Questions</th><th>Status</th><th>Scheduled</th><th></th>
-              </tr></thead>
-              <tbody id="pub-tests-tbody"><tr><td colspan="6" class="loading-row"><div class="spinner"></div></td></tr></tbody>
-            </table>
+            <div style="padding:14px 16px;border-bottom:1px solid var(--bdr)"><strong style="font-size:11px;letter-spacing:1px;color:var(--muted)">PUBLISHED TESTS</strong></div>
+            <div class="tbl-wrap"><table>
+              <thead><tr><th>Title</th><th>Access</th><th>Questions</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+              <tbody id="pub-tests-tbody"><tr><td colspan="6" class="tbl-empty"><div class="spinner" style="margin:0 auto"></div></td></tr></tbody>
+            </table></div>
           </div>
         </div>
       </div>
 
-    </div>
-  </div>
-</div>
+    </div><!-- end main-content -->
+  </div><!-- end shell -->
 
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script>'use strict';
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script>
+'use strict';
 
 var TB = { step:1, dtype:"String", qtype:"Mixed", count:20, generated:[], approved:[], rejected:0 };
 
@@ -922,6 +949,20 @@ document.getElementById("student-sort").addEventListener("change",filterStudents
 
 // EMAIL
 function loadEmailPage(){
+  // Populate targeted promo dropdown
+  var sel = document.getElementById("email-promo-select");
+  if(sel && sel.options.length <= 1){
+    db.collection("promoCodes").where("promoCategory","==","targeted").get().then(function(snap){
+      snap.forEach(function(doc){
+        var p=doc.data();
+        if(!p.active) return;
+        var opt=document.createElement("option");
+        opt.value=doc.id;
+        opt.textContent=doc.id+" ("+(p.type==="free"?"Free":p.discount+"%")+")";
+        if(sel) sel.appendChild(opt);
+      });
+    }).catch(function(){});
+  }
   if(allUsersCache.length===0){db.collection("users").get().then(function(snap){allUsersCache=[];snap.forEach(function(doc){allUsersCache.push(Object.assign({id:doc.id},doc.data()));});previewEmailRecipients();});}
   else{previewEmailRecipients();}
 }
@@ -948,6 +989,35 @@ function getEmailRecipients(){
   });
 }
 function previewEmailRecipients(){var r=getEmailRecipients();var c1=document.getElementById("email-matched-count");if(c1)c1.textContent=r.length;var c2=document.getElementById("email-count");if(c2)c2.textContent=r.length;}
+
+function assignPromoToFiltered(){
+  var code = (document.getElementById("email-promo-select")||{}).value||"";
+  if(!code){ showToast("Select a targeted promo code first","error"); return; }
+  if(!filteredStudents.length){ showToast("No students in current filter","error"); return; }
+  var statusEl = document.getElementById("email-promo-status");
+  showModal("Assign Promo?","Assign code "+code+" to "+filteredStudents.length+" filtered students?","Assign",function(){
+    if(statusEl) statusEl.textContent="Assigning...";
+    var batch = db.batch();
+    var count = 0;
+    // Get promo expiry
+    db.collection("promoCodes").doc(code).get().then(function(snap){
+      var expiry = snap.exists ? (snap.data().expiry||null) : null;
+      filteredStudents.forEach(function(d){
+        if(!d.id) return;
+        var ref = db.collection("users").doc(d.id);
+        batch.update(ref, { promoOffer: { code: code, expiresAt: expiry } });
+        count++;
+      });
+      return batch.commit();
+    }).then(function(){
+      if(statusEl) statusEl.textContent="Assigned "+code+" to "+count+" students.";
+      showToast("Promo assigned to "+count+" students","success");
+    }).catch(function(e){
+      if(statusEl) statusEl.textContent="Error: "+e.message;
+      showToast("Error assigning promo: "+e.message,"error");
+    });
+  });
+}
 document.getElementById("btn-send-email").addEventListener("click",function(){
   var subj=((document.getElementById("email-subject")||{}).value||"").trim();
   var body=((document.getElementById("email-body")||{}).value||"").trim();
@@ -1044,7 +1114,7 @@ function loadPromos() {
       html+='<div class="promo-card">'+
         '<div class="promo-code">'+esc(id)+'</div>'+
         '<div class="promo-meta">'+
-          'Type: '+(p.type||"discount")+' &nbsp;|&nbsp; '+
+          'Type: '+(p.type||"discount")+' &nbsp;|&nbsp; Reach: '+(p.promoCategory||'general')+' &nbsp;|&nbsp; '+
           (p.discount?'Discount: '+p.discount+'% &nbsp;|&nbsp;':'')+
           'Used: '+(p.usedCount||0)+(p.limit?'/'+p.limit:'')+' &nbsp;|&nbsp; '+
           'Expires: '+(p.expiry||"Never")+
@@ -1065,7 +1135,8 @@ document.getElementById("btn-create-promo").addEventListener("click", function()
   var limit= parseInt(document.getElementById("promo-limit").value)||0;
   var exp  = document.getElementById("promo-expiry").value;
   if (!code) { showToast("Enter a code","error"); return; }
-  var data = { type:type, active:true, usedCount:0, usedBy:[], createdAt:firebase.firestore.FieldValue.serverTimestamp() };
+  var cat = (document.getElementById('promo-category')||{}).value||'general';
+  var data = { type:type, promoCategory:cat, active:true, usedCount:0, usedBy:[], createdAt:firebase.firestore.FieldValue.serverTimestamp() };
   if (type==="discount") { if (!disc) { showToast("Enter discount %","error"); return; } data.discount=disc; }
   if (limit) data.limit = limit;
   if (exp)   data.expiry = exp;
