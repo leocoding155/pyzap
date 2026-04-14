@@ -392,10 +392,7 @@ tr:hover td{background:rgba(245,166,35,.02);}
         <div class="setting-card">
           <div class="setting-title">Free Plan Limits</div>
           <div class="setting-desc">Control free student question limits. Each question type gets this many questions per concept per day.</div>
-          <div class="form-row">
-            <div class="form-lbl">Rotating Concepts Pool (comma-separated — student gets String + 1 random from this list)</div>
-            <input class="form-inp" id="s-free-concepts" placeholder="List,Tuple,Dictionary">
-          </div>
+
           <div class="form-row">
             <div class="form-lbl">Questions per Question Type (default: 10)</div>
             <input class="form-inp" id="s-free-q" type="number" min="1" max="50" placeholder="10">
@@ -482,36 +479,45 @@ tr:hover td{background:rgba(245,166,35,.02);}
         <div class="tb-panel active" id="tb-panel-1">
           <div class="tb-gen-card">
             <div class="setting-title" style="margin-bottom:4px">Generate Questions</div>
-            <div class="setting-desc" style="margin-bottom:14px">Pick topic and question type — same as the student practice tool. Engine generates questions for you to review.</div>
-            <div class="setting-lbl">Topic</div>
-            <div class="tb-opt-row" id="tb-dtype">
-              <button class="tb-opt on" data-val="String">String</button>
-              <button class="tb-opt" data-val="List">List</button>
-              <button class="tb-opt" data-val="Tuple">Tuple</button>
-              <button class="tb-opt" data-val="Dictionary">Dictionary</button>
-              <button class="tb-opt" data-val="Mixed">Mixed</button>
-              <button class="tb-opt" data-val="Python">Python</button>
+            <div class="setting-desc" style="margin-bottom:16px">Select topic and question type exactly as a paid student sees. Then set count and generate.</div>
+
+            <!-- Topic — identical to paid student UI -->
+            <div class="setting-lbl" style="margin-bottom:8px;">Topic</div>
+            <div class="bgrp" id="tb-dtype" style="margin-bottom:16px;">
+              <button class="tog active" data-val="String">String</button>
+              <button class="tog" data-val="List">List</button>
+              <button class="tog" data-val="Tuple">Tuple</button>
+              <button class="tog" data-val="Dictionary">Dict</button>
+              <button class="tog" data-val="Mixed">Mixed</button>
+              <button class="tog" data-val="Functions">Functions</button>
+              <button class="tog" data-val="Modules">Modules</button>
+              <button class="tog" data-val="Exception">Exception</button>
             </div>
-            <div class="setting-lbl" style="margin-bottom:6px;margin-top:12px">Question Type</div>
-            <div class="tb-opt-row" id="tb-qtype">
-              <button class="tb-opt on" data-val="Mixed">Mixed</button>
-              <button class="tb-opt" data-val="Indexing">Indexing</button>
-              <button class="tb-opt" data-val="Slicing">Slicing</button>
-              <button class="tb-opt" data-val="SliceIdx">Slice+Index</button>
-              <button class="tb-opt" data-val="Functions">Functions</button>
-              <button class="tb-opt" data-val="Membership">Membership</button>
-              <button class="tb-opt" data-val="Comparison">Comparison</button>
-              <button class="tb-opt" data-val="Expressions">Expressions</button>
-              <button class="tb-opt" data-val="BuiltinMath">Built-in</button>
-              <button class="tb-opt" data-val="ExceptionHandling" id="tb-qtype-exception" style="display:none">Exception Handling</button>
+
+            <!-- Question Type — identical to paid student UI -->
+            <div class="setting-lbl" style="margin-bottom:8px;" id="tb-qtype-lbl">Question Type</div>
+            <div class="bgrp" id="tb-qtype" style="margin-bottom:16px;">
+              <button class="tog qt-Mixed active"       data-val="Mixed">Mixed</button>
+              <button class="tog qt-Indexing"           data-val="Indexing">Indexing</button>
+              <button class="tog qt-Slicing"            data-val="Slicing">Slicing</button>
+              <button class="tog qt-SliceIdx"           data-val="SliceIdx">Slice+Index</button>
+              <button class="tog qt-Functions"          data-val="Functions">Functions</button>
+              <button class="tog qt-Membership"         data-val="Membership">Membership</button>
+              <button class="tog qt-Comparison"         data-val="Comparison">Comparison</button>
+              <button class="tog qt-Expressions"        data-val="Expressions">Expressions</button>
+              <button class="tog qt-BuiltinMath"        data-val="BuiltinMath">Built-in</button>
+              <button class="tog qt-Exception"          data-val="ExceptionHandling" style="display:none">Exception Handling</button>
             </div>
-            <div class="setting-lbl" style="margin-bottom:6px;margin-top:12px">Number of Questions</div>
-            <div class="tb-opt-row" id="tb-count">
-              <button class="tb-opt" data-val="10">10</button>
-              <button class="tb-opt on" data-val="20">20</button>
-              <button class="tb-opt" data-val="30">30</button>
-              <button class="tb-opt" data-val="50">50</button>
+
+            <!-- Count -->
+            <div class="setting-lbl" style="margin-bottom:8px;">Number of Questions</div>
+            <div class="bgrp" id="tb-count" style="margin-bottom:20px;">
+              <button class="tog" data-val="10">10</button>
+              <button class="tog active" data-val="20">20</button>
+              <button class="tog" data-val="30">30</button>
+              <button class="tog" data-val="50">50</button>
             </div>
+
             <button class="btn-tb primary" id="btn-tb-generate">Generate Questions &#x26A1;</button>
           </div>
         </div>
@@ -936,6 +942,61 @@ function downgradeAllExpired(){
   });
 }
 
+
+// ── Student Actions ──
+function upgradeStudent(uid){
+  showModal("Upgrade Student","Set this student to Pro plan (365 days)?","Upgrade",function(){
+    var expiry = new Date();
+    expiry.setDate(expiry.getDate()+365);
+    db.collection("users").doc(uid).update({
+      plan: "paid",
+      planExpiry: firebase.firestore.Timestamp.fromDate(expiry),
+    }).then(function(){
+      showToast("Student upgraded to Pro","success");
+      // Update cache
+      var s = allUsersCache.find(function(d){return d.id===uid;});
+      if(s){ s.plan="paid"; s.planExpiry=expiry; }
+      filterStudents();
+    }).catch(function(e){ showToast("Error: "+e.message,"error"); });
+  });
+}
+
+function downgradeStudent(uid){
+  showModal("Downgrade Student","Set this student back to Free plan?","Downgrade",function(){
+    db.collection("users").doc(uid).update({ plan:"free" })
+    .then(function(){
+      showToast("Student downgraded to Free","success");
+      var s = allUsersCache.find(function(d){return d.id===uid;});
+      if(s){ s.plan="free"; }
+      filterStudents();
+    }).catch(function(e){ showToast("Error: "+e.message,"error"); });
+  });
+}
+
+function banStudent(uid, name){
+  showModal("Ban Student","Ban "+name+"? They will not be able to login.","Ban",function(){
+    db.collection("users").doc(uid).update({ banned:true })
+    .then(function(){
+      showToast(name+" has been banned","success");
+      var s = allUsersCache.find(function(d){return d.id===uid;});
+      if(s){ s.banned=true; }
+      filterStudents();
+    }).catch(function(e){ showToast("Error: "+e.message,"error"); });
+  });
+}
+
+function unbanStudent(uid){
+  showModal("Unblock Student","Allow this student to login again?","Unblock",function(){
+    db.collection("users").doc(uid).update({ banned:false })
+    .then(function(){
+      showToast("Student unblocked","success");
+      var s = allUsersCache.find(function(d){return d.id===uid;});
+      if(s){ s.banned=false; }
+      filterStudents();
+    }).catch(function(e){ showToast("Error: "+e.message,"error"); });
+  });
+}
+
 document.getElementById("student-search").addEventListener("input",filterStudents);
 document.getElementById("student-plan-filter").addEventListener("change",filterStudents);
 document.getElementById("student-sort").addEventListener("change",filterStudents);
@@ -947,17 +1008,14 @@ function loadSettings() {
     if (!snap.exists) return;
     var d = snap.data();
     currentSettings = d;
-    if (d.freeConceptsPool) document.getElementById("s-free-concepts").value = d.freeConceptsPool.join(",");
     if (d.freeQuestionsPerQtype) document.getElementById("s-free-q").value = d.freeQuestionsPerQtype;
     if (d.paidPrice) document.getElementById("s-price").value = d.paidPrice;
   }).catch(function(e){ console.error(e); });
 }
 document.getElementById("btn-save-limits").addEventListener("click", function() {
-  var pool   = document.getElementById("s-free-concepts").value.split(",").map(function(s){ return s.trim(); }).filter(Boolean);
   var qcount = parseInt(document.getElementById("s-free-q").value);
-  if (!pool.length) { showToast("Enter at least one concept","error"); return; }
   if (!qcount || qcount < 1) { showToast("Enter a valid question count","error"); return; }
-  db.collection("settings").doc("config").set({ freeConceptsPool: pool, freeQuestionsPerQtype: qcount }, { merge: true })
+  db.collection("settings").doc("config").set({ freeQuestionsPerQtype: qcount }, { merge: true })
   .then(function(){ showToast("Limits saved","success"); })
   .catch(function(e){ showToast("Error: "+e.message,"error"); });
 });
@@ -1058,33 +1116,35 @@ function tbGoStep(n) {
   if (n === 3) loadPublishedTests();
 }
 
-document.querySelectorAll("#tb-dtype .tb-opt, #tb-qtype .tb-opt, #tb-count .tb-opt").forEach(function(btn) {
+document.querySelectorAll("#tb-dtype .tog, #tb-qtype .tog, #tb-count .tog").forEach(function(btn) {
   btn.addEventListener("click", function() {
-    var grp = btn.closest(".tb-opt-row");
-    grp.querySelectorAll(".tb-opt").forEach(function(b) { b.classList.remove("on"); });
-    btn.classList.add("on");
+    var grp = btn.closest(".bgrp");
+    if(!grp) return;
+    grp.querySelectorAll(".tog").forEach(function(b){ b.classList.remove("active"); });
+    btn.classList.add("active");
     if (grp.id === "tb-dtype") {
       TB.dtype = btn.dataset.val;
-      // Show/hide qtype buttons based on dtype
-      var isPython = TB.dtype === "Python";
-      document.querySelectorAll("#tb-qtype .tb-opt").forEach(function(b) {
-        var isException = b.dataset.val === "ExceptionHandling";
-        b.style.display = isPython ? (isException ? "" : "none") : (isException ? "none" : "");
-      });
-      if(isPython) {
-        // Auto-select Exception Handling for Python
-        document.querySelectorAll("#tb-qtype .tb-opt").forEach(function(b){b.classList.remove("on");});
-        var ehBtn = document.querySelector("#tb-qtype .tb-opt[data-val='ExceptionHandling']");
-        if(ehBtn){ehBtn.classList.add("on"); TB.qtype="ExceptionHandling";}
+      var isPython = TB.dtype==="Functions"||TB.dtype==="Modules"||TB.dtype==="Exception";
+      var qtypeLbl = document.getElementById("tb-qtype-lbl");
+      var qtypeGrp = document.getElementById("tb-qtype");
+      // Show/hide qtype section for Python topics
+      if(qtypeLbl) qtypeLbl.style.display = isPython ? "none" : "";
+      if(qtypeGrp) qtypeGrp.style.display = isPython ? "none" : "";
+      if(!isPython){
+        // Show/hide exception handling qtype button
+        document.querySelectorAll("#tb-qtype .tog").forEach(function(b){
+          b.style.display = b.dataset.val==="ExceptionHandling" ? "none" : "";
+        });
+        // Auto-select Mixed
+        document.querySelectorAll("#tb-qtype .tog").forEach(function(b){b.classList.remove("active");});
+        var mixBtn = document.querySelector("#tb-qtype .tog[data-val='Mixed']");
+        if(mixBtn){mixBtn.classList.add("active"); TB.qtype="Mixed";}
       } else {
-        // Auto-select Mixed for other dtypes
-        document.querySelectorAll("#tb-qtype .tb-opt").forEach(function(b){b.classList.remove("on");});
-        var mixBtn = document.querySelector("#tb-qtype .tb-opt[data-val='Mixed']");
-        if(mixBtn){mixBtn.classList.add("on"); TB.qtype="Mixed";}
+        TB.qtype = "Mixed"; // Python generates mixed Python questions
       }
     } else if (grp.id === "tb-qtype") {
       TB.qtype = btn.dataset.val;
-    } else {
+    } else if (grp.id === "tb-count") {
       TB.count = parseInt(btn.dataset.val);
     }
   });

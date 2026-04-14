@@ -683,12 +683,6 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
       <div class="app-nav-item" data-tab="profile"><span class="app-nav-icon">&#x1F464;</span> Profile</div>
     </div>
     <div class="app-sb-footer">
-      <div class="app-sb-stats">
-        <div class="app-sb-stat"><div class="app-sb-stat-val" id="hs-done">0</div><div class="app-sb-stat-lbl">Done</div></div>
-        <div class="app-sb-stat sc"><div class="app-sb-stat-val" id="hs-correct">0</div><div class="app-sb-stat-lbl">Correct</div></div>
-        <div class="app-sb-stat sw"><div class="app-sb-stat-val" id="hs-wrong">0</div><div class="app-sb-stat-lbl">Wrong</div></div>
-        <div class="app-sb-stat ss"><div class="app-sb-stat-val" id="hs-streak">0</div><div class="app-sb-stat-lbl">Streak</div></div>
-      </div>
       <button class="btn-sb-logout" id="logout-btn">Sign Out</button>
     </div>
   </aside>
@@ -730,10 +724,7 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
       </div>
       <!-- Col 3: My Progress -->
       <div class="ctrl-col">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-          <div class="ctrl-col-title" style="margin-bottom:0;">My Progress</div>
-          <span class="plan-badge free" id="plan-badge">Free</span>
-        </div>
+        <div class="ctrl-col-title">My Progress</div>
         <div class="prog-grid">
           <div class="prog-cell"><div class="prog-cell-val" id="hs-done">0</div><div class="prog-cell-lbl">Done</div></div>
           <div class="prog-cell sc"><div class="prog-cell-val" id="hs-correct">0</div><div class="prog-cell-lbl">Correct</div></div>
@@ -911,11 +902,6 @@ var S = {
   freeQuestionsPerQtype: 10,
   // Per-concept resume tracking (paid)
   conceptIdx: {},
-  // Free: today's concepts (String + 1 random)
-  todaysConcepts: [],
-  freeQuestionsPerQtype: 10,
-  // Progress: { String:{ Indexing:{seen:0,done:false}, ... }, List:{...} }
-  progress: {},
   // Current practice state
   dtype: "String", qtype: "Mixed",
   currentQuestions: [],   // filtered list for current dtype+qtype
@@ -1026,9 +1012,8 @@ function handleUser(user){
     db.collection("settings").doc("config").get().then(function(cfg){
       if(cfg.exists){
         var d=cfg.data();
-        if(d.freeConceptsAllowed&&d.freeConceptsAllowed.length)S.freeConceptsAllowed=d.freeConceptsAllowed;
-        if(d.freeQuestionsPerConcept)S.freeQuestionsPerConcept=d.freeQuestionsPerConcept;
-        if(d.paidPrice)P.basePrice=P.finalAmount=d.paidPrice;
+        if(d.freeQuestionsPerQtype) S.freeQuestionsPerQtype=d.freeQuestionsPerQtype;
+        if(d.paidPrice) P.basePrice=P.finalAmount=d.paidPrice;
       }
     }).catch(function(){}).finally(function(){
       updateLoginStats(user.uid);
@@ -1333,19 +1318,6 @@ function launchApp(){
   S.total=st.total||0; S.score=st.correct||0; S.wrong=st.wrong||0; S.best=st.best||0;
   updHdr();
   applyPlanUI();
-  // For free: load today's concepts from localStorage if available
-  if(S.plan!=="paid"){
-    var tc = loadTodaysConcepts ? loadTodaysConcepts() : null;
-    if(tc && tc.length>0){
-      S.todaysConcepts = tc;
-      S.dtype = tc[0];
-    } else {
-      S.dtype = "String";
-    }
-    // Load saved progress
-    var sp = loadProgress ? loadProgress() : {};
-    if(Object.keys(sp).length>0) S.progress = sp;
-  }
   fetchAllQuestions();
 }
 
@@ -1515,7 +1487,7 @@ function fetchFreeFromServer(){
   fetch(CF_GENERATE,{
     method:"POST",
     headers:{"Content-Type":"application/json","Authorization":"Bearer "+S.idToken},
-    body:JSON.stringify({free:true}),
+    body:JSON.stringify({}), // CF reads plan from token, picks free concepts server-side
   }).then(function(res){return res.json().then(function(d){return{ok:res.ok,data:d};});})
   .then(function(r){
     if(!r.ok){setCardLoading("Error loading questions. Please refresh.");return;}
