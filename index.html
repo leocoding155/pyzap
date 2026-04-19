@@ -37,7 +37,7 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 .app-nav-item:hover{background:var(--card);color:var(--text);}
 .app-nav-item.active{background:var(--gdim);color:var(--gold);border-color:rgba(245,166,35,.15);}
 .app-nav-icon{font-size:14px;width:16px;text-align:center;flex-shrink:0;}
-.app-sb-footer{padding:10px;border-top:1px solid var(--bdr);}
+.app-sb-footer{padding:10px;border-top:1px solid var(--bdr);display:flex;justify-content:center;}
 .app-sb-stats{display:flex;gap:5px;margin-bottom:10px;flex-wrap:wrap;}
 .app-sb-stat{background:var(--card);border:1px solid var(--bdr);border-radius:7px;padding:5px 7px;text-align:center;flex:1;min-width:40px;}
 .app-sb-stat-val{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--text2);}
@@ -85,9 +85,9 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 .sbar{flex-shrink:0;background:var(--surf);border:1px solid var(--bdr);border-radius:10px;padding:8px 10px;margin-bottom:6px;display:flex;flex-direction:column;gap:10px;}
 .srow{display:flex;flex-direction:column;gap:5px;}
 .srow-divider{height:1px;background:var(--bdr);margin:0 -2px;}
-.sg-lbl{font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
-.bgrp{display:flex;flex-wrap:wrap;gap:5px;}
-.tog{padding:4px 8px;border-radius:5px;background:var(--card);border:1.5px solid var(--bdr2);color:var(--text2);font-family:'Outfit',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all .12s;white-space:nowrap;}
+.sg-lbl{font-size:10.5px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold2);}
+.bgrp{display:flex;flex-wrap:wrap;gap:6px;}
+.tog{padding:5px 11px;border-radius:6px;background:var(--card);border:1.5px solid var(--bdr2);color:var(--text2);font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .12s;white-space:nowrap;}
 .tog:hover{border-color:var(--gold);color:var(--gold);}
 .tog.active{background:var(--gdim);border-color:var(--gold);color:var(--gold);font-weight:700;}
 .tog.locked{opacity:.45;cursor:not-allowed;}
@@ -120,7 +120,7 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 .kw{color:#C084FC;}.str{color:#86EFAC;}.num{color:#FCA5A5;}.punc{color:#94A3B8;}.cmt{color:#4A6080;font-style:italic;}.plain{color:#FFD080;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 .mcq-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 16px;flex-shrink:0;}
-.mcq-opt{display:flex;align-items:flex-start;gap:8px;padding:9px 12px;background:var(--card);border:1.5px solid var(--bdr2);border-radius:9px;color:var(--text2);font-family:'JetBrains Mono',monospace;font-size:12px;cursor:pointer;text-align:left;transition:all .12s;line-height:1.5;}
+.mcq-opt{display:flex;align-items:flex-start;gap:8px;padding:7px 11px;background:var(--card);border:1.5px solid var(--bdr2);border-radius:8px;color:var(--text2);font-family:'JetBrains Mono',monospace;font-size:11.5px;cursor:pointer;text-align:left;transition:all .12s;line-height:1.5;}
 .mcq-opt:hover:not(:disabled){border-color:var(--gold);color:var(--text);}
 .mcq-opt.sel{border-color:var(--gold);background:var(--gdim);color:var(--gold);}
 .mcq-opt.correct{border-color:var(--green);background:rgba(34,211,160,.1);color:var(--green);}
@@ -139,14 +139,12 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 .feedback.empty{color:transparent;}
 .expl{margin:0 16px 10px;padding:10px 14px;background:var(--card);border:1px solid var(--bdr2);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.6;display:none;}
 .expl.show{display:block;}
-.btn-row{padding:12px 16px;display:flex;gap:8px;border-top:1px solid var(--bdr);flex-shrink:0;}
-.btn{padding:9px 18px;border-radius:8px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .12s;}
+.btn-row{padding:10px 14px;display:flex;gap:8px;border-top:1px solid var(--bdr);flex-shrink:0;}
+.btn{padding:7px 16px;border-radius:7px;font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;cursor:pointer;border:none;transition:all .12s;}
 .btn-check{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;flex:1;}
 .btn-check:disabled{opacity:.4;cursor:default;}
 .btn-next{background:var(--card);border:1.5px solid var(--bdr2);color:var(--text2);flex:1;}
 .btn-next:hover{border-color:var(--gold);color:var(--gold);}
-.btn-reset{background:var(--card);border:1.5px solid var(--bdr2);color:var(--muted);padding:9px 12px;}
-.btn-reset:hover{color:var(--red);border-color:var(--red);}
 
 /* ─── TESTS ─── */
 .tests-sub-tabs{display:flex;gap:4px;padding-bottom:12px;border-bottom:1px solid var(--bdr);margin-bottom:14px;flex-shrink:0;}
@@ -361,8 +359,8 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
   .app-sidebar{display:none;}
   .app-topbar{padding:8px 12px;}
   .app-topbar-logo{font-size:16px;}
-  .topbar-stat{padding:3px 6px;}
-  .topbar-stat-val{font-size:12px;}
+  .app-topbar-right .topbar-stat{display:none;}
+  .app-topbar-right{gap:6px;}
   .main-panel{padding:10px 12px 24px;}
   .sbar{padding:10px 12px;}
   .tog{font-size:11px;padding:4px 9px;}
@@ -466,7 +464,7 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 .ctrl-box{background:var(--surf);border:1px solid var(--bdr);border-radius:14px;overflow:hidden;margin-bottom:10px;flex-shrink:0;display:flex;align-items:stretch;}
 .ctrl-col{padding:10px 14px;border-right:1px solid var(--bdr);display:flex;flex-direction:column;min-width:0;}
 .ctrl-col:last-child{border-right:none;}
-.ctrl-col-title{font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);margin-bottom:8px;}
+.ctrl-col-title{font-size:10.5px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold2);margin-bottom:8px;}
 /* Column sizing: Limit 1.6fr (only if free), Mode auto, Progress 2.4fr (flex-grow dominant) */
 #ctrl-limit-col{flex:1.6 1 0;}
 .ctrl-col-mode{flex:0 0 auto;}
@@ -478,22 +476,23 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 .mode-btn-v:hover:not(.active){border-color:var(--gold);color:var(--gold);}
 /* Progress col — horizontal 1x4 strip */
 .prog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
-.prog-cell{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:8px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;}
-.prog-cell-val{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:800;color:var(--text2);line-height:1;}
-.prog-cell-lbl{font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+.prog-cell{background:var(--card);border:1px solid var(--bdr);border-radius:8px;padding:7px 8px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;}
+.prog-cell-val{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:800;color:var(--text2);line-height:1;}
+.prog-cell-lbl{font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-top:4px;}
 .prog-cell.sc .prog-cell-val{color:var(--green);}
 .prog-cell.sw .prog-cell-val{color:var(--red);}
 .prog-cell.ss .prog-cell-val{color:var(--gold);}
 
-/* ─── SQL / Networking qtype checkboxes ─── */
-.sql-qt-cb,.net-qt-cb{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;background:var(--card);border:1.5px solid var(--bdr2);border-radius:8px;cursor:pointer;font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;color:var(--text2);transition:all .12s;user-select:none;margin-right:6px;margin-bottom:6px;}
-.sql-qt-cb:hover:not(.locked),.net-qt-cb:hover{border-color:var(--acc);color:var(--text);}
-.sql-qt-cb.checked,.net-qt-cb.checked{background:var(--accdim);border-color:var(--acc);color:var(--acc);font-weight:700;}
+/* ─── Multi-select qtype checkboxes (SQL / Networking / Practice-Board) ─── */
+.sql-qt-cb,.net-qt-cb,.pb-qt-cb{display:inline-flex;align-items:center;gap:9px;padding:7px 14px;background:var(--card);border:1.5px solid var(--bdr2);border-radius:8px;cursor:pointer;font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;color:var(--text2);transition:all .12s;user-select:none;margin-right:6px;margin-bottom:6px;}
+.sql-qt-cb:hover:not(.locked),.net-qt-cb:hover,.pb-qt-cb:hover{border-color:var(--acc);color:var(--text);}
+.sql-qt-cb.checked,.net-qt-cb.checked,.pb-qt-cb.checked{background:var(--accdim);border-color:var(--acc);color:var(--acc);font-weight:700;}
 .sql-qt-cb.locked{opacity:.55;cursor:not-allowed;}
-.sql-qt-cb-box,.net-qt-cb-box{width:15px;height:15px;border:1.5px solid var(--bdr2);border-radius:3px;background:var(--s3);flex-shrink:0;display:flex;align-items:center;justify-content:center;position:relative;}
-.sql-qt-cb.checked .sql-qt-cb-box,.net-qt-cb.checked .net-qt-cb-box{background:var(--acc);border-color:var(--acc);}
-.sql-qt-cb.checked .sql-qt-cb-box::after,.net-qt-cb.checked .net-qt-cb-box::after{content:'\2713';color:#000;font-size:11px;font-weight:900;line-height:1;}
-.sql-qt-cb-lbl,.net-qt-cb-lbl{letter-spacing:.2px;}
+.sql-qt-cb.locked:hover{border-color:var(--bdr2);color:var(--text2);}
+.sql-qt-cb-box,.net-qt-cb-box,.pb-qt-cb-box{display:inline-flex;width:17px;height:17px;border:1.5px solid var(--bdr2);border-radius:4px;background:var(--s3);flex-shrink:0;align-items:center;justify-content:center;position:relative;transition:all .12s;}
+.sql-qt-cb.checked .sql-qt-cb-box,.net-qt-cb.checked .net-qt-cb-box,.pb-qt-cb.checked .pb-qt-cb-box{background:var(--acc);border-color:var(--acc);}
+.sql-qt-cb.checked .sql-qt-cb-box::after,.net-qt-cb.checked .net-qt-cb-box::after,.pb-qt-cb.checked .pb-qt-cb-box::after{content:"\2713";color:#000;font-size:13px;font-weight:900;line-height:1;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+.sql-qt-cb-lbl,.net-qt-cb-lbl,.pb-qt-cb-lbl{letter-spacing:.2px;}
 .net-qt-cb-desc{font-size:10px;color:var(--muted);font-weight:500;margin-left:4px;}
 .net-qt-cb.checked .net-qt-cb-desc{color:var(--text2);}
 /* Free limit col */
@@ -846,7 +845,6 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
         <div class="btn-row">
           <button class="btn btn-check" id="btn-check">Check Answer</button>
           <button class="btn btn-next"  id="btn-next">Next &#x2192;</button>
-          <button class="btn btn-reset" id="btn-reset" title="Reset">&#x21BA;</button>
         </div>
       </div>
     </div>
@@ -1323,145 +1321,281 @@ function isPythonDtype(dt){
   return PYTHON_DTYPES.indexOf(dt||S.dtype) >= 0;
 }
 
+// ── Topic-specific mode rules ──
+// Each topic declares: forcedMode (or null = allow toggle), qtypeMode ('checkbox'|'pills'|'hide')
+function getTopicRules(dt){
+  dt = dt || S.dtype;
+  // forcedMode: 'mcq' | 'type' | null (allow toggle)
+  // qtypeKind: 'pills' (Indexing/Slicing/... for Python concepts), 'pbCheckbox' (Practice/Board),
+  //            'sqlCheckbox', 'netCheckbox', 'hide'
+  if(dt==="Networking") return {forcedMode:"mcq", qtypeKind:"netCheckbox"};
+  if(dt==="AssertionReason") return {forcedMode:"mcq", qtypeKind:"hide"};
+  if(dt==="SQL") return {forcedMode:"type", qtypeKind:"sqlCheckbox"};
+  if(dt==="Exception") return {forcedMode:"mcq", qtypeKind:"pbCheckbox"};
+  if(dt==="Modules") return {forcedMode:"mcq", qtypeKind:"pbCheckbox"};
+  if(dt==="Functions") return {forcedMode:null, qtypeKind:"pbCheckbox"};
+  // String/List/Tuple/Dictionary/Mixed — use concept pills (Indexing/Slicing/…)
+  return {forcedMode:null, qtypeKind:"pills"};
+}
+
+// ── Multi-checkbox state for qtypes ──
+// S._qtypeChecked[dtype] = { DDL:true, DML:true, ... }
+function getChecked(dt){
+  if(!S._qtypeChecked) S._qtypeChecked={};
+  if(!S._qtypeChecked[dt]) S._qtypeChecked[dt]={};
+  return S._qtypeChecked[dt];
+}
+function setChecked(dt,map){
+  if(!S._qtypeChecked) S._qtypeChecked={};
+  S._qtypeChecked[dt]=map;
+}
+function getCheckedList(dt){
+  var m=getChecked(dt);
+  return Object.keys(m).filter(function(k){return m[k];});
+}
+
 function applyQtypeLocks(){
-  var pyDtype = isPythonDtype();
-  var sqlDtype = isSQLDtype();
-  var netDtype = isNetworkingDtype();
+  var dt = S.dtype;
+  var rules = getTopicRules(dt);
   var qg = document.getElementById('qtype-group');
   var qtypeSection = document.getElementById('qtype-sbar');
   var sce = document.getElementById('sql-schema-container');
   var cb = document.getElementById('case-text-block');
 
-  // Restore original qtype buttons when leaving SQL or Networking mode
-  function restoreOrigQtypes(){
-    if(qg && qg.dataset.customMode){
-      delete qg.dataset.customMode;
-      if(qg.dataset.origHTML) qg.innerHTML = qg.dataset.origHTML;
-      qg.querySelectorAll('.tog').forEach(function(btn){
-        btn.addEventListener('click',function(){
-          if(btn.classList.contains('locked')){
-            showToast("You've completed all '"+btn.dataset.qtype+"' questions!",'info');return;
-          }
-          loadQtypeQuestions(S.dtype, btn.dataset.qtype);
-        });
-      });
-    }
-  }
+  // 1) Apply forced mode (or allow toggle)
+  applyForcedMode(rules.forcedMode);
 
-  // ── NETWORKING mode ──
-  if(netDtype){
-    if(qtypeSection) qtypeSection.style.display = '';
-    if(sce){ sce.style.display='none'; sce.innerHTML=''; }
-    if(cb){ cb.style.display='none'; cb.innerHTML=''; }
-    document.querySelectorAll('.mode-btn,.mode-btn-v').forEach(function(b){b.style.display='none';});
-    // Inject networking qtype as checkboxes (Practice / Board) in place of qtype pills
-    if(qg && qg.dataset.customMode !== 'net'){
-      if(!qg.dataset.origHTML) qg.dataset.origHTML = qg.innerHTML;
-      qg.dataset.customMode = 'net';
-      var netPr = NET && NET._practiceChecked;
-      var netBo = NET && NET._boardChecked;
-      qg.innerHTML =
-        '<label class="net-qt-cb'+(netPr?' checked':'')+'" data-netmode="practice">'+
-          '<span class="net-qt-cb-box"></span>'+
-          '<span class="net-qt-cb-lbl">Practice Mode</span>'+
-          '<span class="net-qt-cb-desc">Random generated cases</span>'+
-        '</label>'+
-        '<label class="net-qt-cb'+(netBo?' checked':'')+'" data-netmode="board">'+
-          '<span class="net-qt-cb-box"></span>'+
-          '<span class="net-qt-cb-lbl">Board Questions</span>'+
-          '<span class="net-qt-cb-desc">CBSE exam-style</span>'+
-        '</label>';
-      qg.querySelectorAll('.net-qt-cb').forEach(function(lbl){
-        lbl.addEventListener('click', function(e){
-          e.preventDefault();
-          var mode = lbl.dataset.netmode;
-          if(!window.NET) return;
-          if(mode==='practice') NET._practiceChecked = !NET._practiceChecked;
-          else NET._boardChecked = !NET._boardChecked;
-          lbl.classList.toggle('checked');
-          // Sync the in-page mode-card checkboxes too (if visible)
-          var syncCb = document.getElementById('net-cb-'+mode);
-          if(syncCb) syncCb.className = 'net-checkbox' + ((mode==='practice'?NET._practiceChecked:NET._boardChecked)?' checked':'');
-        });
-      });
-    }
+  // 2) Clear SQL schema / case text unless we're in SQL or Networking
+  if(dt!=="SQL"){ if(sce){ sce.style.display='none'; sce.innerHTML=''; } }
+  if(dt!=="Networking"){ if(cb){ cb.style.display='none'; cb.innerHTML=''; } }
+
+  // 3) Render qtype row based on kind
+  if(rules.qtypeKind==="hide"){
+    if(qtypeSection) qtypeSection.style.display='none';
     return;
   }
+  if(qtypeSection) qtypeSection.style.display='';
 
-  // ── SQL mode ──
-  if(sqlDtype){
-    if(qtypeSection) qtypeSection.style.display = '';
-    if(cb){ cb.style.display='none'; cb.innerHTML=''; }
-    document.querySelectorAll('.mode-btn,.mode-btn-v').forEach(function(b){b.style.display='none';});
-
-    if(qg && qg.dataset.customMode !== 'sql'){
-      if(!qg.dataset.origHTML) qg.dataset.origHTML = qg.innerHTML;
-      qg.dataset.customMode = 'sql';
-      // SQL qtype order: DDL, DML, JOIN, Aggregate, Schema, Board, Mixed — as checkboxes
-      var sqlQts = ['DDL','DML','JOIN','Aggregate','Schema','Board','Mixed'];
-      if(!S._sqlChecked) S._sqlChecked = {};
-      // Default: the currently-active qtype is checked
-      if(S.qtype && sqlQts.indexOf(S.qtype)>=0 && !Object.keys(S._sqlChecked).length){
-        S._sqlChecked[S.qtype] = true;
-      }
-      qg.innerHTML = sqlQts.map(function(qt){
-        var lbl = SQL_QTYPE_LABELS[qt] || qt;
-        var locked = S.plan!=='paid' && SQL_FREE_QTYPES.indexOf(qt)===-1;
-        var checked = !!S._sqlChecked[qt];
-        return '<label class="sql-qt-cb'+(checked?' checked':'')+(locked?' locked':'')+'" data-qtype="'+qt+'">'+
-          '<span class="sql-qt-cb-box"></span>'+
-          '<span class="sql-qt-cb-lbl">'+lbl+(locked?' 🔒':'')+'</span>'+
-        '</label>';
-      }).join('');
-      qg.querySelectorAll('.sql-qt-cb').forEach(function(lbl){
-        lbl.addEventListener('click', function(e){
-          e.preventDefault();
-          if(lbl.classList.contains('locked')){
-            showUpgrade((SQL_QTYPE_LABELS[lbl.dataset.qtype]||lbl.dataset.qtype)+' is available for Pro students only.');
-            return;
-          }
-          // Single-select behavior: uncheck siblings
-          qg.querySelectorAll('.sql-qt-cb').forEach(function(o){o.classList.remove('checked');});
-          S._sqlChecked = {};
-          lbl.classList.add('checked');
-          S._sqlChecked[lbl.dataset.qtype] = true;
-          loadSQLQuestions(lbl.dataset.qtype);
-        });
-      });
-    }
+  if(rules.qtypeKind==="pills"){
+    renderQtypePills();
     return;
   }
+  if(rules.qtypeKind==="pbCheckbox"){
+    renderPracticeBoardCheckboxes(dt);
+    return;
+  }
+  if(rules.qtypeKind==="sqlCheckbox"){
+    renderSQLCheckboxes();
+    return;
+  }
+  if(rules.qtypeKind==="netCheckbox"){
+    renderNetCheckboxes();
+    return;
+  }
+}
 
-  // ── Not SQL, not Networking: clear any custom qtype and schema/case blocks ──
-  restoreOrigQtypes();
-  if(sce){ sce.style.display='none'; sce.innerHTML=''; }
-  if(cb){ cb.style.display='none'; cb.innerHTML=''; }
-
-  if(qtypeSection) qtypeSection.style.display = pyDtype ? 'none' : '';
+// ── Apply forced mode helper ──
+function applyForcedMode(forced){
+  // forced: "mcq" | "type" | null
+  var modeBtns = document.querySelectorAll('.mode-btn,.mode-btn-v');
   var modeSection = document.querySelector('.mode-toggle-v') || document.querySelector('.mode-toggle');
-  if(modeSection){
-    if(pyDtype){
-      document.querySelectorAll('.mode-btn,.mode-btn-v').forEach(function(b){
-        if(b.dataset.mode==='mcq'){b.classList.add('active');b.style.display='';}
-        else{b.classList.remove('active');b.style.display='none';}
-      });
-      S.mode='mcq';
-    }else{
-      document.querySelectorAll('.mode-btn,.mode-btn-v').forEach(function(b){b.style.display='';});
+  // Show/hide entire mode toggle for forced topics — keep it visible but disabled-looking
+  if(forced){
+    S.mode = forced;
+    modeBtns.forEach(function(b){
+      if(b.dataset.mode===forced){
+        b.classList.add('active');
+        b.style.display='';
+        b.style.opacity='1';
+        b.style.pointerEvents='none';
+      } else {
+        b.classList.remove('active');
+        b.style.display='none';
+      }
+    });
+  } else {
+    // Allow toggling
+    modeBtns.forEach(function(b){
+      b.style.display='';
+      b.style.opacity='';
+      b.style.pointerEvents='';
+    });
+    // Ensure at least one is active
+    var anyActive = Array.prototype.some.call(modeBtns, function(b){return b.classList.contains('active');});
+    if(!anyActive && modeBtns.length){
+      modeBtns[0].classList.add('active');
+      S.mode = modeBtns[0].dataset.mode;
     }
   }
-  if(pyDtype) return;
+}
 
+// ── Render qtype pills (String/List/Tuple/Dict/Mixed) ──
+function renderQtypePills(){
+  var qg = document.getElementById('qtype-group');
+  if(!qg) return;
+  // Restore original if previously replaced
+  if(qg.dataset.customMode){
+    delete qg.dataset.customMode;
+    if(qg.dataset.origHTML) qg.innerHTML = qg.dataset.origHTML;
+    qg.querySelectorAll('.tog').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if(btn.classList.contains('locked')){
+          showToast("You've completed all '"+btn.dataset.qtype+"' questions!",'info');return;
+        }
+        loadQtypeQuestions(S.dtype, btn.dataset.qtype);
+      });
+    });
+  }
+  // Apply locks to pills
   document.querySelectorAll('#qtype-group .tog').forEach(function(btn){
     btn.style.display='';
     if(!btn.dataset.orig) btn.dataset.orig = btn.textContent;
     var qorig = btn.dataset.orig;
-    if(S.plan==='paid'){ btn.classList.remove('locked'); btn.textContent = qorig; return; }
+    btn.classList.toggle('active', btn.dataset.qtype===S.qtype);
+    if(S.plan==='paid'){ btn.classList.remove('locked'); btn.textContent=qorig; return; }
     if(isQtypeDone(S.dtype, btn.dataset.qtype)){
       btn.classList.add('locked'); btn.textContent = qorig + ' 🔒';
-    }else{
+    } else {
       btn.classList.remove('locked'); btn.textContent = qorig;
     }
+  });
+}
+
+// ── Render Practice/Board checkboxes for Functions/Modules/Exception ──
+function renderPracticeBoardCheckboxes(dt){
+  var qg = document.getElementById('qtype-group');
+  if(!qg) return;
+  if(!qg.dataset.origHTML) qg.dataset.origHTML = qg.innerHTML;
+  qg.dataset.customMode = 'pb';
+  var m = getChecked(dt);
+  // Default: Practice checked
+  if(!m.Practice && !m.Board){ m.Practice = true; setChecked(dt,m); }
+
+  qg.innerHTML =
+    '<label class="pb-qt-cb'+(m.Practice?' checked':'')+'" data-pbmode="Practice">'+
+      '<span class="pb-qt-cb-box"></span>'+
+      '<span class="pb-qt-cb-lbl">Practice</span>'+
+    '</label>'+
+    '<label class="pb-qt-cb'+(m.Board?' checked':'')+'" data-pbmode="Board">'+
+      '<span class="pb-qt-cb-box"></span>'+
+      '<span class="pb-qt-cb-lbl">Board</span>'+
+    '</label>';
+  qg.querySelectorAll('.pb-qt-cb').forEach(function(lbl){
+    lbl.addEventListener('click', function(e){
+      e.preventDefault();
+      var mode = lbl.dataset.pbmode;
+      var m = getChecked(dt);
+      m[mode] = !m[mode];
+      setChecked(dt, m);
+      lbl.classList.toggle('checked', !!m[mode]);
+      // At least one must be checked
+      if(!m.Practice && !m.Board){
+        m[mode] = true; setChecked(dt,m);
+        lbl.classList.add('checked');
+        showToast("At least one type must be selected.","info");
+        return;
+      }
+      // Reload questions with new selection
+      loadPracticeBoardQuestions(dt);
+    });
+  });
+}
+
+// ── Render SQL multi-checkboxes ──
+// Paid: DDL, DML, JOIN, Aggregate, Schema, Board
+// Free: DDL, DML (no Mixed — multi-check IS the mix)
+function renderSQLCheckboxes(){
+  var qg = document.getElementById('qtype-group');
+  if(!qg) return;
+  if(!qg.dataset.origHTML) qg.dataset.origHTML = qg.innerHTML;
+  qg.dataset.customMode = 'sql';
+  var sqlQts = S.plan==='paid'
+    ? ['DDL','DML','JOIN','Aggregate','Schema','Board']
+    : ['DDL','DML','JOIN','Aggregate','Schema','Board'];
+  var m = getChecked('SQL');
+  // Default: DDL checked if nothing
+  var anyChecked = Object.keys(m).some(function(k){return m[k] && sqlQts.indexOf(k)>=0;});
+  if(!anyChecked){ m = {DDL:true}; setChecked('SQL', m); }
+
+  qg.innerHTML = sqlQts.map(function(qt){
+    var lbl = (SQL_QTYPE_LABELS && SQL_QTYPE_LABELS[qt]) || qt;
+    var locked = S.plan!=='paid' && (typeof SQL_FREE_QTYPES!=='undefined' && SQL_FREE_QTYPES.indexOf(qt)===-1);
+    var checked = !!m[qt];
+    return '<label class="sql-qt-cb'+(checked?' checked':'')+(locked?' locked':'')+'" data-qtype="'+qt+'">'+
+      '<span class="sql-qt-cb-box"></span>'+
+      '<span class="sql-qt-cb-lbl">'+lbl+(locked?' 🔒':'')+'</span>'+
+    '</label>';
+  }).join('');
+
+  qg.querySelectorAll('.sql-qt-cb').forEach(function(lbl){
+    lbl.addEventListener('click', function(e){
+      e.preventDefault();
+      if(lbl.classList.contains('locked')){
+        showUpgrade(((SQL_QTYPE_LABELS&&SQL_QTYPE_LABELS[lbl.dataset.qtype])||lbl.dataset.qtype)+' is available for Pro students only.');
+        return;
+      }
+      var qt = lbl.dataset.qtype;
+      var m = getChecked('SQL');
+      m[qt] = !m[qt];
+      setChecked('SQL', m);
+      lbl.classList.toggle('checked', !!m[qt]);
+      // At least one must be checked
+      var list = getCheckedList('SQL');
+      if(!list.length){
+        m[qt] = true; setChecked('SQL', m);
+        lbl.classList.add('checked');
+        showToast("At least one type must be selected.","info");
+        return;
+      }
+      loadSQLMulti();
+    });
+  });
+}
+
+// ── Render Networking multi-checkboxes ──
+function renderNetCheckboxes(){
+  var qg = document.getElementById('qtype-group');
+  if(!qg) return;
+  if(!qg.dataset.origHTML) qg.dataset.origHTML = qg.innerHTML;
+  qg.dataset.customMode = 'net';
+  var m = getChecked('Networking');
+  // Default: Practice checked
+  if(!m.Practice && !m.Board){ m = {Practice:true}; setChecked('Networking', m); }
+  // Sync global NET state
+  if(window.NET){
+    NET._practiceChecked = !!m.Practice;
+    NET._boardChecked = !!m.Board;
+  }
+
+  qg.innerHTML =
+    '<label class="net-qt-cb'+(m.Practice?' checked':'')+'" data-netmode="Practice">'+
+      '<span class="net-qt-cb-box"></span>'+
+      '<span class="net-qt-cb-lbl">Practice</span>'+
+    '</label>'+
+    '<label class="net-qt-cb'+(m.Board?' checked':'')+'" data-netmode="Board">'+
+      '<span class="net-qt-cb-box"></span>'+
+      '<span class="net-qt-cb-lbl">Board</span>'+
+    '</label>';
+  qg.querySelectorAll('.net-qt-cb').forEach(function(lbl){
+    lbl.addEventListener('click', function(e){
+      e.preventDefault();
+      var mode = lbl.dataset.netmode;
+      var m = getChecked('Networking');
+      m[mode] = !m[mode];
+      setChecked('Networking', m);
+      lbl.classList.toggle('checked', !!m[mode]);
+      if(!m.Practice && !m.Board){
+        m[mode] = true; setChecked('Networking', m);
+        lbl.classList.add('checked');
+        showToast("At least one type must be selected.","info");
+        return;
+      }
+      if(window.NET){
+        NET._practiceChecked = !!m.Practice;
+        NET._boardChecked = !!m.Board;
+      }
+      loadNetworkingFromCheckboxes();
+    });
   });
 }
 
@@ -1814,33 +1948,40 @@ function loadConceptQuestions(topic){
   document.querySelectorAll("#dtype-group .tog").forEach(function(b){
     b.classList.toggle("active", b.dataset.dtype===topic);
   });
+  // Restore button visibility (networking may have hidden them earlier)
+  var cbtn = document.getElementById("btn-check");
+  var nbtn = document.getElementById("btn-next");
+  if(cbtn) cbtn.style.display="";
+  if(nbtn) nbtn.style.display="";
   applyQtypeLocks();
   updateFreeBanner();
 
-  // Functions/Modules/Exception: lazy load on first click
-  if(topic==="Functions"||topic==="Modules"||topic==="Exception"){
-    if(!S.allQuestions[topic]||!S.allQuestions[topic].length){
-      setCardLoading("Loading "+topic+" questions...");
-      fetchConceptFromServer(topic, function(){
-        loadQtypeQuestions(topic, S.qtype);
-      });
-      return;
-    }
-  }
   // AssertionReason: load from Firestore boardQuestions
   if(topic==="AssertionReason"){
     loadAssertionReasonQuestions();
     return;
   }
-  // Networking: route to networking module
+  // Networking: route to networking module (from checkbox state)
   if(isNetworkingDtype(topic)){
-    loadNetworkingQuestions();
+    loadNetworkingFromCheckboxes();
     return;
   }
-  // SQL: use SQL generator
+  // SQL: use SQL generator with checkbox multi-selection
   if(isSQLDtype(topic)){
-    S.qtype = S.plan==="paid" ? "Mixed" : "DDL";
-    loadSQLQuestions(S.qtype);
+    loadSQLMulti();
+    return;
+  }
+
+  // Functions/Modules/Exception: lazy load then route to Practice/Board
+  if(topic==="Functions"||topic==="Modules"||topic==="Exception"){
+    if(!S.allQuestions[topic]||!S.allQuestions[topic].length){
+      setCardLoading("Loading "+topic+" questions...");
+      fetchConceptFromServer(topic, function(){
+        loadPracticeBoardQuestions(topic);
+      });
+      return;
+    }
+    loadPracticeBoardQuestions(topic);
     return;
   }
 
@@ -1851,8 +1992,116 @@ function loadConceptQuestions(topic){
       : "All done for today! Come back tomorrow or upgrade to Pro.");
     return;
   }
-  // Load qtype questions
+  // Python concept topics: load qtype questions (Indexing/Slicing/etc.)
   loadQtypeQuestions(topic, S.qtype);
+}
+
+// ═══════════════════════════════════════════════════════════
+//  NEW CHECKBOX-DRIVEN LOADERS
+// ═══════════════════════════════════════════════════════════
+
+// ── Load Functions / Modules / Exception based on Practice/Board checkboxes ──
+function loadPracticeBoardQuestions(dtype){
+  var checked = getChecked(dtype);
+  var wantPractice = !!checked.Practice;
+  var wantBoard    = !!checked.Board;
+  if(!wantPractice && !wantBoard){ wantPractice = true; }
+
+  var all = S.allQuestions[dtype] || [];
+  var pool;
+  if(wantPractice && wantBoard){
+    pool = all;
+  } else if(wantBoard){
+    pool = all.filter(function(q){return q.source==="board" || q.isBoard;});
+    if(!pool.length){
+      setCardLoading("No Board questions available for "+dtype+" yet. Showing Practice questions instead.");
+      setTimeout(function(){ setCardLoaded(); }, 1200);
+      pool = all;
+    }
+  } else {
+    pool = all.filter(function(q){return q.source!=="board" && !q.isBoard;});
+    if(!pool.length) pool = all;
+  }
+
+  if(!pool.length){
+    setCardLoading("No "+dtype+" questions loaded yet. Please refresh.");
+    return;
+  }
+
+  // Shuffle and display
+  pool = pool.slice();
+  for(var i=pool.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1));
+    var t=pool[i]; pool[i]=pool[j]; pool[j]=t;
+  }
+  S.currentQuestions = pool;
+  S.currentIdx = 0;
+  setCardLoaded();
+  S.checked=false; S.sel=null; S.qcount++;
+  showCurrentQuestion();
+}
+
+// ── Load SQL based on multi-checkboxes ──
+function loadSQLMulti(){
+  var checked = getCheckedList('SQL');
+  if(!checked.length){ checked = ['DDL']; setChecked('SQL',{DDL:true}); }
+  // Filter by free plan
+  if(S.plan!=='paid'){
+    checked = checked.filter(function(qt){return SQL_FREE_QTYPES.indexOf(qt)>=0;});
+    if(!checked.length){ checked = ['DDL']; setChecked('SQL',{DDL:true}); }
+  }
+  // Pick one qtype randomly from the checked set
+  var pick = checked[Math.floor(Math.random()*checked.length)];
+  S.qtype = pick;
+  // Daily limit check for free
+  if(S.plan!=='paid' && sqlIsQtypeLimitReached(pick)){
+    // Try another qtype from checked set
+    var alt = checked.filter(function(qt){return !sqlIsQtypeLimitReached(qt);});
+    if(alt.length){
+      pick = alt[Math.floor(Math.random()*alt.length)];
+      S.qtype = pick;
+    } else {
+      setCardLoading("You've used all free SQL questions for today. Come back tomorrow or upgrade to Pro.");
+      return;
+    }
+  }
+  loadSQLQuestions(pick);
+}
+
+// ── Load Networking based on Practice/Board checkboxes ──
+function loadNetworkingFromCheckboxes(){
+  var m = getChecked('Networking');
+  if(!m.Practice && !m.Board){ m = {Practice:true}; setChecked('Networking',m); }
+  if(window.NET){
+    NET._practiceChecked = !!m.Practice;
+    NET._boardChecked    = !!m.Board;
+  }
+  // Restore main action buttons which networking module may have hidden previously
+  var cbtn = document.getElementById("btn-check"); if(cbtn) cbtn.style.display="";
+  var nbtn = document.getElementById("btn-next");  if(nbtn) nbtn.style.display="";
+  // Clear any stale mode-card from #expl
+  var expl = document.getElementById("expl");
+  if(expl){ expl.innerHTML=""; expl.className="expl"; }
+  // Directly start session
+  netInjectCSS();
+  if(S.plan!=="paid" && netIsLimitReached()){
+    setCardLoading("You've used your "+NET_FREE_DAILY_LIMIT+" free Networking cases for today. Come back tomorrow or upgrade to Pro.");
+    return;
+  }
+  setCardLoaded();
+  // Decide NET.mode
+  if(m.Practice && m.Board) NET.mode = "both";
+  else if(m.Board) NET.mode = "board";
+  else NET.mode = "practice";
+  NET.practicePhase = true;
+  NET.boardDone = false;
+  NET.currentQ = 0;
+  // Start appropriate flow
+  if(NET.mode==="board"){
+    netLoadBoardCase();
+  } else {
+    netStartPracticeCase();
+  }
 }
 
 // ─── Switch qtype ───
@@ -2242,12 +2491,7 @@ document.getElementById("btn-next").addEventListener("click",function(){
   if(S.plan==="paid")S.conceptIdx[S.dtype]=S.currentIdx;
   showCurrentQuestion();
 });
-document.getElementById("btn-reset").addEventListener("click",function(){
-  S.score=0;S.total=0;S.streak=0;S.wrong=0;S.best=0;S.qcount=0;updHdr();
-  ["String","List","Tuple","Dictionary","Functions","Modules","Exception"].forEach(function(d){clearConceptCache(d);});
-  S.allQuestions={};S.conceptIdx={};S.progress={};S.todaysConcepts=[];
-  fetchAllQuestions();
-});
+// (btn-reset removed from UI — handler no longer needed)
 
 document.addEventListener("keydown",function(e){
   if(!document.getElementById("panel-practice").classList.contains("active"))return;
@@ -4018,8 +4262,12 @@ function checkSQLAns(){
 }
 
 function startSQLQuestion(){
-  // Generate fresh question on each Next
-  loadSQLQuestions(S.qtype);
+  // Generate fresh question on each Next — re-pick from the checked set
+  if(typeof loadSQLMulti === 'function' && getCheckedList && getCheckedList('SQL').length > 0){
+    loadSQLMulti();
+  } else {
+    loadSQLQuestions(S.qtype);
+  }
 }
 
 
@@ -4485,21 +4733,10 @@ function netRenderCaseBox(c){
   return h;
 }
 
-// ── Main entry: show mode selector ──
+// ── Main entry: redirected to checkbox-driven flow (no mode card) ──
 function loadNetworkingQuestions(){
-  netInjectCSS();
-  // Hide SQL schema container
-  var sce=document.getElementById("sql-schema-container");if(sce)sce.style.display="none";
-  var cb=document.getElementById("case-text-block");if(cb)cb.style.display="none";
-
-  // Check free limit
-  if(S.plan!=="paid"&&netIsLimitReached()){
-    setCardLoading("You've used your "+NET_FREE_DAILY_LIMIT+" free Networking cases for today. Come back tomorrow or upgrade to Pro.");
-    return;
-  }
-
-  setCardLoaded();
-  netShowModeSelector();
+  // Delegate to the new checkbox-driven loader
+  loadNetworkingFromCheckboxes();
 }
 
 function netShowModeSelector(){
