@@ -178,6 +178,124 @@ tr:hover td{background:var(--s3);}
 .q-action-btn.approve:hover{background:rgba(34,211,160,.25);}
 .q-action-btn.reject{background:var(--rddim);color:var(--red);}
 .q-action-btn.reject:hover{background:rgba(255,77,109,.2);}
+
+/* ═══ ADMIN TEST BUILDER v2 — practice-like interface ═══ */
+.atb-top{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;}
+.atb-chip-wrap{flex:1;min-width:180px;position:relative;}
+.atb-chip{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;background:var(--s2);border:1.5px solid var(--bdr2);border-radius:10px;cursor:pointer;color:var(--text);font-family:var(--font);font-size:13px;font-weight:700;transition:all .15s;min-width:0;}
+.atb-chip:hover{border-color:var(--acc);}
+.atb-chip.open{border-color:var(--acc);background:var(--accdim);}
+.atb-chip-lbl{font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);}
+.atb-chip-caret{font-size:10px;color:var(--text2);margin-left:4px;}
+.atb-chip.open .atb-chip-caret{transform:rotate(180deg);color:var(--acc);}
+
+.atb-pop-backdrop{position:fixed;inset:0;z-index:120;display:none;}
+.atb-pop-backdrop.open{display:block;background:rgba(0,0,0,.3);}
+.atb-pop{position:absolute;top:50px;left:0;width:min(480px,calc(100vw - 40px));background:var(--s1);border:1px solid var(--bdr2);border-radius:14px;padding:16px;box-shadow:0 24px 64px rgba(0,0,0,.6);z-index:121;display:none;}
+.atb-pop.open{display:block;}
+.atb-pop-section{margin-bottom:14px;}
+.atb-pop-section:last-child{margin-bottom:0;}
+.atb-pop-label{font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--gold2);margin-bottom:8px;}
+.atb-topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.atb-topic-grid .atb-topic-pill{padding:9px 10px;background:var(--s2);border:1.5px solid var(--bdr2);border-radius:7px;color:var(--text2);font-family:var(--font);font-size:11.5px;font-weight:600;cursor:pointer;text-align:center;transition:all .12s;}
+.atb-topic-grid .atb-topic-pill:hover{border-color:var(--acc);color:var(--acc);}
+.atb-topic-grid .atb-topic-pill.active{background:var(--accdim);border-color:var(--acc);color:var(--acc);font-weight:800;}
+.atb-qtype-host{display:flex;flex-wrap:wrap;gap:6px;}
+.atb-qt-pill{padding:7px 12px;background:var(--s2);border:1.5px solid var(--bdr2);border-radius:7px;color:var(--text2);font-family:var(--font);font-size:11.5px;font-weight:600;cursor:pointer;transition:all .12s;}
+.atb-qt-pill:hover{border-color:var(--acc);color:var(--acc);}
+.atb-qt-pill.active{background:var(--accdim);border-color:var(--acc);color:var(--acc);font-weight:700;}
+
+.atb-main{display:grid;grid-template-columns:1fr 320px;gap:14px;align-items:start;}
+@media(max-width:900px){.atb-main{grid-template-columns:1fr;}}
+
+.atb-question-panel{min-width:0;}
+.atb-q-card{background:var(--s2);border:1px solid var(--bdr);border-radius:14px;padding:18px 20px;min-height:300px;position:relative;}
+.atb-q-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;}
+.atb-q-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.atb-q-badge{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold);background:var(--gdim);padding:4px 11px;border-radius:999px;}
+.atb-q-lines{background:var(--s3);border:1px solid var(--bdr);border-radius:8px;padding:14px;font-family:var(--mono);font-size:13px;color:var(--text);line-height:1.6;white-space:pre-wrap;word-break:break-word;margin-bottom:14px;}
+.atb-q-options{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.atb-q-opt{padding:9px 14px;background:var(--s3);border:1.5px solid var(--bdr);border-radius:8px;color:var(--text2);font-family:var(--mono);font-size:12.5px;display:flex;align-items:center;gap:10px;}
+.atb-q-opt.correct{background:rgba(34,211,160,.12);border-color:rgba(34,211,160,.4);color:var(--green);font-weight:700;}
+.atb-q-opt-ltr{display:inline-block;width:22px;height:22px;background:var(--bdr2);color:var(--text);font-weight:800;border-radius:5px;text-align:center;line-height:22px;font-size:11px;font-family:var(--font);flex-shrink:0;}
+.atb-q-opt.correct .atb-q-opt-ltr{background:var(--green);color:#000;}
+.atb-q-answer{background:rgba(34,211,160,.08);border:1px solid rgba(34,211,160,.3);border-radius:8px;padding:10px 14px;font-family:var(--mono);font-size:12px;color:var(--green);margin-bottom:14px;}
+.atb-q-answer:empty{display:none;}
+.atb-q-buttons{display:flex;gap:10px;}
+
+/* Sticky tray */
+.atb-tray{background:var(--s1);border:1px solid var(--bdr);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px;max-height:600px;position:sticky;top:16px;}
+.atb-tray-header{display:flex;justify-content:space-between;align-items:center;}
+.atb-tray-title{font-family:var(--font);font-size:13px;font-weight:800;color:var(--text);}
+.atb-tray-count{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--gold);}
+.atb-tray-list{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:6px;min-height:200px;max-height:400px;}
+.atb-tray-empty{padding:24px 14px;text-align:center;color:var(--muted);font-size:12px;line-height:1.5;border:1.5px dashed var(--bdr2);border-radius:10px;}
+.atb-tray-item{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.atb-tray-item-txt{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--mono);font-size:11.5px;color:var(--text2);}
+.atb-tray-item-rm{width:22px;height:22px;background:transparent;border:none;color:var(--muted);font-size:15px;line-height:1;cursor:pointer;padding:0;border-radius:4px;}
+.atb-tray-item-rm:hover{background:var(--rddim);color:var(--red);}
+
+/* Publish/custom modal */
+.atb-pub-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:800;display:none;align-items:center;justify-content:center;padding:16px;}
+.atb-pub-overlay.open{display:flex;}
+.atb-pub-card{background:var(--s1);border:1px solid var(--bdr2);border-radius:14px;padding:22px;max-width:480px;width:100%;box-shadow:0 24px 64px rgba(0,0,0,.6);}
+.atb-pub-title{font-family:'Outfit',sans-serif;font-size:16px;font-weight:800;color:var(--gold2);margin-bottom:14px;}
+.atb-pub-row{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;}
+.atb-pub-lbl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);}
+
+/* Overview */
+.atb-overview-header{display:flex;justify-content:space-between;align-items:center;}
+.atb-ovv-item{background:var(--s2);border:1px solid var(--bdr);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;transition:all .12s;}
+.atb-ovv-item:hover{border-color:var(--acc);background:var(--accdim);}
+.atb-ovv-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.atb-ovv-meta{font-size:11px;color:var(--muted);}
+.atb-ovv-badge{font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:999px;flex-shrink:0;}
+.atb-ovv-badge.admin{background:var(--gdim);color:var(--gold);}
+.atb-ovv-badge.self{background:var(--accdim);color:var(--acc);}
+
+/* ═══ ANALYTICS DASHBOARD ═══ */
+.an-top-tabs{display:flex;gap:2px;margin-bottom:16px;border-bottom:1px solid var(--bdr);}
+.an-tab{padding:10px 16px;background:transparent;border:none;border-bottom:2px solid transparent;color:var(--text2);font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;transition:all .12s;}
+.an-tab:hover{color:var(--text);}
+.an-tab.active{color:var(--acc);border-bottom-color:var(--acc);}
+
+.an-panel{display:none;}
+.an-panel.active{display:block;}
+
+.an-kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:18px;}
+.an-kpi{background:var(--s2);border:1px solid var(--bdr);border-radius:10px;padding:14px 16px;}
+.an-kpi-val{font-family:var(--mono);font-size:24px;font-weight:800;color:var(--text);line-height:1.1;margin-bottom:4px;}
+.an-kpi-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
+.an-kpi-sub{font-size:11px;color:var(--text2);margin-top:4px;}
+
+.an-chart-wrap{background:var(--s2);border:1px solid var(--bdr);border-radius:12px;padding:14px 16px;margin-bottom:14px;}
+.an-chart-title{font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--gold2);margin-bottom:12px;}
+
+.an-perf-row{display:grid;grid-template-columns:1fr 80px 100px;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bdr);font-size:12px;}
+.an-perf-row:last-child{border-bottom:none;}
+.an-perf-name{font-weight:700;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.an-perf-email{font-size:10px;color:var(--muted);}
+.an-perf-score{font-family:var(--mono);font-weight:800;text-align:right;}
+.an-perf-bar{background:var(--bdr2);border-radius:999px;height:6px;overflow:hidden;}
+.an-perf-bar-fill{height:100%;background:var(--acc);}
+
+.an-test-card{background:var(--s2);border:1px solid var(--bdr);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:all .12s;}
+.an-test-card:hover{border-color:var(--acc);background:var(--accdim);}
+.an-test-card.active{border-color:var(--acc);background:var(--accdim);}
+.an-test-card-title{font-weight:700;color:var(--text);margin-bottom:2px;}
+.an-test-card-meta{font-size:11px;color:var(--muted);}
+
+.an-qdistrib-row{display:grid;grid-template-columns:40px 1fr 80px;align-items:center;gap:10px;padding:6px 0;font-size:12px;}
+.an-qdistrib-bar{background:var(--bdr2);border-radius:4px;height:8px;overflow:hidden;}
+.an-qdistrib-bar-fill{height:100%;}
+.an-qdistrib-bar-fill.easy{background:var(--green);}
+.an-qdistrib-bar-fill.med{background:var(--amber);}
+.an-qdistrib-bar-fill.hard{background:var(--red);}
+.an-score-histo{display:flex;align-items:flex-end;gap:4px;height:120px;padding:8px 0;}
+.an-score-histo-bar{flex:1;background:linear-gradient(to top,var(--acc),var(--gold));border-radius:3px 3px 0 0;min-height:2px;position:relative;}
+.an-score-histo-bar span{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--text2);font-family:var(--mono);}
+.an-score-histo-labels{display:flex;gap:4px;margin-top:4px;}
+.an-score-histo-labels > div{flex:1;text-align:center;font-size:9px;color:var(--muted);}
 .q-action-btn.skip{background:var(--s3);color:var(--text2);border:1.5px solid var(--bdr2);}
 .pub-form{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .pub-row{display:flex;flex-direction:column;gap:5px;}
@@ -257,6 +375,7 @@ tr:hover td{background:var(--s3);}
       <div class="nav-item" data-page="promos"><span class="nav-icon">🏷</span> Promo Codes</div>
       <div class="nav-item" data-page="boardqs"><span class="nav-icon">📚</span> Board Questions</div>
       <div class="nav-item" data-page="testbuilder"><span class="nav-icon">📋</span> Test Builder</div>
+      <div class="nav-item" data-page="analytics"><span class="nav-icon">📊</span> Analytics</div>
     </div>
     <div class="sb-footer">
       <div class="sb-admin" id="sb-admin-email"></div>
@@ -421,6 +540,14 @@ tr:hover td{background:var(--s3);}
         <div id="bq-topic-selector">
           <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:16px;">Select Topic to Add Questions</div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:24px;">
+            <button class="bq-topic-btn" onclick="bqSelectTopic('DataTypes')">
+              <div class="bq-topic-icon">&#x7B;&#x7D;</div>
+              <div class="bq-topic-lbl">Data Types</div>
+            </button>
+            <button class="bq-topic-btn" onclick="bqSelectTopic('Expressions')">
+              <div class="bq-topic-icon">&Sigma;</div>
+              <div class="bq-topic-lbl">Expressions</div>
+            </button>
             <button class="bq-topic-btn" onclick="bqSelectTopic('Functions')">
               <div class="bq-topic-icon">&#x192;</div>
               <div class="bq-topic-lbl">Functions</div>
@@ -484,9 +611,8 @@ tr:hover td{background:var(--s3);}
 
         <!-- FORM AREA (hidden until topic selected) -->
         <div id="bq-form-area" style="display:none;">
-          <!-- Header -->
+          <!-- Header (Close button at bottom of each form — no back button here) -->
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-            <button onclick="bqBackToTopics()" style="padding:6px 12px;background:var(--s3);border:1.5px solid var(--bdr2);border-radius:7px;color:var(--text2);font-family:var(--font);font-size:12px;font-weight:700;cursor:pointer;">&#x2190; Back</button>
             <div id="bq-form-heading" style="font-size:15px;font-weight:700;color:var(--gold2);"></div>
           </div>
 
@@ -728,94 +854,255 @@ tr:hover td{background:var(--s3);}
             </div>
           </div>
 
+          <!-- ── DATA TYPES FORM (String/List/Tuple/Dictionary) ── -->
+          <div id="bq-form-datatypes" class="bq-topic-form" style="display:none;">
+            <div class="bq-form-grid">
+              <div class="form-row">
+                <div class="form-lbl">Data Type <span style="color:var(--red)">*</span></div>
+                <select class="form-inp" id="dt-subtopic">
+                  <option value="">Select data type</option>
+                  <option value="String">String</option>
+                  <option value="List">List</option>
+                  <option value="Tuple">Tuple</option>
+                  <option value="Dictionary">Dictionary</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-lbl">Question Type <span style="color:var(--red)">*</span></div>
+                <select class="form-inp" id="dt-qtype" onchange="dtToggleStatement(this.value)">
+                  <option value="">Select question type</option>
+                  <option value="predict_output">Predict the Output</option>
+                  <option value="write_statement">Write a Statement</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-lbl">Question / Prompt <span style="color:var(--red)">*</span></div>
+              <textarea class="form-inp" id="dt-prompt" rows="4" placeholder="Code snippet or prompt the student will see"></textarea>
+            </div>
+            <div class="form-row" id="dt-mcq-fields">
+              <div class="form-lbl">MCQ Options (for Predict Output)</div>
+              <div id="dt-options-wrap">
+                <input class="form-inp" id="dt-opt-a" placeholder="Option A" style="margin-bottom:6px">
+                <input class="form-inp" id="dt-opt-b" placeholder="Option B" style="margin-bottom:6px">
+                <input class="form-inp" id="dt-opt-c" placeholder="Option C" style="margin-bottom:6px">
+                <input class="form-inp" id="dt-opt-d" placeholder="Option D" style="margin-bottom:6px">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-lbl">Correct Answer <span style="color:var(--red)">*</span></div>
+              <input class="form-inp" id="dt-answer" placeholder="Exact answer / expected statement">
+            </div>
+            <div class="form-row">
+              <div class="form-lbl">Explanation (optional)</div>
+              <textarea class="form-inp" id="dt-explanation" rows="2" placeholder="Why this answer is correct"></textarea>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:14px;">
+              <button class="btn-save-settings" onclick="bqSave('DataTypes')">Save</button>
+              <button class="btn-save-settings" onclick="bqClear('dt')" style="background:var(--s3);color:var(--text2);border:1.5px solid var(--bdr2);">Clear</button>
+              <button class="btn-save-settings" onclick="bqBackToTopics()" style="background:var(--s3);color:var(--text2);border:1.5px solid var(--bdr2);">Close</button>
+            </div>
+          </div>
+
+          <!-- ── EXPRESSIONS FORM ── -->
+          <div id="bq-form-expressions" class="bq-topic-form" style="display:none;">
+            <div class="form-row">
+              <div class="form-lbl">Expression / Code <span style="color:var(--red)">*</span></div>
+              <textarea class="form-inp" id="exp-prompt" rows="3" placeholder="e.g. print(2 + 3 * 4)"></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-lbl">MCQ Options</div>
+              <div id="exp-options-wrap">
+                <input class="form-inp" id="exp-opt-a" placeholder="Option A" style="margin-bottom:6px">
+                <input class="form-inp" id="exp-opt-b" placeholder="Option B" style="margin-bottom:6px">
+                <input class="form-inp" id="exp-opt-c" placeholder="Option C" style="margin-bottom:6px">
+                <input class="form-inp" id="exp-opt-d" placeholder="Option D" style="margin-bottom:6px">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-lbl">Correct Answer <span style="color:var(--red)">*</span></div>
+              <input class="form-inp" id="exp-answer" placeholder="Exact output">
+            </div>
+            <div class="form-row">
+              <div class="form-lbl">Explanation (optional)</div>
+              <textarea class="form-inp" id="exp-explanation" rows="2" placeholder="How precedence/evaluation works"></textarea>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:14px;">
+              <button class="btn-save-settings" onclick="bqSave('Expressions')">Save</button>
+              <button class="btn-save-settings" onclick="bqClear('exp')" style="background:var(--s3);color:var(--text2);border:1.5px solid var(--bdr2);">Clear</button>
+              <button class="btn-save-settings" onclick="bqBackToTopics()" style="background:var(--s3);color:var(--text2);border:1.5px solid var(--bdr2);">Close</button>
+            </div>
+          </div>
+
         </div><!-- end bq-form-area -->
       </div>
 
       <!-- TEST BUILDER -->
       <div class="page" id="page-testbuilder">
-        <div class="tb-steps">
-          <div class="tb-step active" id="tb-step-1"><div class="tb-step-num">1</div> Generate</div>
-          <div class="tb-step" id="tb-step-2"><div class="tb-step-num">2</div> Review</div>
-          <div class="tb-step" id="tb-step-3"><div class="tb-step-num">3</div> Publish</div>
+        <!-- Top controls: Topic selector + Add custom / From Board Bank -->
+        <div class="atb-top">
+          <div class="atb-chip-wrap">
+            <button class="atb-chip" id="atb-chip">
+              <span class="atb-chip-lbl">Practicing</span>
+              <span class="atb-chip-val" id="atb-chip-val">String · Predict Output</span>
+              <span class="atb-chip-caret">&#9662;</span>
+            </button>
+          </div>
+          <button class="btn-tb" id="btn-atb-custom">+ Custom Question</button>
+          <button class="btn-tb" id="btn-atb-frombank">From Board Bank</button>
         </div>
-        <div class="tb-panel active" id="tb-panel-1">
-          <div class="tb-gen-card">
-            <div class="setting-title" style="margin-bottom:4px">Generate Questions</div>
-            <div class="setting-desc" style="margin-bottom:16px">Select topic, question type and count.</div>
-            <div class="setting-lbl" style="margin-bottom:8px;">Topic</div>
-            <div class="bgrp" id="tb-dtype" style="margin-bottom:16px;">
-              <button class="tog active" data-val="String">String</button>
-              <button class="tog" data-val="List">List</button>
-              <button class="tog" data-val="Tuple">Tuple</button>
-              <button class="tog" data-val="Dictionary">Dict</button>
-              <button class="tog" data-val="Mixed">Mixed</button>
-              <button class="tog" data-val="Functions">Functions</button>
-              <button class="tog" data-val="Modules">Modules</button>
-              <button class="tog" data-val="Exception">Exception</button>
-            </div>
-            <div class="setting-lbl" style="margin-bottom:8px;" id="tb-qtype-lbl">Question Type</div>
-            <div class="bgrp" id="tb-qtype" style="margin-bottom:16px;">
-              <button class="tog qt-Mixed active" data-val="Mixed">Mixed</button>
-              <button class="tog" data-val="Indexing">Indexing</button>
-              <button class="tog" data-val="Slicing">Slicing</button>
-              <button class="tog" data-val="SliceIdx">Slice+Index</button>
-              <button class="tog" data-val="Functions">Functions</button>
-              <button class="tog" data-val="Membership">Membership</button>
-              <button class="tog" data-val="Comparison">Comparison</button>
-              <button class="tog" data-val="Expressions">Expressions</button>
-              <button class="tog" data-val="BuiltinMath">Built-in</button>
-              <button class="tog" data-val="ExceptionHandling" style="display:none">Exception</button>
-            </div>
-            <div class="setting-lbl" style="margin-bottom:8px;">Number of Questions</div>
-            <div class="bgrp" id="tb-count" style="margin-bottom:20px;">
-              <button class="tog" data-val="10">10</button>
-              <button class="tog active" data-val="20">20</button>
-              <button class="tog" data-val="30">30</button>
-              <button class="tog" data-val="50">50</button>
-            </div>
-            <button class="btn-tb primary" id="btn-tb-generate">Generate Questions &#x26A1;</button>
+
+        <!-- Popover (topic/qtype picker) -->
+        <div class="atb-pop-backdrop" id="atb-pop-backdrop"></div>
+        <div class="atb-pop" id="atb-pop" aria-hidden="true">
+          <div class="atb-pop-section">
+            <div class="atb-pop-label">Topic</div>
+            <div class="atb-topic-grid" id="atb-topic-grid"></div>
+          </div>
+          <div class="atb-pop-section" id="atb-qtype-section">
+            <div class="atb-pop-label">Question Type</div>
+            <div class="atb-qtype-host" id="atb-qtype-host"></div>
           </div>
         </div>
-        <div class="tb-panel" id="tb-panel-2">
-          <div class="tb-review-stats">
-            <div class="tb-stat"><span id="rev-approved">0</span> Approved</div>
-            <div class="tb-stat"><span id="rev-rejected">0</span> Rejected</div>
-            <div class="tb-stat"><span id="rev-remaining">0</span> Remaining</div>
+
+        <!-- Main practice area -->
+        <div class="atb-main">
+          <div class="atb-question-panel">
+            <div class="atb-q-card">
+              <div class="atb-q-loading" id="atb-q-loading"><div class="spinner"></div><div style="margin-top:10px;color:var(--text2)">Generating...</div></div>
+              <div id="atb-q-content" style="display:none">
+                <div class="atb-q-header">
+                  <div class="atb-q-badge" id="atb-q-badge">Predict Output</div>
+                </div>
+                <div class="atb-q-lines" id="atb-q-lines"></div>
+                <div class="atb-q-options" id="atb-q-options"></div>
+                <div class="atb-q-answer" id="atb-q-answer"></div>
+                <div class="atb-q-buttons">
+                  <button class="btn-tb primary" id="btn-atb-add">+ Add to this test</button>
+                  <button class="btn-tb" id="btn-atb-next">Next &#x2192;</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div id="review-queue"></div>
-          <div style="display:flex;gap:10px;margin-top:14px;">
-            <button class="btn-tb" id="btn-tb-back-gen">&#x2190; Back</button>
-            <button class="btn-tb primary" id="btn-tb-to-publish">Proceed to Publish</button>
+
+          <!-- Sticky tray -->
+          <div class="atb-tray" id="atb-tray">
+            <div class="atb-tray-header">
+              <div class="atb-tray-title">Test Contents</div>
+              <div class="atb-tray-count" id="atb-tray-count">0 questions</div>
+            </div>
+            <div class="atb-tray-list" id="atb-tray-list">
+              <div class="atb-tray-empty">No questions added yet. Pick topics and add questions one at a time.</div>
+            </div>
+            <button class="btn-tb primary" id="btn-atb-publish" disabled>Configure &amp; Save</button>
           </div>
         </div>
-        <div class="tb-panel" id="tb-panel-3">
-          <div class="pub-form">
-            <div class="pub-row"><div class="pub-lbl">Test Title</div><input class="form-inp" id="pub-title" placeholder="CBSE Mock Test - Python"></div>
-            <div class="pub-row"><div class="pub-lbl">Access</div>
-              <select class="form-sel" id="pub-access">
-                <option value="free">Free (All Students)</option>
-                <option value="paid">Pro Only</option>
+
+        <!-- Publish modal -->
+        <div class="atb-pub-overlay" id="atb-pub-overlay">
+          <div class="atb-pub-card">
+            <div class="atb-pub-title">Save Test</div>
+            <div class="atb-pub-row"><div class="atb-pub-lbl">Title <span style="color:var(--red)">*</span></div><input class="form-inp" id="atb-pub-title" placeholder="CBSE Mock Test - Python Data Types"></div>
+            <div class="atb-pub-row"><div class="atb-pub-lbl">Description (optional)</div><input class="form-inp" id="atb-pub-desc" placeholder="Quick description for students"></div>
+            <div class="atb-pub-row">
+              <div class="atb-pub-lbl">Access <span style="color:var(--red)">*</span></div>
+              <select class="form-sel" id="atb-pub-access">
+                <option value="everyone">Everyone (Free + Pro)</option>
+                <option value="free">Free students only</option>
+                <option value="paid">Pro students only</option>
               </select>
             </div>
-            <div class="pub-row"><div class="pub-lbl">Duration (minutes)</div><input class="form-inp" id="pub-duration" type="number" min="5" placeholder="30"></div>
-            <div class="pub-row"><div class="pub-lbl">Schedule</div><input class="form-inp" id="pub-schedule" type="datetime-local"></div>
-            <div class="pub-row"><div class="pub-lbl">Description</div><input class="form-inp" id="pub-desc" placeholder="Optional description"></div>
+            <div class="atb-pub-row"><div class="atb-pub-lbl">Duration (minutes) <span style="color:var(--red)">*</span></div><input class="form-inp" id="atb-pub-duration" type="number" min="1" value="30"></div>
+            <div style="display:flex;gap:10px;margin-top:14px;">
+              <button class="btn-tb" id="btn-atb-pub-cancel">Cancel</button>
+              <button class="btn-tb primary" id="btn-atb-pub-save">Save Test</button>
+            </div>
           </div>
-          <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
-            <button class="btn-tb" id="btn-tb-back-review">&#x2190; Back to Review</button>
-            <button class="btn-tb primary" id="btn-tb-publish">Publish Test &#x1F680;</button>
+        </div>
+
+        <!-- Custom question modal -->
+        <div class="atb-pub-overlay" id="atb-custom-overlay">
+          <div class="atb-pub-card" style="max-width:560px">
+            <div class="atb-pub-title">Add Custom Question</div>
+            <div class="atb-pub-row"><div class="atb-pub-lbl">Question / Code <span style="color:var(--red)">*</span></div><textarea class="form-inp" id="atb-cust-prompt" rows="4" placeholder="print(2 + 3 * 4)"></textarea></div>
+            <div class="atb-pub-row"><div class="atb-pub-lbl">Options (one per line — first option must be the correct answer)</div><textarea class="form-inp" id="atb-cust-opts" rows="4" placeholder="14&#10;20&#10;15&#10;9"></textarea></div>
+            <div class="atb-pub-row"><div class="atb-pub-lbl">Topic label (shown on results)</div><input class="form-inp" id="atb-cust-topic" value="Custom" placeholder="Custom"></div>
+            <div style="display:flex;gap:10px;margin-top:14px;">
+              <button class="btn-tb" id="btn-atb-cust-cancel">Cancel</button>
+              <button class="btn-tb primary" id="btn-atb-cust-save">Add to Test</button>
+            </div>
           </div>
-          <div class="pub-tests-wrap" style="margin-top:20px;">
-            <div style="font-size:11px;font-weight:800;letter-spacing:1px;color:var(--muted);padding:14px 16px;border-bottom:1px solid var(--bdr)">PUBLISHED TESTS</div>
-            <div class="tbl-wrap"><table>
-              <thead><tr><th>Title</th><th>Access</th><th>Questions</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
-              <tbody id="pub-tests-tbody"><tr><td colspan="6" class="tbl-empty"><div class="spinner" style="margin:0 auto"></div></td></tr></tbody>
-            </table></div>
+        </div>
+
+        <!-- Overview: all tests published by this admin + their stats -->
+        <div style="margin-top:24px;">
+          <div class="atb-overview-header">
+            <div style="font-size:14px;font-weight:800;color:var(--text);">All Tests</div>
+            <div style="font-size:12px;color:var(--text2);" id="atb-overview-count">Loading...</div>
+          </div>
+          <div id="atb-overview-list" style="display:flex;flex-direction:column;gap:8px;margin-top:10px;"></div>
+        </div>
+
+        <!-- Per-test detail (loaded on click) -->
+        <div class="atb-pub-overlay" id="atb-detail-overlay">
+          <div class="atb-pub-card" style="max-width:700px">
+            <div class="atb-pub-title" id="atb-detail-title">Test Details</div>
+            <div id="atb-detail-meta" style="margin-bottom:10px;font-size:12px;color:var(--text2);"></div>
+            <div id="atb-detail-qs" style="max-height:400px;overflow-y:auto;margin-bottom:10px;"></div>
+            <div style="display:flex;gap:10px;">
+              <button class="btn-tb" id="btn-atb-detail-close">Close</button>
+              <button class="btn-tb" id="btn-atb-detail-delete" style="background:var(--rddim);color:var(--red);border:1.5px solid var(--red)">Delete Test</button>
+            </div>
           </div>
         </div>
       </div>
 
-    </div><!-- end pages-wrap -->
+      <!-- ANALYTICS -->
+      <div class="page" id="page-analytics">
+        <div class="an-top-tabs">
+          <button class="an-tab active" data-an-tab="activity">Activity</button>
+          <button class="an-tab" data-an-tab="performance">Performance</button>
+          <button class="an-tab" data-an-tab="tests">Tests Drilldown</button>
+        </div>
+
+        <!-- Activity panel (option C) -->
+        <div class="an-panel active" id="an-panel-activity">
+          <div class="an-kpi-grid" id="an-kpis"></div>
+          <div class="an-chart-wrap">
+            <div class="an-chart-title">Tests generated per day (last 30 days)</div>
+            <canvas id="an-daily-chart" height="160"></canvas>
+          </div>
+          <div class="an-chart-wrap">
+            <div class="an-chart-title">Completion rate</div>
+            <div id="an-completion-rate"></div>
+          </div>
+        </div>
+
+        <!-- Performance panel (option B) -->
+        <div class="an-panel" id="an-panel-performance">
+          <div class="an-kpi-grid" id="an-perf-kpis"></div>
+          <div class="an-chart-wrap">
+            <div class="an-chart-title">Student performance — All admin tests</div>
+            <div id="an-top-performers"></div>
+          </div>
+          <div class="an-chart-wrap">
+            <div class="an-chart-title">Students needing support</div>
+            <div id="an-bottom-performers"></div>
+          </div>
+          <div class="an-chart-wrap">
+            <div class="an-chart-title">Pass / Fail distribution</div>
+            <div id="an-pass-fail"></div>
+          </div>
+        </div>
+
+        <!-- Tests Drilldown panel (option D — admin tests only) -->
+        <div class="an-panel" id="an-panel-tests">
+          <div style="margin-bottom:14px;font-size:12px;color:var(--text2)">Pick an admin test to see detailed question-level analytics.</div>
+          <div id="an-tests-picker" style="display:flex;flex-direction:column;gap:8px;"></div>
+          <!-- Detail drill-in rendered in-place -->
+          <div id="an-test-detail" style="margin-top:18px;"></div>
+        </div>
+      </div>
   </div><!-- end main-content -->
 </div><!-- end shell -->
 
@@ -829,7 +1116,8 @@ tr:hover td{background:var(--s3);}
 'use strict';
 
 // ═══ TEST BUILDER STATE ═══
-var TB = { step:1, dtype:"String", qtype:"Mixed", count:20, generated:[], approved:[], rejected:0 };
+// Old TB state replaced by ATB (below) — kept for backward compat in case any stray ref remains
+var TB = { step:1, dtype:"String", qtype:"Mixed", count:20 };
 
 // ═══ CONFIG ═══
 firebase.initializeApp({
@@ -973,7 +1261,8 @@ document.querySelectorAll(".nav-item").forEach(function(item){
     if(page==="email")       loadEmailPage();
     if(page==="settings")    loadSettings();
     if(page==="boardqs")     loadBoardQuestions();
-    if(page==="testbuilder") loadPublishedTests();
+    if(page==="testbuilder") loadTestBuilder();
+    if(page==="analytics")   loadAnalytics();
   });
 });
 
@@ -1414,207 +1703,544 @@ function deletePromo(id){
 }
 
 // ═══ TEST BUILDER ═══
-function loadTestBuilder(){ loadPublishedTests(); }
+// (See ATB section below for new implementation)
 
-function tbGoStep(n){
-  TB.step=n;
-  [1,2,3].forEach(function(i){
-    var step=document.getElementById("tb-step-"+i);
-    var panel=document.getElementById("tb-panel-"+i);
-    if(!step||!panel) return;
-    step.className="tb-step"+(i<n?" done":i===n?" active":"");
-    panel.className="tb-panel"+(i===n?" active":"");
-  });
-  if(n===3) loadPublishedTests();
+// ═══════════════════════════════════════════════════════════════════
+//   ADMIN TEST BUILDER v2 — practice-like interface
+//   Topics × qtypes → generate one question → admin picks add or next
+//   Saved tests permanent; overview lists admin + student tests
+// ═══════════════════════════════════════════════════════════════════
+
+var ATB = {
+  dtype: "String",
+  qtype: "PredictOutput",
+  questions: [],   // { lines, options, answer, qtype, dtype, explanation }
+  current: null,   // last generated question shown on screen
+  detailTest: null,
+  bankCache: null  // board questions fetched from Firestore
+};
+
+var ATB_TOPIC_CATALOG = [
+  {id:"String",       label:"String"},
+  {id:"List",         label:"List"},
+  {id:"Tuple",        label:"Tuple"},
+  {id:"Dictionary",   label:"Dictionary"},
+  {id:"Expressions",  label:"Expressions"},
+  {id:"Builtin",      label:"Built-in"},
+  {id:"Functions",    label:"Functions"},
+  {id:"Modules",      label:"Modules"},
+  {id:"Exception",    label:"Exception"},
+  {id:"AssertionReason", label:"Assert & Reason"},
+  {id:"SQL",          label:"SQL"},
+  {id:"Networking",   label:"Networking"}
+];
+
+var ATB_QTYPES = {
+  String:         [{id:"Indexing",label:"Indexing"},{id:"Slicing",label:"Slicing"},{id:"Functions",label:"Functions"},{id:"PredictOutput",label:"Predict Output"}],
+  List:           [{id:"Indexing",label:"Indexing"},{id:"Slicing",label:"Slicing"},{id:"Functions",label:"Functions"},{id:"PredictOutput",label:"Predict Output"}],
+  Tuple:          [{id:"Indexing",label:"Indexing"},{id:"Functions",label:"Functions"},{id:"PredictOutput",label:"Predict Output"}],
+  Dictionary:     [{id:"Operations",label:"Operations"},{id:"Functions",label:"Functions"},{id:"PredictOutput",label:"Predict Output"}],
+  Expressions:    [{id:"Mixed",label:"Mixed"}],
+  Builtin:        [{id:"Mixed",label:"Mixed"}],
+  Functions:      [{id:"Practice",label:"Practice"},{id:"Board",label:"Board"}],
+  Modules:        [{id:"Practice",label:"Practice"},{id:"Board",label:"Board"}],
+  Exception:      [{id:"Practice",label:"Practice"},{id:"Board",label:"Board"}],
+  AssertionReason:[{id:"Mixed",label:"Mixed"}],
+  SQL:            [{id:"DDL",label:"DDL"},{id:"DML",label:"DML"},{id:"JOIN",label:"JOIN"},{id:"Aggregate",label:"Group By"},{id:"Schema",label:"Schema"}],
+  Networking:     [{id:"Practice",label:"Practice"},{id:"Board",label:"Board"}]
+};
+
+function atbUpdateChip(){
+  var t = ATB_TOPIC_CATALOG.find(function(x){return x.id===ATB.dtype;});
+  var label = t ? t.label : ATB.dtype;
+  var qts = ATB_QTYPES[ATB.dtype] || [];
+  var qtLbl = "";
+  if(ATB.qtype){
+    var qt = qts.find(function(q){return q.id===ATB.qtype;});
+    qtLbl = qt ? " · "+qt.label : "";
+  }
+  var el = document.getElementById("atb-chip-val");
+  if(el) el.textContent = label + qtLbl;
 }
 
-document.querySelectorAll("#tb-dtype .tog, #tb-qtype .tog, #tb-count .tog").forEach(function(btn){
-  btn.addEventListener("click",function(){
-    var grp=btn.closest(".bgrp"); if(!grp) return;
-    grp.querySelectorAll(".tog").forEach(function(b){b.classList.remove("active");});
-    btn.classList.add("active");
-    if(grp.id==="tb-dtype"){
-      TB.dtype=btn.dataset.val;
-      var isPy=TB.dtype==="Functions"||TB.dtype==="Modules"||TB.dtype==="Exception";
-      var ql=document.getElementById("tb-qtype-lbl"), qg=document.getElementById("tb-qtype");
-      if(ql) ql.style.display=isPy?"none":"";
-      if(qg) qg.style.display=isPy?"none":"";
-      if(!isPy){
-        document.querySelectorAll("#tb-qtype .tog").forEach(function(b){
-          b.style.display=b.dataset.val==="ExceptionHandling"?"none":"";
-        });
-        document.querySelectorAll("#tb-qtype .tog").forEach(function(b){b.classList.remove("active");});
-        var mx=document.querySelector("#tb-qtype .tog[data-val='Mixed']");
-        if(mx){mx.classList.add("active"); TB.qtype="Mixed";}
-      } else { TB.qtype="Mixed"; }
-    } else if(grp.id==="tb-qtype"){ TB.qtype=btn.dataset.val; }
-    else if(grp.id==="tb-count"){ TB.count=parseInt(btn.dataset.val); }
-  });
-});
+function atbOpenPop(){
+  atbRenderPopover();
+  document.getElementById("atb-pop").classList.add("open");
+  document.getElementById("atb-pop-backdrop").classList.add("open");
+  document.getElementById("atb-chip").classList.add("open");
+}
+function atbClosePop(){
+  document.getElementById("atb-pop").classList.remove("open");
+  document.getElementById("atb-pop-backdrop").classList.remove("open");
+  document.getElementById("atb-chip").classList.remove("open");
+}
 
-document.getElementById("btn-tb-generate").addEventListener("click",function(){
-  var btn=this; btn.disabled=true; btn.textContent="Generating...";
+function atbRenderPopover(){
+  var tg = document.getElementById("atb-topic-grid");
+  tg.innerHTML = ATB_TOPIC_CATALOG.map(function(t){
+    return '<button class="atb-topic-pill'+(ATB.dtype===t.id?" active":"")+'" data-topic="'+t.id+'">'+t.label+'</button>';
+  }).join("");
+  tg.querySelectorAll(".atb-topic-pill").forEach(function(p){
+    p.addEventListener("click", function(){
+      ATB.dtype = p.dataset.topic;
+      var qts = ATB_QTYPES[ATB.dtype] || [];
+      ATB.qtype = qts.length ? qts[0].id : null;
+      atbRenderPopover();
+      atbUpdateChip();
+      atbClosePop();
+      atbGenerateQuestion();
+    });
+  });
+  // Qtype section
+  var qts = ATB_QTYPES[ATB.dtype] || [];
+  var host = document.getElementById("atb-qtype-host");
+  var section = document.getElementById("atb-qtype-section");
+  if(!qts.length){ section.style.display="none"; return; }
+  section.style.display="";
+  host.innerHTML = qts.map(function(q){
+    return '<button class="atb-qt-pill'+(ATB.qtype===q.id?" active":"")+'" data-qt="'+q.id+'">'+q.label+'</button>';
+  }).join("");
+  host.querySelectorAll(".atb-qt-pill").forEach(function(p){
+    p.addEventListener("click", function(){
+      ATB.qtype = p.dataset.qt;
+      atbRenderPopover();
+      atbUpdateChip();
+      atbClosePop();
+      atbGenerateQuestion();
+    });
+  });
+}
+
+function atbShowLoading(on){
+  document.getElementById("atb-q-loading").style.display = on ? "flex" : "none";
+  document.getElementById("atb-q-content").style.display = on ? "none" : "block";
+}
+
+// Generate one question — calls the existing CF generator for concept topics,
+// falls back to a helpful message for SQL/Networking (admin should use "From Board Bank" or "Custom" for those)
+function atbGenerateQuestion(){
+  if(!auth.currentUser){
+    showToast("Sign in as admin first","error");
+    return;
+  }
+  // For SQL & Networking, redirect to the board bank picker since client-side generator lives in student app only
+  if(ATB.dtype==="SQL" || ATB.dtype==="Networking"){
+    showToast("Use 'From Board Bank' for SQL / Networking questions.","info");
+    atbShowLoading(false);
+    document.getElementById("atb-q-content").innerHTML =
+      '<div style="padding:40px;text-align:center;color:var(--muted);font-size:13px;line-height:1.6">'+
+      'For SQL and Networking, use the <b>From Board Bank</b> button or add a <b>Custom Question</b>. ' +
+      'Those topics are generated in the student app and aren\'t served by the admin CF.</div>';
+    return;
+  }
+  atbShowLoading(true);
   auth.currentUser.getIdToken().then(function(token){
-    return fetch(CF_GENERATE,{
-      method:"POST",
-      headers:{"Content-Type":"application/json","Authorization":"Bearer "+token},
-      body:JSON.stringify({dtypes:[TB.dtype],plan:"paid",qtype:TB.qtype})
+    return fetch(CF_GENERATE, {
+      method: "POST",
+      headers: {"Content-Type":"application/json","Authorization":"Bearer "+token},
+      body: JSON.stringify({dtypes:[ATB.dtype], plan:"paid", qtype: ATB.qtype==="PredictOutput"?"Mixed":ATB.qtype})
     });
   }).then(function(res){return res.json().then(function(d){return{ok:res.ok,data:d};});})
   .then(function(r){
-    btn.disabled=false; btn.textContent="Generate Questions ⚡";
-    if(!r.ok){ showToast("Error: "+(r.data.message||"Server error"),"error"); return; }
-    var qs = r.data.allQuestions ? (r.data.allQuestions[TB.dtype]||[]) : (r.data.questions||[]);
-    // Flatten if nested
+    if(!r.ok){ showToast("Error: "+(r.data.message||"Server"),"error"); atbShowLoading(false); return; }
+    var qs = r.data.allQuestions ? (r.data.allQuestions[ATB.dtype]||[]) : (r.data.questions||[]);
     if(qs && !Array.isArray(qs)){
       var flat=[]; Object.values(qs).forEach(function(arr){if(Array.isArray(arr))flat=flat.concat(arr);});
-      qs=flat;
+      qs = flat;
     }
-    TB.generated=qs.slice(0,TB.count);
-    TB.approved=[]; TB.rejected=0;
-    if(!TB.generated.length){ showToast("No questions returned — try a different topic","error"); return; }
-    renderReviewQueue();
-    tbGoStep(2);
+    if(!qs.length){ showToast("No question returned","error"); atbShowLoading(false); return; }
+    var pick = qs[Math.floor(Math.random()*qs.length)];
+    ATB.current = {
+      lines: pick.lines||[],
+      options: pick.options||[],
+      answer: pick.answer||"",
+      qtype: pick.qtype||ATB.qtype,
+      dtype: ATB.dtype,
+      explanation: pick.explanation||""
+    };
+    atbRenderCurrent();
+    atbShowLoading(false);
   }).catch(function(e){
-    btn.disabled=false; btn.textContent="Generate Questions ⚡";
-    showToast("Error generating questions","error");
     console.error(e);
+    showToast("Network error","error");
+    atbShowLoading(false);
   });
-});
-
-function renderReviewQueue(){
-  document.getElementById("rev-approved").textContent =TB.approved.length;
-  document.getElementById("rev-rejected").textContent =TB.rejected;
-  document.getElementById("rev-remaining").textContent=TB.generated.length;
-  var container=document.getElementById("review-queue");
-  if(TB.generated.length===0){
-    container.innerHTML='<div style="color:var(--muted);font-size:13px;padding:20px 0">All reviewed. Proceed to publish.</div>';
-    document.getElementById("btn-tb-to-publish").textContent="Proceed to Publish ("+TB.approved.length+" approved)";
-    return;
-  }
-  var q=TB.generated[0];
-  var idx=TB.approved.length+TB.rejected+1;
-  var total=TB.approved.length+TB.rejected+TB.generated.length;
-  var optsHtml=(q.options||[]).map(function(opt){
-    return '<span class="q-opt-pill'+(opt===q.answer?" correct":"")+'">'+esc(opt)+'</span>';
-  }).join("");
-  container.innerHTML=
-    '<div class="q-review-card">'+
-      '<div class="q-review-hdr"><div class="q-review-num">Question '+idx+' of '+total+'</div><div class="q-review-qtype">'+esc(q.qtype||"Mixed")+'</div></div>'+
-      '<div class="q-code-block">'+(q.lines||[]).join("\n").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")+'</div>'+
-      '<div class="q-opts-row">'+optsHtml+'</div>'+
-      '<div class="q-ans-row"><span class="q-ans-lbl">Answer:</span><span class="q-ans-val">'+esc(q.answer)+'</span></div>'+
-      (q.explanation?'<div class="q-expl-txt"><strong style="color:var(--blue)">Why?</strong> '+esc(q.explanation)+'</div>':'')+
-      '<div class="q-action-row">'+
-        '<button class="q-action-btn approve" id="btn-rev-approve">Approve</button>'+
-        '<button class="q-action-btn reject" id="btn-rev-reject">Reject</button>'+
-        '<button class="q-action-btn skip" id="btn-rev-skip">Skip</button>'+
-      '</div>'+
-    '</div>';
-  document.getElementById("btn-rev-approve").addEventListener("click",function(){TB.approved.push(TB.generated.shift());renderReviewQueue();});
-  document.getElementById("btn-rev-reject").addEventListener("click",function(){TB.generated.shift();TB.rejected++;renderReviewQueue();});
-  document.getElementById("btn-rev-skip").addEventListener("click",function(){TB.generated.push(TB.generated.shift());renderReviewQueue();});
-  document.getElementById("btn-tb-to-publish").textContent="Proceed to Publish ("+TB.approved.length+" approved)";
 }
 
-document.getElementById("btn-tb-back-gen").addEventListener("click",function(){TB.approved=[];TB.rejected=0;TB.generated=[];tbGoStep(1);});
-document.getElementById("btn-tb-to-publish").addEventListener("click",function(){
-  if(!TB.approved.length){showToast("Approve at least one question first","error");return;}
-  tbGoStep(3); loadPublishedTests();
-});
-document.getElementById("btn-tb-back-review").addEventListener("click",function(){tbGoStep(2);});
+function atbRenderCurrent(){
+  var q = ATB.current;
+  if(!q) return;
+  var container = document.getElementById("atb-q-content");
+  var ltrs = ["A","B","C","D"];
+  var optsHtml = (q.options||[]).map(function(opt,i){
+    var isCorrect = opt===q.answer;
+    return '<div class="atb-q-opt'+(isCorrect?" correct":"")+'">'+
+      '<span class="atb-q-opt-ltr">'+ltrs[i]+'</span>'+esc(opt)+'</div>';
+  }).join("");
+  container.innerHTML =
+    '<div class="atb-q-header">'+
+      '<div class="atb-q-badge">'+esc(q.qtype||"Question")+'</div>'+
+    '</div>'+
+    '<div class="atb-q-lines">'+(q.lines||[]).join("\n").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")+'</div>'+
+    '<div class="atb-q-options">'+optsHtml+'</div>'+
+    (q.answer?'<div class="atb-q-answer">Answer: '+esc(q.answer)+'</div>':'')+
+    (q.explanation?'<div class="q-expl-txt">'+esc(q.explanation)+'</div>':'')+
+    '<div class="atb-q-buttons">'+
+      '<button class="btn-tb primary" id="btn-atb-add">+ Add to this test</button>'+
+      '<button class="btn-tb" id="btn-atb-next">Next &#x2192;</button>'+
+    '</div>';
+  document.getElementById("btn-atb-add").addEventListener("click", atbAddCurrent);
+  document.getElementById("btn-atb-next").addEventListener("click", atbGenerateQuestion);
+}
 
-document.getElementById("btn-tb-publish").addEventListener("click",function(){
-  var title    =document.getElementById("pub-title").value.trim();
-  var access   =document.getElementById("pub-access").value;
-  var duration =parseInt(document.getElementById("pub-duration").value);
-  var schedule =document.getElementById("pub-schedule").value;
-  var desc     =document.getElementById("pub-desc").value.trim();
-  if(!title)               {showToast("Enter a test title","error");return;}
-  if(!duration||duration<5){showToast("Enter duration (min 5 mins)","error");return;}
-  if(!schedule)            {showToast("Select a scheduled date and time","error");return;}
-  if(!TB.approved.length)  {showToast("No approved questions","error");return;}
-  var btn=this; btn.disabled=true; btn.textContent="Publishing...";
-  var scheduledAt=new Date(schedule);
-  var status=scheduledAt<=new Date()?"active":"upcoming";
+function atbAddCurrent(){
+  if(!ATB.current){ showToast("No question to add","info"); return; }
+  ATB.questions.push(ATB.current);
+  ATB.current = null;
+  atbRenderTray();
+  atbGenerateQuestion();
+}
+
+function atbRenderTray(){
+  var list = document.getElementById("atb-tray-list");
+  var count = document.getElementById("atb-tray-count");
+  var btn = document.getElementById("btn-atb-publish");
+  count.textContent = ATB.questions.length + " question" + (ATB.questions.length===1?"":"s");
+  btn.disabled = ATB.questions.length===0;
+  if(!ATB.questions.length){
+    list.innerHTML = '<div class="atb-tray-empty">No questions added yet. Pick topics and add questions one at a time.</div>';
+    return;
+  }
+  list.innerHTML = ATB.questions.map(function(q,i){
+    var preview = (q.lines||[]).join(" ").slice(0,60) + ((q.lines||[]).join(" ").length>60?"…":"");
+    return '<div class="atb-tray-item"><div class="atb-tray-item-txt">'+(i+1)+'. '+esc(preview||q.dtype)+'</div>'+
+      '<button class="atb-tray-item-rm" data-idx="'+i+'" aria-label="Remove">&times;</button></div>';
+  }).join("");
+  list.querySelectorAll(".atb-tray-item-rm").forEach(function(b){
+    b.addEventListener("click", function(){
+      var idx = parseInt(b.dataset.idx,10);
+      ATB.questions.splice(idx,1);
+      atbRenderTray();
+    });
+  });
+}
+
+// ─── Custom question modal ───
+function atbOpenCustom(){
+  document.getElementById("atb-custom-overlay").classList.add("open");
+  ["atb-cust-prompt","atb-cust-opts","atb-cust-topic"].forEach(function(id){
+    var el=document.getElementById(id); if(el && id==="atb-cust-topic"){el.value="Custom";} else if(el){el.value="";}
+  });
+}
+function atbCloseCustom(){ document.getElementById("atb-custom-overlay").classList.remove("open"); }
+function atbSaveCustom(){
+  var prompt = document.getElementById("atb-cust-prompt").value.trim();
+  var optsRaw = document.getElementById("atb-cust-opts").value.trim();
+  var topicLabel = document.getElementById("atb-cust-topic").value.trim() || "Custom";
+  if(!prompt){ showToast("Enter question text","error"); return; }
+  var opts = optsRaw.split("\n").map(function(x){return x.trim();}).filter(Boolean);
+  if(opts.length < 2){ showToast("Enter at least 2 options","error"); return; }
+  var correct = opts[0]; // first option is the correct answer
+  // Shuffle visually so correct isn't always first
+  var shuffled = opts.slice();
+  for(var i=shuffled.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1));
+    var t=shuffled[i];shuffled[i]=shuffled[j];shuffled[j]=t;
+  }
+  ATB.questions.push({
+    lines: prompt.split("\n"),
+    options: shuffled,
+    answer: correct,
+    qtype: "custom",
+    dtype: topicLabel,
+    explanation: ""
+  });
+  atbRenderTray();
+  atbCloseCustom();
+  showToast("Added to test","success");
+}
+
+// ─── From Board Bank picker ───
+function atbOpenBank(){
+  if(ATB.bankCache){ atbShowBankPicker(); return; }
+  showToast("Loading board questions...","info");
+  db.collection("boardQuestions").get().then(function(snap){
+    ATB.bankCache = [];
+    snap.forEach(function(doc){ ATB.bankCache.push({id:doc.id, data:doc.data()}); });
+    atbShowBankPicker();
+  }).catch(function(e){
+    showToast("Error loading bank: "+e.message,"error");
+  });
+}
+function atbShowBankPicker(){
+  if(!ATB.bankCache || !ATB.bankCache.length){
+    showToast("No questions in board bank yet","info");
+    return;
+  }
+  // Simple picker modal reusing detail overlay
+  var ov = document.getElementById("atb-detail-overlay");
+  document.getElementById("atb-detail-title").textContent = "Board Bank — Pick Questions";
+  document.getElementById("atb-detail-meta").innerHTML = ATB.bankCache.length + " questions available. Click to add to test.";
+  document.getElementById("atb-detail-qs").innerHTML = ATB.bankCache.map(function(item,i){
+    var q = item.data;
+    var preview = (q.lines||[q.description||q.prompt||""]).join(" ").slice(0,80);
+    return '<div class="atb-tray-item" data-bank-idx="'+i+'" style="cursor:pointer">'+
+      '<div class="atb-tray-item-txt">'+(q.topic||"—")+' · '+esc(preview)+'</div>'+
+      '<button class="btn-tb primary" style="padding:4px 10px;font-size:11px" data-bank-add="'+i+'">+ Add</button></div>';
+  }).join("");
+  document.getElementById("atb-detail-qs").querySelectorAll("[data-bank-add]").forEach(function(btn){
+    btn.addEventListener("click", function(ev){
+      ev.stopPropagation();
+      var i = parseInt(btn.dataset.bankAdd,10);
+      var item = ATB.bankCache[i];
+      var q = item.data;
+      ATB.questions.push({
+        lines: q.lines || [q.description || q.prompt || ""],
+        options: q.options || [],
+        answer: q.answer || "",
+        qtype: q.qtype || "board",
+        dtype: q.topic || "Board",
+        explanation: q.explanation || ""
+      });
+      atbRenderTray();
+      showToast("Added","success");
+    });
+  });
+  document.getElementById("btn-atb-detail-delete").style.display = "none";
+  ov.classList.add("open");
+}
+
+// ─── Publish / save test ───
+function atbOpenPublish(){
+  if(!ATB.questions.length){ showToast("Add at least one question","error"); return; }
+  document.getElementById("atb-pub-overlay").classList.add("open");
+}
+function atbClosePublish(){ document.getElementById("atb-pub-overlay").classList.remove("open"); }
+
+function atbSavePublish(){
+  var title = document.getElementById("atb-pub-title").value.trim();
+  var desc = document.getElementById("atb-pub-desc").value.trim();
+  var access = document.getElementById("atb-pub-access").value;
+  var duration = parseInt(document.getElementById("atb-pub-duration").value,10);
+  if(!title){ showToast("Enter a title","error"); return; }
+  if(!duration || duration<1){ showToast("Enter valid duration","error"); return; }
+
+  var btn = document.getElementById("btn-atb-pub-save");
+  btn.disabled = true; btn.textContent = "Saving...";
+
   db.collection("adminTests").add({
-    title:title, accessType:access, duration:duration, description:desc||"",
-    dtype:TB.dtype, totalQuestions:TB.approved.length, status:status,
-    scheduledAt:firebase.firestore.Timestamp.fromDate(scheduledAt),
-    createdAt:firebase.firestore.FieldValue.serverTimestamp(), leaderboard:true
+    title: title,
+    description: desc,
+    accessType: access,
+    duration: duration,
+    totalQuestions: ATB.questions.length,
+    status: "active",
+    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    scheduledAt: firebase.firestore.FieldValue.serverTimestamp(),
+    leaderboard: true,
+    createdBy: auth.currentUser ? auth.currentUser.uid : null
   }).then(function(testRef){
-    var batch=db.batch();
-    TB.approved.forEach(function(q,i){
-      var qKey="q"+(i+1);
+    var batch = db.batch();
+    ATB.questions.forEach(function(q,i){
+      var qKey = "q"+(i+1);
       batch.set(db.collection("adminTests").doc(testRef.id).collection("questions").doc(qKey),
-        {questionNumber:i+1,lines:q.lines||[],options:q.options||[],qtype:q.qtype||"Mixed"});
+        {questionNumber:i+1, lines:q.lines||[], options:q.options||[], qtype:q.qtype||"", dtype:q.dtype||""});
       batch.set(db.collection("adminTests").doc(testRef.id).collection("answers").doc(qKey),
-        {answer:q.answer||"",explanation:q.explanation||"",qtype:q.qtype||"Mixed"});
+        {answer:q.answer||"", explanation:q.explanation||"", qtype:q.qtype||""});
     });
     return batch.commit();
   }).then(function(){
-    btn.disabled=false; btn.textContent="Publish Test";
-    showToast("Test published!","success");
-    TB.approved=[]; TB.rejected=0; TB.generated=[];
-    document.getElementById("pub-title").value="";
-    document.getElementById("pub-duration").value="";
-    document.getElementById("pub-schedule").value="";
-    document.getElementById("pub-desc").value="";
-    tbGoStep(1); loadPublishedTests();
+    btn.disabled=false; btn.textContent="Save Test";
+    showToast("Test saved!","success");
+    ATB.questions = [];
+    atbRenderTray();
+    document.getElementById("atb-pub-title").value="";
+    document.getElementById("atb-pub-desc").value="";
+    document.getElementById("atb-pub-duration").value="30";
+    atbClosePublish();
+    loadAtbOverview();
   }).catch(function(e){
-    btn.disabled=false; btn.textContent="Publish Test";
+    btn.disabled=false; btn.textContent="Save Test";
     showToast("Error: "+e.message,"error");
   });
-});
-
-function loadPublishedTests(){
-  var tbody=document.getElementById("pub-tests-tbody");
-  if(!tbody) return;
-  tbody.innerHTML='<tr><td colspan="6" class="loading-row"><div class="spinner"></div></td></tr>';
-  db.collection("adminTests").get()
-  .then(function(snap){
-    if(snap.empty){ tbody.innerHTML='<tr><td colspan="6" class="tbl-empty">No tests published yet.</td></tr>'; return; }
-    var docs=[];
-    snap.forEach(function(doc){docs.push({id:doc.id,data:doc.data()});});
-    docs.sort(function(a,b){
-      var at=a.data.createdAt, bt=b.data.createdAt;
-      if(!at||!bt) return 0;
-      return(bt.seconds||0)-(at.seconds||0);
-    });
-    var rows=docs.map(function(d){
-      var t=d.data, id=d.id;
-      var sc=t.status==="active"?"var(--acc)":t.status==="upcoming"?"var(--amber)":"var(--muted)";
-      var dateStr="";
-      if(t.scheduledAt){try{var dt=t.scheduledAt.toDate?t.scheduledAt.toDate():new Date(t.scheduledAt);dateStr=dt.toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"});}catch(e){}}
-      return '<tr>'+
-        '<td style="font-weight:600">'+esc(t.title||"")+'</td>'+
-        '<td><span class="badge '+(t.accessType==="paid"?"paid":"free")+'">'+esc(t.accessType||"free")+'</span></td>'+
-        '<td style="font-family:var(--mono)">'+(t.totalQuestions||"—")+'</td>'+
-        '<td style="font-weight:700;color:'+sc+'">'+(t.status||"—")+'</td>'+
-        '<td style="font-size:11px;color:var(--muted)">'+dateStr+'</td>'+
-        '<td style="display:flex;gap:6px;padding:11px 16px">'+
-          (t.status!=="completed"?'<button class="tbl-btn ban" onclick="deleteTest(\''+id+'\')" style="font-size:10px;padding:3px 8px">Delete</button>':'')+
-          (t.status==="upcoming"?'<button class="tbl-btn upgrade" onclick="activateTest(\''+id+'\')" style="font-size:10px;padding:3px 8px;margin-left:4px">Activate</button>':'')+
-        '</td>'+
-      '</tr>';
-    });
-    tbody.innerHTML=rows.join("");
-  }).catch(function(e){ tbody.innerHTML='<tr><td colspan="6" class="tbl-empty">Error loading tests.</td></tr>'; console.warn(e.message); });
 }
 
-function deleteTest(id){
-  showModal("Delete Test","Delete this test? Students who attempted it will still see their results.","Delete",function(){
-    db.collection("adminTests").doc(id).update({status:"deleted"})
-    .then(function(){showToast("Test deleted","info");loadPublishedTests();})
-    .catch(function(e){showToast("Error: "+e.message,"error");});
+// ─── Overview: list all tests (admin + student) ───
+function loadAtbOverview(){
+  var list = document.getElementById("atb-overview-list");
+  var countEl = document.getElementById("atb-overview-count");
+  list.innerHTML = '<div style="padding:14px;text-align:center"><div class="spinner" style="margin:0 auto"></div></div>';
+  countEl.textContent = "Loading...";
+
+  var adminP = db.collection("adminTests").orderBy("createdAt","desc").limit(50).get();
+  var selfP  = db.collection("results").where("testType","==","self_generated").orderBy("submittedAt","desc").limit(50).get();
+
+  Promise.all([adminP, selfP]).then(function(results){
+    var items = [];
+    results[0].forEach(function(doc){
+      var d = doc.data();
+      items.push({
+        id: doc.id,
+        type: "admin",
+        title: d.title || "Mock Test",
+        count: d.totalQuestions || 0,
+        access: d.accessType || "everyone",
+        createdAt: d.createdAt ? (d.createdAt.toDate?d.createdAt.toDate():new Date(d.createdAt)) : null,
+        status: d.status || "active"
+      });
+    });
+    results[1].forEach(function(doc){
+      var d = doc.data();
+      items.push({
+        id: doc.id,
+        type: "self",
+        title: "My Test (by "+(d.userName||d.userEmail||"student")+")",
+        count: d.total || 0,
+        score: d.score,
+        percentage: d.percentage,
+        createdAt: d.submittedAt ? (d.submittedAt.toDate?d.submittedAt.toDate():new Date(d.submittedAt)) : null,
+        userEmail: d.userEmail,
+        topics: d.topics || []
+      });
+    });
+    items.sort(function(a,b){
+      return (b.createdAt?b.createdAt.getTime():0) - (a.createdAt?a.createdAt.getTime():0);
+    });
+    var adminCount = items.filter(function(x){return x.type==="admin";}).length;
+    var selfCount = items.filter(function(x){return x.type==="self";}).length;
+    countEl.textContent = adminCount + " admin · " + selfCount + " student tests";
+
+    if(!items.length){
+      list.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted)">No tests yet.</div>';
+      return;
+    }
+    list.innerHTML = items.map(function(it){
+      var date = it.createdAt ? it.createdAt.toLocaleString("en-IN",{day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"}) : "—";
+      var badge = it.type==="admin" ? '<span class="atb-ovv-badge admin">Admin · '+it.access+'</span>' : '<span class="atb-ovv-badge self">Student</span>';
+      var meta = "";
+      if(it.type==="admin"){
+        meta = it.count+" questions · "+(it.status||"active")+" · "+date;
+      } else {
+        meta = (it.topics||[]).join(", ") + " · Score " + it.score + "/" + it.count + " ("+it.percentage+"%) · "+date;
+      }
+      return '<div class="atb-ovv-item" data-type="'+it.type+'" data-id="'+it.id+'">'+
+        '<div><div class="atb-ovv-title">'+esc(it.title)+'</div><div class="atb-ovv-meta">'+esc(meta)+'</div></div>'+
+        badge +
+        '</div>';
+    }).join("");
+    list.querySelectorAll(".atb-ovv-item").forEach(function(el){
+      el.addEventListener("click", function(){
+        atbOpenDetail(el.dataset.type, el.dataset.id);
+      });
+    });
+  }).catch(function(e){
+    console.error(e);
+    list.innerHTML = '<div style="padding:20px;text-align:center;color:var(--red)">Error loading: '+esc(e.message)+'</div>';
+    countEl.textContent = "";
   });
 }
 
-function activateTest(id){
-  db.collection("adminTests").doc(id).update({status:"active"})
-  .then(function(){showToast("Test activated!","success");loadPublishedTests();})
-  .catch(function(e){showToast("Error: "+e.message,"error");});
+function atbOpenDetail(type, id){
+  ATB.detailTest = {type:type, id:id};
+  var ov = document.getElementById("atb-detail-overlay");
+  document.getElementById("btn-atb-detail-delete").style.display = type==="admin" ? "" : "none";
+  document.getElementById("atb-detail-title").textContent = "Loading...";
+  document.getElementById("atb-detail-meta").innerHTML = "";
+  document.getElementById("atb-detail-qs").innerHTML = '<div style="padding:20px;text-align:center"><div class="spinner" style="margin:0 auto"></div></div>';
+  ov.classList.add("open");
+
+  if(type==="admin"){
+    db.collection("adminTests").doc(id).get().then(function(snap){
+      if(!snap.exists){ document.getElementById("atb-detail-title").textContent="Not found"; return; }
+      var d = snap.data();
+      document.getElementById("atb-detail-title").textContent = d.title || "Admin Test";
+      document.getElementById("atb-detail-meta").innerHTML =
+        (d.totalQuestions||0)+" questions · Access: <b>"+(d.accessType||"everyone")+"</b> · Duration: "+(d.duration||"—")+" min";
+      // Load questions
+      return db.collection("adminTests").doc(id).collection("questions").get();
+    }).then(function(qSnap){
+      if(!qSnap){ return; }
+      var qs = [];
+      qSnap.forEach(function(doc){ qs.push(doc.data()); });
+      qs.sort(function(a,b){return (a.questionNumber||0)-(b.questionNumber||0);});
+      document.getElementById("atb-detail-qs").innerHTML = qs.map(function(q,i){
+        return '<div class="atb-tray-item" style="flex-direction:column;align-items:stretch"><div style="font-size:11px;color:var(--muted);margin-bottom:4px">Q'+(i+1)+' · '+esc(q.qtype||"")+'</div>'+
+          '<div style="font-family:var(--mono);font-size:12px;white-space:pre-wrap;color:var(--text)">'+esc((q.lines||[]).join("\n"))+'</div></div>';
+      }).join("");
+    }).catch(function(e){
+      document.getElementById("atb-detail-qs").innerHTML = '<div style="color:var(--red);padding:14px">Error: '+esc(e.message)+'</div>';
+    });
+  } else {
+    // Student self-test — show metadata only (no questions — already deleted via TTL)
+    db.collection("results").doc(id).get().then(function(snap){
+      if(!snap.exists){ document.getElementById("atb-detail-title").textContent="Not found"; return; }
+      var d = snap.data();
+      document.getElementById("atb-detail-title").textContent = "Student Test Result";
+      var date = d.submittedAt ? (d.submittedAt.toDate?d.submittedAt.toDate():new Date(d.submittedAt)).toLocaleString("en-IN") : "—";
+      document.getElementById("atb-detail-meta").innerHTML =
+        "<b>Student:</b> "+esc(d.userName||"?")+" ("+esc(d.userEmail||"")+")<br>"+
+        "<b>Score:</b> "+d.score+"/"+d.total+" ("+d.percentage+"%)<br>"+
+        "<b>Topics:</b> "+((d.topics||[]).join(", ")||"—")+"<br>"+
+        "<b>Time taken:</b> "+Math.round((d.totalTimeSecs||0)/60)+" min<br>"+
+        "<b>Submitted:</b> "+date;
+      document.getElementById("atb-detail-qs").innerHTML =
+        '<div style="padding:14px;color:var(--muted);font-size:12px;line-height:1.6;text-align:center">Test questions are auto-deleted after 24 hours by policy. Only score and metadata are retained.</div>';
+    });
+  }
 }
+
+function atbCloseDetail(){
+  document.getElementById("atb-detail-overlay").classList.remove("open");
+  ATB.detailTest = null;
+}
+
+function atbDeleteTest(){
+  if(!ATB.detailTest || ATB.detailTest.type!=="admin") return;
+  showModal("Delete Test","Permanently delete this admin test? Students who have attempted it keep their results.","Delete",function(){
+    db.collection("adminTests").doc(ATB.detailTest.id).update({status:"deleted"}).then(function(){
+      showToast("Deleted","info");
+      atbCloseDetail();
+      loadAtbOverview();
+    }).catch(function(e){ showToast("Error: "+e.message,"error"); });
+  });
+}
+
+function loadTestBuilder(){
+  atbUpdateChip();
+  atbRenderTray();
+  loadAtbOverview();
+  atbGenerateQuestion();
+}
+
+// Wire events
+document.addEventListener("DOMContentLoaded", function(){
+  var chip = document.getElementById("atb-chip");
+  if(chip) chip.addEventListener("click", function(e){
+    e.stopPropagation();
+    var isOpen = document.getElementById("atb-pop").classList.contains("open");
+    if(isOpen) atbClosePop(); else atbOpenPop();
+  });
+  var bd = document.getElementById("atb-pop-backdrop");
+  if(bd) bd.addEventListener("click", atbClosePop);
+  var cust = document.getElementById("btn-atb-custom");
+  if(cust) cust.addEventListener("click", atbOpenCustom);
+  var bank = document.getElementById("btn-atb-frombank");
+  if(bank) bank.addEventListener("click", atbOpenBank);
+  var custCancel = document.getElementById("btn-atb-cust-cancel");
+  if(custCancel) custCancel.addEventListener("click", atbCloseCustom);
+  var custSave = document.getElementById("btn-atb-cust-save");
+  if(custSave) custSave.addEventListener("click", atbSaveCustom);
+  var pubBtn = document.getElementById("btn-atb-publish");
+  if(pubBtn) pubBtn.addEventListener("click", atbOpenPublish);
+  var pubCancel = document.getElementById("btn-atb-pub-cancel");
+  if(pubCancel) pubCancel.addEventListener("click", atbClosePublish);
+  var pubSave = document.getElementById("btn-atb-pub-save");
+  if(pubSave) pubSave.addEventListener("click", atbSavePublish);
+  var detClose = document.getElementById("btn-atb-detail-close");
+  if(detClose) detClose.addEventListener("click", atbCloseDetail);
+  var detDel = document.getElementById("btn-atb-detail-delete");
+  if(detDel) detDel.addEventListener("click", atbDeleteTest);
+});
 
 // ═══ BOARD QUESTIONS — REDESIGNED ═══
 var bqCache = [];
@@ -1628,6 +2254,8 @@ function bqSelectTopic(topic){
   document.getElementById("bq-form-area").style.display="";
   document.querySelectorAll(".bq-topic-form").forEach(function(el){el.style.display="none";});
   var headings={
+    DataTypes:"Data Types — Add Question",
+    Expressions:"Expressions — Add Question",
     Functions:"Functions — Add Question",
     Modules:"Modules — Add Question",
     Exception:"Exception Handling — Add Question",
@@ -1637,6 +2265,7 @@ function bqSelectTopic(topic){
   };
   document.getElementById("bq-form-heading").textContent = headings[topic]||topic;
   var formMap={
+    DataTypes:"bq-form-datatypes", Expressions:"bq-form-expressions",
     Functions:"bq-form-functions", Modules:"bq-form-modules",
     Exception:"bq-form-exception", AssertionReason:"bq-form-ar",
     SQL:"bq-form-sql", Networking:"bq-form-networking"
@@ -1650,6 +2279,16 @@ function bqSelectTopic(topic){
   if(topic==="Networking") bqInitNetSubQs();
   // Init SQL sub-questions (start with 1)
   if(topic==="SQL"){ document.getElementById("sql-subqs").innerHTML=""; bqAddSubQ("sql"); }
+  // Default Data Types qtype visibility
+  if(topic==="DataTypes") dtToggleStatement(document.getElementById("dt-qtype").value||"");
+}
+
+// Show/hide MCQ fields based on qtype (Data Types)
+function dtToggleStatement(qtype){
+  var mcqFields = document.getElementById("dt-mcq-fields");
+  if(!mcqFields) return;
+  // MCQ only for predict_output
+  mcqFields.style.display = (qtype === "predict_output") ? "" : "none";
 }
 
 function bqBackToTopics(){
@@ -1827,30 +2466,26 @@ function bqUploadImage(prefix, docId, onDone){
 
 // ── Clear forms ──
 function bqClear(prefix){
-  var inputs=document.querySelectorAll('#bq-form-'+
-    (prefix==="fn"?"functions":prefix==="mod"?"modules":prefix==="ex"?"exception":
-     prefix==="ar"?"ar":prefix==="sql"?"sql":"networking")+
-    ' input, #bq-form-'+
-    (prefix==="fn"?"functions":prefix==="mod"?"modules":prefix==="ex"?"exception":
-     prefix==="ar"?"ar":prefix==="sql"?"sql":"networking")+
-    ' textarea, #bq-form-'+
-    (prefix==="fn"?"functions":prefix==="mod"?"modules":prefix==="ex"?"exception":
-     prefix==="ar"?"ar":prefix==="sql"?"sql":"networking")+
-    ' select');
-  inputs.forEach(function(el){
+  var formId = {
+    fn:"bq-form-functions", mod:"bq-form-modules", ex:"bq-form-exception",
+    ar:"bq-form-ar", sql:"bq-form-sql", net:"bq-form-networking",
+    dt:"bq-form-datatypes", exp:"bq-form-expressions"
+  }[prefix];
+  if(!formId) return;
+  var form = document.getElementById(formId);
+  if(!form) return;
+  form.querySelectorAll("input, textarea, select").forEach(function(el){
     if(el.type==="radio"||el.type==="checkbox"){el.checked=false;}
     else if(el.tagName==="SELECT"){el.selectedIndex=0;}
     else{el.value="";}
   });
-  // Clear options
   if(prefix==="fn"){document.getElementById("fn-options-wrap").innerHTML="";}
   if(prefix==="mod"){document.getElementById("mod-options-wrap").innerHTML="";}
   if(prefix==="ex"){document.getElementById("ex-options-wrap").innerHTML="";}
-  // Clear images
-  bqClearImage(prefix==="sql"?"sql":"net");
-  // Reset sub-questions
+  if(prefix==="sql"||prefix==="net"){ bqClearImage(prefix==="sql"?"sql":"net"); }
   if(prefix==="sql"){document.getElementById("sql-subqs").innerHTML="";bqAddSubQ("sql");}
   if(prefix==="net"){bqInitNetSubQs();}
+  if(prefix==="dt"){ dtToggleStatement(""); }
   bqEditing=null;
 }
 
@@ -1959,12 +2594,57 @@ function bqSave(topic){
     data.subLabels=NET_SUBQ_LABELS;
   }
 
+  else if(topic==="DataTypes"){
+    var sub = document.getElementById("dt-subtopic").value;
+    var qt  = document.getElementById("dt-qtype").value;
+    var prompt = document.getElementById("dt-prompt").value.trim();
+    var ans = document.getElementById("dt-answer").value.trim();
+    if(!sub){ showToast("Select a data type","error"); return; }
+    if(!qt){ showToast("Select question type","error"); return; }
+    if(!prompt){ showToast("Enter the question / prompt","error"); return; }
+    if(!ans){ showToast("Enter the correct answer","error"); return; }
+    data.qtype = qt;  // "predict_output" or "write_statement"
+    data.subtopic = sub; // String / List / Tuple / Dictionary
+    data.topic = "DataTypes";
+    data.lines = prompt.split("\n").filter(function(l){return l.trim();});
+    data.answer = ans;
+    data.explanation = document.getElementById("dt-explanation").value.trim();
+    if(qt === "predict_output"){
+      // Gather MCQ options
+      var opts = ["dt-opt-a","dt-opt-b","dt-opt-c","dt-opt-d"].map(function(id){
+        return document.getElementById(id).value.trim();
+      }).filter(Boolean);
+      if(opts.length < 2){ showToast("Provide at least 2 options for MCQ","error"); return; }
+      // Ensure correct answer is in options; if not, prepend it
+      if(opts.indexOf(ans)<0) opts.unshift(ans);
+      data.options = opts.slice(0,4);
+    }
+  }
+
+  else if(topic==="Expressions"){
+    var prompt = document.getElementById("exp-prompt").value.trim();
+    var ans = document.getElementById("exp-answer").value.trim();
+    if(!prompt){ showToast("Enter the expression","error"); return; }
+    if(!ans){ showToast("Enter the correct answer","error"); return; }
+    data.qtype = "predict_output";
+    data.topic = "Expressions";
+    data.lines = prompt.split("\n").filter(function(l){return l.trim();});
+    data.answer = ans;
+    data.explanation = document.getElementById("exp-explanation").value.trim();
+    var opts = ["exp-opt-a","exp-opt-b","exp-opt-c","exp-opt-d"].map(function(id){
+      return document.getElementById(id).value.trim();
+    }).filter(Boolean);
+    if(opts.length < 2){ showToast("Provide at least 2 options","error"); return; }
+    if(opts.indexOf(ans)<0) opts.unshift(ans);
+    data.options = opts.slice(0,4);
+  }
+
   // Save to Firestore (with optional image upload)
   var saveBtn=event.target;
   saveBtn.disabled=true; saveBtn.textContent="Saving...";
 
-  var prefix = {Functions:"fn",Modules:"mod",Exception:"ex",AssertionReason:"ar",SQL:"sql",Networking:"net"}[topic];
-  var hasImage = _bqImgFiles[prefix==="fn"||prefix==="mod"||prefix==="ex"||prefix==="ar"?null:prefix];
+  var prefix = {Functions:"fn",Modules:"mod",Exception:"ex",AssertionReason:"ar",SQL:"sql",Networking:"net",DataTypes:"dt",Expressions:"exp"}[topic];
+  var hasImage = _bqImgFiles[prefix==="fn"||prefix==="mod"||prefix==="ex"||prefix==="ar"||prefix==="dt"||prefix==="exp"?null:prefix];
 
   // For SQL and Networking — handle image upload
   if((topic==="SQL"||topic==="Networking") && _bqImgFiles[prefix]){
@@ -2062,6 +2742,425 @@ function bqDelete(id){
 }
 
 function loadBoardQuestions(){ bqLoadExisting(); }
+
+// ═══════════════════════════════════════════════════════════════════
+//   ANALYTICS DASHBOARD — Activity (C) + Performance (B) + Drilldown (D)
+//   Data sources:
+//     adminTests       → test metadata
+//     results          → submissions (with .analytics sub-object)
+//     selfTests        → self-tests (for Activity completion rate)
+//     users            → student name lookup
+// ═══════════════════════════════════════════════════════════════════
+
+var AN = {
+  loaded: false,
+  results: [],      // all submission results
+  tests: [],        // all admin tests
+  selfTests: [],    // all paid-student generated tests
+  users: {},        // uid → {name, email}
+  currentTab: "activity",
+  drillTestId: null
+};
+
+function loadAnalytics(){
+  switchAnTab(AN.currentTab);
+  // Fetch once — subsequent tab switches reuse cached data
+  if(AN.loaded){ renderAnTab(AN.currentTab); return; }
+
+  var analyticsPromises = [
+    db.collection("adminTests").orderBy("createdAt","desc").limit(100).get(),
+    db.collection("results").orderBy("submittedAt","desc").limit(500).get(),
+    db.collection("selfTests").orderBy("createdAt","desc").limit(200).get(),
+    db.collection("users").limit(500).get()
+  ];
+  // Render loading states
+  document.getElementById("an-kpis").innerHTML = '<div class="an-kpi"><div class="spinner" style="margin:0 auto"></div></div>';
+  Promise.all(analyticsPromises).then(function(snaps){
+    AN.tests = [];
+    snaps[0].forEach(function(doc){ AN.tests.push(Object.assign({id:doc.id}, doc.data())); });
+    AN.results = [];
+    snaps[1].forEach(function(doc){ AN.results.push(Object.assign({id:doc.id}, doc.data())); });
+    AN.selfTests = [];
+    snaps[2].forEach(function(doc){ AN.selfTests.push(Object.assign({id:doc.id}, doc.data())); });
+    AN.users = {};
+    snaps[3].forEach(function(doc){ var d=doc.data(); AN.users[doc.id] = {name:d.name||"", email:d.email||""}; });
+    AN.loaded = true;
+    renderAnTab(AN.currentTab);
+  }).catch(function(e){
+    console.error("Analytics load failed:", e);
+    document.getElementById("an-kpis").innerHTML = '<div style="color:var(--red);padding:14px">Error loading analytics: '+esc(e.message)+'</div>';
+  });
+}
+
+function switchAnTab(tab){
+  AN.currentTab = tab;
+  document.querySelectorAll(".an-tab").forEach(function(b){ b.classList.toggle("active", b.dataset.anTab===tab); });
+  document.querySelectorAll(".an-panel").forEach(function(p){ p.classList.toggle("active", p.id==="an-panel-"+tab); });
+  if(AN.loaded) renderAnTab(tab);
+}
+
+function renderAnTab(tab){
+  if(tab==="activity")    renderActivityTab();
+  if(tab==="performance") renderPerformanceTab();
+  if(tab==="tests")       renderTestsTab();
+}
+
+// ──── TAB 1: ACTIVITY (for both admin-created AND paid student-generated tests) ────
+function renderActivityTab(){
+  var kpis = document.getElementById("an-kpis");
+
+  // KPIs
+  var totalAdminTests   = AN.tests.length;
+  var totalSelfTests    = AN.selfTests.length;
+  var totalSubmissions  = AN.results.length;
+  var selfCount         = AN.results.filter(function(r){return r.testType==="self_generated";}).length;
+  var adminCount        = AN.results.filter(function(r){return r.testType==="admin_published" || r.testType==="admin";}).length;
+
+  // Completion = submissions / total tests generated
+  var totalGenerated = totalAdminTests + totalSelfTests;
+  var completionRate = totalGenerated>0 ? Math.round((totalSubmissions/totalGenerated)*100) : 0;
+
+  // Avg duration (from totalTimeSecs on submissions)
+  var totalTime = AN.results.reduce(function(s,r){ return s + (r.totalTimeSecs||0); }, 0);
+  var avgDuration = AN.results.length>0 ? Math.round(totalTime / AN.results.length / 60) : 0;
+
+  kpis.innerHTML =
+    '<div class="an-kpi"><div class="an-kpi-val">'+totalAdminTests+'</div><div class="an-kpi-lbl">Admin Tests Created</div></div>'+
+    '<div class="an-kpi"><div class="an-kpi-val">'+totalSelfTests+'</div><div class="an-kpi-lbl">Student Tests Generated</div></div>'+
+    '<div class="an-kpi"><div class="an-kpi-val">'+totalSubmissions+'</div><div class="an-kpi-lbl">Total Submissions</div><div class="an-kpi-sub">'+adminCount+' mock · '+selfCount+' self</div></div>'+
+    '<div class="an-kpi"><div class="an-kpi-val">'+completionRate+'%</div><div class="an-kpi-lbl">Completion Rate</div><div class="an-kpi-sub">'+totalSubmissions+' of '+totalGenerated+' generated</div></div>'+
+    '<div class="an-kpi"><div class="an-kpi-val">'+avgDuration+'m</div><div class="an-kpi-lbl">Avg Test Duration</div></div>';
+
+  // Tests per day chart (last 30 days)
+  renderDailyChart();
+
+  // Completion rate breakdown
+  var compEl = document.getElementById("an-completion-rate");
+  var adminSubmitted = AN.results.filter(function(r){return r.testType==="admin_published" || r.testType==="admin";}).length;
+  var adminCompletion = totalAdminTests>0 ? Math.round((adminSubmitted / Math.max(totalAdminTests,1))*100) : 0;
+  // But admin tests can have many attempts. Better: submissions per test, avg.
+  var adminAvgAttempts = totalAdminTests>0 ? (adminSubmitted / totalAdminTests).toFixed(1) : "0";
+  var selfCompletion = totalSelfTests>0 ? Math.round((selfCount / totalSelfTests)*100) : 0;
+  compEl.innerHTML =
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">'+
+      '<div><div style="font-size:11px;color:var(--muted);margin-bottom:4px">ADMIN TESTS</div>'+
+        '<div style="font-size:16px;font-weight:700;color:var(--text)">'+adminAvgAttempts+' avg attempts/test</div>'+
+        '<div style="font-size:11px;color:var(--text2);margin-top:2px">'+adminSubmitted+' submissions across '+totalAdminTests+' tests</div>'+
+      '</div>'+
+      '<div><div style="font-size:11px;color:var(--muted);margin-bottom:4px">STUDENT-GENERATED</div>'+
+        '<div style="font-size:16px;font-weight:700;color:var(--text)">'+selfCompletion+'% submitted</div>'+
+        '<div style="font-size:11px;color:var(--text2);margin-top:2px">'+selfCount+' submitted · '+(totalSelfTests-selfCount)+' abandoned</div>'+
+      '</div>'+
+    '</div>';
+}
+
+// Simple canvas-based daily chart (last 30 days)
+function renderDailyChart(){
+  var canvas = document.getElementById("an-daily-chart");
+  if(!canvas) return;
+  var ctx = canvas.getContext("2d");
+  canvas.width = canvas.offsetWidth * 2;
+  canvas.height = canvas.offsetHeight * 2;
+  ctx.scale(2,2);
+  var W = canvas.offsetWidth, H = canvas.offsetHeight;
+
+  // Bucket: last 30 days
+  var buckets = {};
+  var days = [];
+  for(var i=29;i>=0;i--){
+    var d = new Date(); d.setDate(d.getDate()-i);
+    var key = d.toISOString().slice(0,10);
+    buckets[key] = { admin:0, self:0 };
+    days.push(key);
+  }
+  function bump(src, bucketKey){
+    if(buckets[bucketKey]) buckets[bucketKey][src]++;
+  }
+  AN.tests.forEach(function(t){
+    if(!t.createdAt) return;
+    try{
+      var d = t.createdAt.toDate ? t.createdAt.toDate() : new Date(t.createdAt);
+      bump("admin", d.toISOString().slice(0,10));
+    }catch(e){}
+  });
+  AN.selfTests.forEach(function(t){
+    if(!t.createdAt) return;
+    try{
+      var d = t.createdAt.toDate ? t.createdAt.toDate() : new Date(t.createdAt);
+      bump("self", d.toISOString().slice(0,10));
+    }catch(e){}
+  });
+
+  // Find max for scaling
+  var maxVal = 1;
+  days.forEach(function(k){ var s = buckets[k].admin + buckets[k].self; if(s>maxVal) maxVal = s; });
+
+  // Clear
+  ctx.clearRect(0,0,W,H);
+
+  var pad = 20;
+  var barAreaW = W - 2*pad;
+  var barW = barAreaW / days.length;
+  var barH = H - 2*pad;
+
+  // Draw bars
+  days.forEach(function(k, i){
+    var x = pad + i*barW;
+    var admin = buckets[k].admin;
+    var self  = buckets[k].self;
+    var totalPx = ((admin+self)/maxVal) * barH;
+    var adminPx = admin>0 ? (admin/(admin+self))*totalPx : 0;
+    // Self at bottom
+    ctx.fillStyle = "rgba(34,211,160,0.8)";
+    ctx.fillRect(x+1, H-pad-totalPx+adminPx, barW-2, totalPx-adminPx);
+    // Admin on top
+    ctx.fillStyle = "rgba(245,166,35,0.9)";
+    ctx.fillRect(x+1, H-pad-totalPx, barW-2, adminPx);
+  });
+
+  // Axis line
+  ctx.strokeStyle = "rgba(150,150,150,0.3)";
+  ctx.beginPath();
+  ctx.moveTo(pad, H-pad);
+  ctx.lineTo(W-pad, H-pad);
+  ctx.stroke();
+
+  // Date labels (every 5th day)
+  ctx.fillStyle = "#888";
+  ctx.font = "9px sans-serif";
+  for(var i=0; i<days.length; i+=5){
+    var x = pad + i*barW;
+    var label = days[i].slice(5); // MM-DD
+    ctx.fillText(label, x, H-pad+12);
+  }
+
+  // Legend
+  ctx.font = "10px sans-serif";
+  ctx.fillStyle = "rgba(245,166,35,0.9)";
+  ctx.fillRect(W-120, 6, 10, 10);
+  ctx.fillStyle = "#aaa";
+  ctx.fillText("Admin", W-105, 15);
+  ctx.fillStyle = "rgba(34,211,160,0.8)";
+  ctx.fillRect(W-60, 6, 10, 10);
+  ctx.fillStyle = "#aaa";
+  ctx.fillText("Self", W-45, 15);
+}
+
+// ──── TAB 2: PERFORMANCE (admin-created tests only) ────
+function renderPerformanceTab(){
+  var adminResults = AN.results.filter(function(r){ return r.testType==="admin_published" || r.testType==="admin"; });
+  var perfKpis = document.getElementById("an-perf-kpis");
+
+  if(!adminResults.length){
+    perfKpis.innerHTML = '<div class="an-kpi" style="grid-column:1/-1"><div style="color:var(--muted);font-size:13px">No admin test submissions yet.</div></div>';
+    document.getElementById("an-top-performers").innerHTML = "";
+    document.getElementById("an-bottom-performers").innerHTML = "";
+    document.getElementById("an-pass-fail").innerHTML = "";
+    return;
+  }
+
+  // Aggregate per student
+  var byStudent = {};
+  adminResults.forEach(function(r){
+    var uid = r.uid; if(!uid) return;
+    if(!byStudent[uid]){
+      var u = AN.users[uid] || {};
+      byStudent[uid] = {
+        uid: uid,
+        name: r.userName || u.name || "Student",
+        email: r.userEmail || u.email || "",
+        tests: 0, totalScore: 0, totalMax: 0, passed: 0, failed: 0
+      };
+    }
+    var s = byStudent[uid];
+    s.tests++;
+    s.totalScore += (r.score||0);
+    s.totalMax   += (r.total||0);
+    var pct = r.percentage || (r.total>0?Math.round(r.score/r.total*100):0);
+    if(pct >= 35) s.passed++; else s.failed++;
+  });
+  var students = Object.values(byStudent).map(function(s){
+    s.avgPct = s.totalMax>0 ? Math.round(s.totalScore/s.totalMax*100) : 0;
+    return s;
+  });
+  students.sort(function(a,b){return b.avgPct - a.avgPct;});
+
+  var totalStudents = students.length;
+  var passCount = adminResults.filter(function(r){
+    var pct = r.percentage || (r.total>0?Math.round(r.score/r.total*100):0);
+    return pct >= 35;
+  }).length;
+  var failCount = adminResults.length - passCount;
+  var avgScore = Math.round(adminResults.reduce(function(s,r){
+    return s + (r.percentage || (r.total>0?Math.round(r.score/r.total*100):0));
+  }, 0) / adminResults.length);
+
+  perfKpis.innerHTML =
+    '<div class="an-kpi"><div class="an-kpi-val">'+totalStudents+'</div><div class="an-kpi-lbl">Active Students</div></div>'+
+    '<div class="an-kpi"><div class="an-kpi-val">'+avgScore+'%</div><div class="an-kpi-lbl">Avg Score</div></div>'+
+    '<div class="an-kpi"><div class="an-kpi-val" style="color:var(--green)">'+passCount+'</div><div class="an-kpi-lbl">Pass</div><div class="an-kpi-sub">'+Math.round(passCount/adminResults.length*100)+'% pass rate</div></div>'+
+    '<div class="an-kpi"><div class="an-kpi-val" style="color:var(--red)">'+failCount+'</div><div class="an-kpi-lbl">Fail</div></div>';
+
+  // Top 10
+  var top = students.slice(0, 10);
+  document.getElementById("an-top-performers").innerHTML = top.map(function(s, i){
+    var color = s.avgPct>=80?"var(--green)":s.avgPct>=50?"var(--amber)":"var(--red)";
+    return '<div class="an-perf-row">'+
+      '<div><div class="an-perf-name">#'+(i+1)+' '+esc(s.name)+'</div><div class="an-perf-email">'+esc(s.email)+' · '+s.tests+' test'+(s.tests===1?"":"s")+'</div></div>'+
+      '<div><div class="an-perf-bar"><div class="an-perf-bar-fill" style="width:'+s.avgPct+'%;background:'+color+'"></div></div></div>'+
+      '<div class="an-perf-score" style="color:'+color+'">'+s.avgPct+'%</div>'+
+    '</div>';
+  }).join("");
+
+  // Bottom 10 (only if they've taken tests)
+  var bottom = students.slice().sort(function(a,b){return a.avgPct-b.avgPct;}).slice(0, 10);
+  document.getElementById("an-bottom-performers").innerHTML = bottom.map(function(s, i){
+    var color = s.avgPct>=50?"var(--amber)":"var(--red)";
+    return '<div class="an-perf-row">'+
+      '<div><div class="an-perf-name">'+esc(s.name)+'</div><div class="an-perf-email">'+esc(s.email)+' · '+s.tests+' test'+(s.tests===1?"":"s")+' · '+s.failed+' failed</div></div>'+
+      '<div><div class="an-perf-bar"><div class="an-perf-bar-fill" style="width:'+s.avgPct+'%;background:'+color+'"></div></div></div>'+
+      '<div class="an-perf-score" style="color:'+color+'">'+s.avgPct+'%</div>'+
+    '</div>';
+  }).join("");
+
+  // Score distribution histogram
+  var buckets = [0,0,0,0,0,0,0,0,0,0]; // 0-9, 10-19 ... 90-100
+  adminResults.forEach(function(r){
+    var pct = r.percentage || (r.total>0?Math.round(r.score/r.total*100):0);
+    var b = Math.min(9, Math.floor(pct/10));
+    buckets[b]++;
+  });
+  var maxB = Math.max.apply(null, buckets) || 1;
+  var labels = ["0-9","10-19","20-29","30-39","40-49","50-59","60-69","70-79","80-89","90-100"];
+  var passFailHtml = '<div style="display:flex;gap:16px;margin-bottom:10px;">'+
+    '<div style="flex:1"><div style="font-size:20px;font-weight:800;color:var(--green)">'+passCount+'</div><div style="font-size:10px;letter-spacing:.8px;color:var(--muted)">PASSED (≥35%)</div></div>'+
+    '<div style="flex:1"><div style="font-size:20px;font-weight:800;color:var(--red)">'+failCount+'</div><div style="font-size:10px;letter-spacing:.8px;color:var(--muted)">FAILED (&lt;35%)</div></div>'+
+    '</div>'+
+    '<div class="an-score-histo">'+
+      buckets.map(function(v){
+        var h = (v/maxB)*100;
+        return '<div class="an-score-histo-bar" style="height:'+h+'%">'+(v>0?'<span>'+v+'</span>':'')+'</div>';
+      }).join("")+
+    '</div>'+
+    '<div class="an-score-histo-labels">'+
+      labels.map(function(l){return '<div>'+l+'</div>';}).join("")+
+    '</div>';
+  document.getElementById("an-pass-fail").innerHTML = passFailHtml;
+}
+
+// ──── TAB 3: TESTS DRILLDOWN (admin tests only) ────
+function renderTestsTab(){
+  var picker = document.getElementById("an-tests-picker");
+  if(!AN.tests.length){
+    picker.innerHTML = '<div style="color:var(--muted);padding:14px">No admin tests created yet.</div>';
+    return;
+  }
+  picker.innerHTML = AN.tests.map(function(t){
+    var submissions = AN.results.filter(function(r){return r.testId===t.id;}).length;
+    var date = t.createdAt ? (t.createdAt.toDate?t.createdAt.toDate():new Date(t.createdAt)).toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"}) : "—";
+    return '<div class="an-test-card'+(AN.drillTestId===t.id?" active":"")+'" data-test-id="'+t.id+'">'+
+      '<div><div class="an-test-card-title">'+esc(t.title||"Untitled")+'</div>'+
+        '<div class="an-test-card-meta">'+(t.totalQuestions||0)+' questions · '+(t.accessType||"free")+' · '+date+'</div></div>'+
+      '<div style="font-size:11px;color:var(--acc);font-weight:700">'+submissions+' attempt'+(submissions===1?"":"s")+'</div>'+
+    '</div>';
+  }).join("");
+  picker.querySelectorAll(".an-test-card").forEach(function(card){
+    card.addEventListener("click", function(){
+      AN.drillTestId = card.dataset.testId;
+      renderTestsTab();
+      drillIntoTest(card.dataset.testId);
+    });
+  });
+}
+
+function drillIntoTest(testId){
+  var detail = document.getElementById("an-test-detail");
+  var test = AN.tests.find(function(t){return t.id===testId;});
+  if(!test){ detail.innerHTML = ""; return; }
+  var submissions = AN.results.filter(function(r){return r.testId===testId;});
+  if(!submissions.length){
+    detail.innerHTML = '<div class="an-chart-wrap"><div class="an-chart-title">No submissions yet</div><div style="color:var(--muted)">Waiting for students to attempt this test.</div></div>';
+    return;
+  }
+
+  var totalAttempts = submissions.length;
+  var avgPct = Math.round(submissions.reduce(function(s,r){return s + (r.percentage||0);}, 0) / totalAttempts);
+  var passCount = submissions.filter(function(r){return (r.percentage||0) >= 35;}).length;
+  var passRate = Math.round(passCount/totalAttempts*100);
+  var avgTime = Math.round(submissions.reduce(function(s,r){return s + (r.totalTimeSecs||0);}, 0) / totalAttempts / 60);
+
+  // Per-question difficulty (aggregate from conceptBreakdown — roughly)
+  // Also: aggregate topic-level accuracy
+  var topicAgg = {};
+  submissions.forEach(function(r){
+    var analytics = r.analytics || null;
+    if(analytics && analytics.topicAnalytics){
+      analytics.topicAnalytics.forEach(function(t){
+        if(!topicAgg[t.name]) topicAgg[t.name] = { correct:0, total:0 };
+        topicAgg[t.name].correct += (t.correct||0);
+        topicAgg[t.name].total   += (t.totalQuestions||0);
+      });
+    } else if(r.conceptBreakdown){
+      Object.entries(r.conceptBreakdown).forEach(function(e){
+        var name = e[0], d = e[1];
+        if(!topicAgg[name]) topicAgg[name] = { correct:0, total:0 };
+        topicAgg[name].correct += (d.correct||0);
+        topicAgg[name].total   += (d.total||0);
+      });
+    }
+  });
+  var topics = Object.entries(topicAgg).map(function(e){
+    var v = e[1];
+    return { name:e[0], accuracy: v.total>0?Math.round(v.correct/v.total*100):0, total:v.total };
+  }).sort(function(a,b){return a.accuracy - b.accuracy;}); // weakest first
+
+  // Per-student list (ranked)
+  var sorted = submissions.slice().sort(function(a,b){return (b.percentage||0) - (a.percentage||0);});
+
+  detail.innerHTML =
+    '<div class="an-kpi-grid">'+
+      '<div class="an-kpi"><div class="an-kpi-val">'+totalAttempts+'</div><div class="an-kpi-lbl">Attempts</div></div>'+
+      '<div class="an-kpi"><div class="an-kpi-val">'+avgPct+'%</div><div class="an-kpi-lbl">Average Score</div></div>'+
+      '<div class="an-kpi"><div class="an-kpi-val" style="color:var(--green)">'+passRate+'%</div><div class="an-kpi-lbl">Pass Rate</div><div class="an-kpi-sub">'+passCount+' of '+totalAttempts+'</div></div>'+
+      '<div class="an-kpi"><div class="an-kpi-val">'+avgTime+'m</div><div class="an-kpi-lbl">Avg Duration</div></div>'+
+    '</div>'+
+    // Topic accuracy
+    '<div class="an-chart-wrap">'+
+      '<div class="an-chart-title">Topic-level accuracy (across all attempts)</div>'+
+      (topics.length ?
+        topics.map(function(t){
+          var color = t.accuracy>=70?"var(--green)":t.accuracy>=50?"var(--amber)":"var(--red)";
+          return '<div class="an-perf-row">'+
+            '<div class="an-perf-name">'+esc(t.name)+(t.accuracy<50?' <span style="color:var(--red);font-size:9px;margin-left:6px">STRUGGLING</span>':'')+'</div>'+
+            '<div><div class="an-perf-bar"><div class="an-perf-bar-fill" style="width:'+t.accuracy+'%;background:'+color+'"></div></div></div>'+
+            '<div class="an-perf-score" style="color:'+color+'">'+t.accuracy+'%</div>'+
+          '</div>';
+        }).join("")
+        : '<div style="color:var(--muted)">No topic analytics yet.</div>')+
+    '</div>'+
+    // Student results
+    '<div class="an-chart-wrap">'+
+      '<div class="an-chart-title">All attempts (ranked by score)</div>'+
+      sorted.map(function(r, i){
+        var pct = r.percentage || 0;
+        var color = pct>=80?"var(--green)":pct>=50?"var(--amber)":"var(--red)";
+        var date = r.submittedAt ? (r.submittedAt.toDate?r.submittedAt.toDate():new Date(r.submittedAt)).toLocaleDateString("en-IN") : "";
+        return '<div class="an-perf-row">'+
+          '<div><div class="an-perf-name">#'+(i+1)+' '+esc(r.userName || (AN.users[r.uid] && AN.users[r.uid].name) || "?")+'</div>'+
+            '<div class="an-perf-email">'+esc(r.userEmail||"")+' · '+date+'</div></div>'+
+          '<div><div class="an-perf-bar"><div class="an-perf-bar-fill" style="width:'+pct+'%;background:'+color+'"></div></div></div>'+
+          '<div class="an-perf-score" style="color:'+color+'">'+r.score+'/'+r.total+' ('+pct+'%)</div>'+
+        '</div>';
+      }).join("")+
+    '</div>';
+}
+
+// Wire tab buttons
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelectorAll(".an-tab").forEach(function(b){
+    b.addEventListener("click", function(){ switchAnTab(b.dataset.anTab); });
+  });
+});
 </script>
 </body>
 </html>

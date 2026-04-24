@@ -24,34 +24,36 @@
 }
 
 html[data-theme="paper"]{
-  /* Theme 2: Paper White — warm off-white, navy + terracotta */
-  --bg:#FAF6EF;--surf:#FFFFFF;--card:#F5EFE3;--bdr:#E2D9C5;--bdr2:#CEBFA4;
-  --gold:#C9681C;--gold2:#DF8F3B;--gold3:#F0B572;
-  --gdim:rgba(201,104,28,.09);--gdim2:rgba(201,104,28,.04);--gglow:rgba(201,104,28,.18);
-  --green:#2E7D5B;--gndim:rgba(46,125,91,.10);
-  --red:#C8394E;--rddim:rgba(200,57,78,.08);
-  --blue:#1E4D8C;--bldim:rgba(30,77,140,.08);
-  --amber:#C08015;--ambdim:rgba(192,128,21,.08);
-  --text:#1A2440;--text2:#4D5878;--muted:#8A93AB;
-  --cbg:#FEF9EF;--kw:#1E4D8C;--str:#C9681C;--num:#2E7D5B;--punc:#9B2C66;--cmt:#A8A090;
-  --acc:#2E7D5B;--accdim:rgba(46,125,91,.12);
-  --s2:#F5EFE3;--s3:#EDE4D2;
-  --shadow:0 12px 40px rgba(26,36,64,.14);
+  /* Theme 2: Paper Cream — warm off-white paper, rich navy text, terracotta accent.
+     Designed for strong contrast and comfortable reading on screens. */
+  --bg:#F1E9D6;--surf:#FBF6E8;--card:#FFFDF4;--bdr:#D4C5A3;--bdr2:#B8A478;
+  --gold:#A64B1F;--gold2:#C56532;--gold3:#E38454;
+  --gdim:rgba(166,75,31,.12);--gdim2:rgba(166,75,31,.05);--gglow:rgba(166,75,31,.24);
+  --green:#1F6B47;--gndim:rgba(31,107,71,.14);
+  --red:#B82A3D;--rddim:rgba(184,42,61,.10);
+  --blue:#143661;--bldim:rgba(20,54,97,.09);
+  --amber:#A65F0E;--ambdim:rgba(166,95,14,.10);
+  --text:#14243F;--text2:#3E4D6B;--muted:#7A7560;
+  --cbg:#F8F0DE;--kw:#143661;--str:#A64B1F;--num:#1F6B47;--punc:#7A1A4D;--cmt:#948872;
+  --acc:#1F6B47;--accdim:rgba(31,107,71,.14);
+  --s2:#F0E7D0;--s3:#E5D9BD;
+  --shadow:0 12px 40px rgba(20,36,63,.18);
 }
 
 html[data-theme="forest"]{
-  /* Theme 3: Forest Slate — deep slate-blue + soft teal + warm beige */
-  --bg:#0D1A24;--surf:#152735;--card:#1D3344;--bdr:#2B4457;--bdr2:#3D5A72;
-  --gold:#E8B37A;--gold2:#F0C69B;--gold3:#F7DDBA;
-  --gdim:rgba(232,179,122,.13);--gdim2:rgba(232,179,122,.06);--gglow:rgba(232,179,122,.22);
-  --green:#66D4C4;--gndim:rgba(102,212,196,.12);
-  --red:#E87A7E;--rddim:rgba(232,122,126,.11);
-  --blue:#7FB8D6;--bldim:rgba(127,184,214,.10);
-  --amber:#E8B37A;--ambdim:rgba(232,179,122,.10);
-  --text:#E8EEF2;--text2:#9AB2C2;--muted:#5E7588;
-  --cbg:#0B1821;--kw:#7FB8D6;--str:#E8B37A;--num:#66D4C4;--punc:#D68AB0;--cmt:#3E5B72;
-  --acc:#66D4C4;--accdim:rgba(102,212,196,.14);
-  --s2:#122330;--s3:#1A2E3F;
+  /* Theme 3: Deep Forest — rich forest green, sage accents, warm cream text.
+     Visually distinct from Midnight (no blues, no gold). */
+  --bg:#0A1F18;--surf:#11302A;--card:#1A4135;--bdr:#244F44;--bdr2:#366E5E;
+  --gold:#D4A574;--gold2:#E8C397;--gold3:#F4DAB2;
+  --gdim:rgba(212,165,116,.14);--gdim2:rgba(212,165,116,.06);--gglow:rgba(212,165,116,.24);
+  --green:#7FD4A4;--gndim:rgba(127,212,164,.14);
+  --red:#E5857C;--rddim:rgba(229,133,124,.11);
+  --blue:#A8D4C9;--bldim:rgba(168,212,201,.10);
+  --amber:#E8C37A;--ambdim:rgba(232,195,122,.12);
+  --text:#EEF4E8;--text2:#AAC1B3;--muted:#6B8278;
+  --cbg:#071A14;--kw:#A8D4C9;--str:#D4A574;--num:#7FD4A4;--punc:#D9A2B8;--cmt:#446052;
+  --acc:#7FD4A4;--accdim:rgba(127,212,164,.16);
+  --s2:#0E2A22;--s3:#163A32;
   --shadow:0 20px 56px rgba(0,0,0,.5);
 }
 
@@ -556,6 +558,84 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
   .sp-limit-grid{grid-template-columns:1fr;}
 }
 
+/* ──── MY TEST panel ──── */
+.mt-wrap{max-width:640px;width:100%;display:flex;flex-direction:column;gap:14px;}
+.mt-head{}
+.mt-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:800;color:var(--text);margin-bottom:4px;}
+.mt-sub{font-size:13px;color:var(--text2);line-height:1.55;}
+.mt-quota{background:var(--gdim);border:1px solid rgba(245,166,35,.28);border-radius:10px;padding:9px 13px;font-size:12.5px;color:var(--text);}
+.mt-quota b{color:var(--gold);font-family:'JetBrains Mono',monospace;}
+.mt-section-label{font-size:10.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--gold2);margin-top:6px;display:flex;align-items:center;gap:8px;}
+.mt-section-label::before{content:'';width:3px;height:11px;background:var(--gold);border-radius:2px;}
+
+.mt-topic-card{background:var(--surf);border:1px solid var(--bdr);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:9px;}
+.mt-topic-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;}
+.mt-topic-name{font-family:'Outfit',sans-serif;font-size:15px;font-weight:800;color:var(--gold);}
+.mt-topic-rm{width:26px;height:26px;border-radius:7px;background:transparent;border:1px solid var(--bdr2);color:var(--text2);cursor:pointer;font-size:17px;line-height:1;padding:0;font-family:inherit;transition:all .12s;}
+.mt-topic-rm:hover{border-color:var(--red);color:var(--red);}
+.mt-topic-lbl{font-size:10.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);}
+
+.mt-qtype-row{display:flex;flex-wrap:wrap;gap:6px;}
+.mt-qt-cb{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;background:var(--cbg);border:1.5px solid var(--bdr2);border-radius:7px;cursor:pointer;font-family:'Outfit',sans-serif;font-size:11.5px;font-weight:600;color:var(--text2);transition:all .12s;user-select:none;}
+.mt-qt-cb:hover{border-color:var(--acc);color:var(--text);}
+.mt-qt-cb.checked{background:var(--accdim);border-color:var(--acc);color:var(--acc);font-weight:700;}
+.mt-qt-box{display:inline-flex;width:14px;height:14px;border:1.5px solid var(--bdr2);border-radius:3px;background:var(--surf);flex-shrink:0;align-items:center;justify-content:center;position:relative;}
+.mt-qt-cb.checked .mt-qt-box{background:var(--acc);border-color:var(--acc);}
+.mt-qt-cb.checked .mt-qt-box::after{content:"\2713";color:#000;font-size:10px;font-weight:900;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);line-height:1;}
+
+.mt-count-row{display:flex;gap:6px;flex-wrap:wrap;}
+.mt-count-btn{width:40px;height:38px;border-radius:8px;background:var(--cbg);border:1.5px solid var(--bdr2);color:var(--text2);font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;cursor:pointer;transition:all .12s;}
+.mt-count-btn:hover{border-color:var(--gold);color:var(--gold);}
+.mt-count-btn.active{background:var(--gold);border-color:var(--gold);color:#000;}
+
+.mt-empty{background:var(--surf);border:1.5px dashed var(--bdr2);border-radius:11px;padding:22px 18px;text-align:center;color:var(--text2);font-size:13px;line-height:1.6;}
+.mt-add-topic{padding:11px 16px;background:var(--gdim);border:1.5px dashed var(--gold);border-radius:10px;color:var(--gold);font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .12s;align-self:stretch;}
+.mt-add-topic:hover{background:var(--gold);color:#000;}
+
+/* Time picker */
+.mt-time-wrap{background:var(--surf);border:1px solid var(--bdr);border-radius:12px;padding:13px;display:flex;flex-direction:column;gap:10px;}
+.mt-time-hint{font-size:12px;color:var(--muted);}
+.mt-time-presets{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+.mt-time-preset{background:var(--cbg);border:1.5px solid var(--bdr2);border-radius:9px;padding:8px 6px;color:var(--text2);font-family:'Outfit',sans-serif;font-size:11.5px;font-weight:700;cursor:pointer;transition:all .12s;text-align:center;line-height:1.25;}
+.mt-time-preset:hover{border-color:var(--gold);color:var(--gold);}
+.mt-time-preset.active{background:var(--gdim);border-color:var(--gold);color:var(--gold);}
+.mt-time-val{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;margin-top:2px;}
+.mt-time-custom{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--text2);}
+.mt-time-custom input{width:70px;padding:6px 10px;background:var(--cbg);border:1.5px solid var(--bdr2);border-radius:7px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;outline:none;}
+.mt-time-custom input:focus{border-color:var(--gold);}
+.mt-time-range{font-size:11px;color:var(--muted);}
+
+.mt-generate{padding:13px 18px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;border:none;border-radius:11px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all .15s;letter-spacing:.3px;box-shadow:0 3px 14px rgba(245,166,35,.22);}
+.mt-generate:hover:not(:disabled){box-shadow:0 5px 22px rgba(245,166,35,.38);transform:translateY(-1px);}
+.mt-generate:disabled{opacity:.45;cursor:default;box-shadow:none;}
+
+/* Topic picker modal */
+.mt-picker-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:800;display:flex;align-items:center;justify-content:center;padding:14px;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);}
+.mt-picker-card{background:var(--surf);border:1px solid var(--bdr2);border-radius:16px;padding:20px;max-width:420px;width:100%;box-shadow:0 24px 64px rgba(0,0,0,.6);}
+.mt-picker-title{font-family:'Outfit',sans-serif;font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--gold2);margin-bottom:12px;}
+.mt-picker-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:12px;}
+.mt-picker-pill{padding:10px;background:var(--cbg);border:1.5px solid var(--bdr2);border-radius:9px;color:var(--text);font-family:'Outfit',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;transition:all .12s;}
+.mt-picker-pill:hover{border-color:var(--gold);color:var(--gold);background:var(--gdim);}
+.mt-picker-close{width:100%;padding:9px;background:transparent;border:1px solid var(--bdr2);border-radius:9px;color:var(--text2);font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;cursor:pointer;}
+.mt-picker-close:hover{border-color:var(--red);color:var(--red);}
+
+@media(max-width:500px){.mt-picker-grid{grid-template-columns:1fr;}}
+
+.practice-limit-bar{margin-bottom:10px;}
+.plb-inner{background:var(--surf);border:1px solid var(--bdr);border-radius:10px;padding:8px 12px;}
+.plb-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
+.plb-name{font-size:11.5px;font-weight:700;color:var(--text2);letter-spacing:.3px;}
+.plb-pct{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;color:var(--gold);}
+.plb-track{height:4px;background:var(--bdr2);border-radius:999px;overflow:hidden;}
+.plb-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:999px;transition:width .4s;}
+.plb-inner.done .plb-name,.plb-inner.done .plb-pct{color:var(--green);}
+.plb-inner.done .plb-fill{background:linear-gradient(90deg,var(--green),#3FE8B8);}
+
+/* Popover intro */
+.sp-intro{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--bdr);}
+.sp-intro-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:800;color:var(--text);margin-bottom:2px;}
+.sp-intro-sub{font-size:11.5px;color:var(--muted);}
+
 /* ──── LIMIT PROGRESS: done state green ──── */
 .lp-row.done .lp-name,.lp-row.done .lp-pct{color:var(--green)!important;}
 .lp-row.done .lp-bar-fill{background:linear-gradient(90deg,var(--green),#3FE8B8)!important;}
@@ -578,6 +658,23 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 .profile-clear-btn{padding:8px 14px;background:transparent;border:1.5px solid var(--bdr2);border-radius:8px;color:var(--text2);font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .12s;align-self:flex-start;}
 .profile-clear-btn:hover{border-color:var(--red);color:var(--red);}
 
+/* My Stats grid */
+.profile-stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.profile-stat{background:var(--cbg);border:1px solid var(--bdr);border-radius:8px;padding:10px 6px;text-align:center;min-width:0;}
+.profile-stat-val{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:800;color:var(--text);line-height:1;margin-bottom:4px;}
+.profile-stat-lbl{font-size:9px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);}
+.profile-stat.sc .profile-stat-val{color:var(--green);}
+.profile-stat.sw .profile-stat-val{color:var(--red);}
+.profile-stat.ss .profile-stat-val{color:var(--gold);}
+.profile-stat.sb .profile-stat-val{color:var(--blue);}
+@media(max-width:500px){.profile-stats-grid{grid-template-columns:repeat(3,1fr);}.profile-stat-val{font-size:17px;}}
+
+/* Sign out card */
+.profile-signout-card{padding:0;border:none;background:transparent;}
+.profile-signout-btn{width:100%;padding:12px 14px;background:var(--surf);border:1.5px solid var(--bdr2);border-radius:12px;color:var(--red);font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .12s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.profile-signout-btn:hover{border-color:var(--red);background:var(--rddim);}
+.profile-signout-btn span{font-size:15px;}
+
 /* Theme swatches */
 .profile-theme-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 .theme-swatch{background:transparent;border:2px solid var(--bdr2);border-radius:11px;padding:8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:7px;transition:all .15s;font-family:'Outfit',sans-serif;color:var(--text2);font-size:11.5px;font-weight:700;}
@@ -592,13 +689,13 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
 .tsw-midnight::before{background:#F5A623;}
 .tsw-midnight::after{background:#22D3A0;}
 
-.tsw-paper{background:linear-gradient(135deg,#FAF6EF 0%,#F5EFE3 100%);}
-.tsw-paper::before{background:#C9681C;}
-.tsw-paper::after{background:#1E4D8C;}
+.tsw-paper{background:linear-gradient(135deg,#F1E9D6 0%,#FBF6E8 100%);}
+.tsw-paper::before{background:#A64B1F;}
+.tsw-paper::after{background:#143661;}
 
-.tsw-forest{background:linear-gradient(135deg,#0D1A24 0%,#152735 100%);}
-.tsw-forest::before{background:#E8B37A;}
-.tsw-forest::after{background:#66D4C4;}
+.tsw-forest{background:linear-gradient(135deg,#0A1F18 0%,#11302A 100%);}
+.tsw-forest::before{background:#D4A574;}
+.tsw-forest::after{background:#7FD4A4;}
 
 .tsw-name{display:block;white-space:nowrap;text-align:center;}
 
@@ -1092,6 +1189,12 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
     <div class="sel-pop" id="sel-pop" role="dialog" aria-label="Practice settings" aria-hidden="true">
       <div class="sel-pop-handle"></div>
 
+      <!-- Intro -->
+      <div class="sp-intro">
+        <div class="sp-intro-title">Choose what to practice</div>
+        <div class="sp-intro-sub">Pick a topic, question type and mode</div>
+      </div>
+
       <!-- Topic grid -->
       <div class="sp-section">
         <div class="sp-label">Topic</div>
@@ -1115,19 +1218,12 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
         </div>
         <div class="sp-mode-hint" id="sp-mode-hint"></div>
       </div>
-
-      <!-- Today's Limit -->
-      <div class="sp-section" id="sp-limit-section">
-        <div class="sp-label">Today's Progress</div>
-        <div class="sp-limit-grid" id="sp-limit-grid"></div>
-        <div class="sp-limit-footer">
-          <span>Resets at midnight</span>
-          <button class="sp-limit-upgrade" onclick="showUpgrade('Upgrade to Pro for unlimited practice!')">Upgrade &rarr;</button>
-        </div>
-      </div>
     </div>
   <!-- ═══ PRACTICE PANEL ═══ -->
   <div class="main-panel active" id="panel-practice">
+
+    <!-- Slim today's-limit bar (free only, hidden via JS for paid) -->
+    <div id="practice-limit-bar" class="practice-limit-bar" style="display:none"></div>
 
     <!-- Legacy controls (hidden) — new chip-based popover controls these. Retained so existing JS bindings still work. -->
     <div id="legacy-controls" style="display:none" aria-hidden="true">
@@ -1321,12 +1417,46 @@ body{min-height:100%;background:var(--bg);color:var(--text);font-family:'Outfit'
       <div class="profile-card">
         <div class="profile-card-head">
           <span class="profile-card-icon">&#x1F5C4;</span>
-          <span class="profile-card-title">Local Data</span>
+          <span class="profile-card-title">Clear my stats</span>
         </div>
-        <div class="profile-local-desc">Your progress is stored on this device. If you practice on multiple devices, you can reset this device's counters back to zero. Your account and past test results are not affected.</div>
-        <button class="profile-clear-btn" id="profile-clear-btn">Clear local progress</button>
+        <div class="profile-local-desc">This will reset your correct, wrong and streak counters on this device. Your account and past test results are not affected.</div>
+        <button class="profile-clear-btn" id="profile-clear-btn">Clear</button>
       </div>
 
+      <!-- My Stats -->
+      <div class="profile-card">
+        <div class="profile-card-head">
+          <span class="profile-card-icon">&#x1F4CA;</span>
+          <span class="profile-card-title">My Stats</span>
+        </div>
+        <div class="profile-stats-grid">
+          <div class="profile-stat"><div class="profile-stat-val" id="prof-done">0</div><div class="profile-stat-lbl">Done</div></div>
+          <div class="profile-stat sc"><div class="profile-stat-val" id="prof-correct">0</div><div class="profile-stat-lbl">Correct</div></div>
+          <div class="profile-stat sw"><div class="profile-stat-val" id="prof-wrong">0</div><div class="profile-stat-lbl">Wrong</div></div>
+          <div class="profile-stat ss"><div class="profile-stat-val" id="prof-streak">0</div><div class="profile-stat-lbl">Streak</div></div>
+          <div class="profile-stat sb"><div class="profile-stat-val" id="prof-best">0</div><div class="profile-stat-lbl">Best</div></div>
+        </div>
+      </div>
+
+      <!-- Today's Progress (free only) -->
+      <div class="profile-card" id="profile-limit-card" style="display:none">
+        <div class="profile-card-head">
+          <span class="profile-card-icon">&#x23F1;</span>
+          <span class="profile-card-title">Today's Progress</span>
+        </div>
+        <div id="profile-limit-grid" class="sp-limit-grid"></div>
+        <div class="sp-limit-footer">
+          <span>Resets at midnight</span>
+          <button class="sp-limit-upgrade" onclick="showUpgrade('Upgrade to Pro for unlimited practice!')">Upgrade &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Sign out -->
+      <div class="profile-card profile-signout-card">
+        <button class="profile-signout-btn" id="profile-signout-btn">
+          <span>&#x21AA;</span> Sign Out
+        </button>
+      </div>
     </div>
   </div>
 
@@ -1495,7 +1625,7 @@ function handleUser(user){
     }
     if(S.userData.banned){
       auth.signOut(); _userHandled=false; showScreen("login");
-      var note=document.getElementById("l-note");
+      var note=document.querySelector(".l-note");
       if(note){note.textContent="Your account has been suspended.";note.style.color="var(--red)";}
       return;
     }
@@ -2406,65 +2536,41 @@ function renderPopoverMode(){
   else hint.textContent = "";
 }
 
-// Today's Limit grid (free users)
+// Today's Limit — slim progress bar at top of practice panel (free only)
+// Full per-topic grid moved to Profile tab (renderProfileLimitGrid)
 function renderLimitGrid(){
-  var host = document.getElementById("sp-limit-grid");
-  if(!host) return;
-  if(S.plan==="paid"){
-    host.parentElement.style.display = "none";
-    return;
-  }
-  host.parentElement.style.display = "";
-
-  // Rows: today's concept topics + SQL + Networking
-  var rows = [];
-  var concepts = (S.todaysConcepts||["String","List"]).slice();
-  concepts.forEach(function(c){
-    var pct = 0, done = false;
-    if(typeof isConceptDone==="function") done = isConceptDone(c);
-    try{
-      if(typeof getConceptProgress==="function"){ pct = getConceptProgress(c); }
-      else {
-        var total = (S.allQuestions[c]||[]).length || 10;
-        var attempted = (S.progress && S.progress[c]) ? Object.keys(S.progress[c]).length : 0;
-        pct = total ? Math.min(100, Math.round(attempted/total*100)) : 0;
-      }
-    }catch(e){pct=done?100:0;}
-    if(done) pct = 100;
-    rows.push({name:c, pct:pct, done:done});
-  });
-  // SQL
-  var sqlLimit = 3, sqlDone = 0;
+  var bar = document.getElementById("practice-limit-bar");
+  if(!bar) return;
+  if(S.plan==="paid"){ bar.style.display="none"; return; }
+  bar.style.display = "";
+  // Compute a single topic's % for the currently-active topic
+  var dt = S.dtype || "String";
+  var pct = 0, label = dt;
+  var isConcept = ["String","List","Tuple","Dictionary"].indexOf(dt)>=0;
   try{
-    if(typeof sqlGetFreeUsage==="function"){
-      var u = sqlGetFreeUsage() || {};
-      sqlDone = Object.keys(u).reduce(function(s,k){
-        var v = u[k];
-        return s + (typeof v === "number" ? v : 0);
-      }, 0);
-    }
-  }catch(e){}
-  var sqlPct = Math.min(100, Math.round(sqlDone/sqlLimit*100));
-  rows.push({name:"SQL", pct:sqlPct, done:sqlPct>=100, lockIcon:sqlPct>=100});
-  // Networking
-  var netLimit = (typeof NET_FREE_DAILY_LIMIT!=="undefined") ? NET_FREE_DAILY_LIMIT : 5;
-  var netDone = 0;
-  try{
-    if(typeof netGetFreeUsage==="function"){
+    if(isConcept){
+      var done = (typeof isConceptDone==="function") ? isConceptDone(dt) : false;
+      var total = (S.allQuestions[dt]||[]).length || 10;
+      var attempted = (S.progress && S.progress[dt]) ? Object.keys(S.progress[dt]).length : 0;
+      pct = total ? Math.min(100, Math.round(attempted/total*100)) : 0;
+      if(done) pct = 100;
+    } else if(dt==="SQL" && typeof sqlGetFreeUsage==="function"){
+      var u = sqlGetFreeUsage()||{};
+      var used = Object.keys(u).reduce(function(s,k){return s+(typeof u[k]==="number"?u[k]:0);},0);
+      var lim = (typeof SQL_FREE_PER_QTYPE!=="undefined"?SQL_FREE_PER_QTYPE:3)*2;
+      pct = Math.min(100, Math.round(used/lim*100));
+    } else if(dt==="Networking" && typeof netGetFreeUsage==="function"){
       var nu = netGetFreeUsage();
-      netDone = (nu && typeof nu === "object") ? (nu.count || 0) : (nu || 0);
+      var nc = (nu && typeof nu==="object") ? (nu.count||0) : 0;
+      var nlim = (typeof NET_FREE_DAILY_LIMIT!=="undefined"?NET_FREE_DAILY_LIMIT:5);
+      pct = Math.min(100, Math.round(nc/nlim*100));
     }
   }catch(e){}
-  var netPct = Math.min(100, Math.round(netDone/netLimit*100));
-  rows.push({name:"Networking", pct:netPct, done:netPct>=100, lockIcon:netPct>=100});
-
-  host.innerHTML = rows.map(function(r){
-    var lock = r.lockIcon || r.done ? '<span class="sp-limit-lock">🔒</span> ' : '';
-    return '<div class="sp-limit-row'+(r.done?' done':'')+'">'+
-      '<div class="sp-limit-row-top"><span class="sp-limit-row-name">'+lock+r.name+'</span><span class="sp-limit-row-pct">'+r.pct+'%</span></div>'+
-      '<div class="sp-limit-bar"><div class="sp-limit-bar-fill" style="width:'+r.pct+'%"></div></div>'+
-      '</div>';
-  }).join("");
+  var done = pct >= 100;
+  bar.innerHTML = '<div class="plb-inner'+(done?' done':'')+'">'+
+    '<div class="plb-top"><span class="plb-name">'+(done?'🔒 ':'')+'Today · '+label+'</span><span class="plb-pct">'+pct+'%</span></div>'+
+    '<div class="plb-track"><div class="plb-fill" style="width:'+pct+'%"></div></div>'+
+    '</div>';
 }
 
 // Wire chip events (DOMContentLoaded so elements exist)
@@ -2574,15 +2680,83 @@ function renderProfile(){
       if(upgradeBtn){ upgradeBtn.style.display="inline-flex"; upgradeBtn.onclick = function(){ showUpgrade("Upgrade to Pro for full access."); }; }
     }
   }
+  // Stats
+  var stats = {
+    done: (S.total||0),
+    correct: (S.score||0),
+    wrong: (S.wrong||0),
+    streak: (S.streak||0),
+    best: (S.best||0)
+  };
+  var idMap = {done:"prof-done", correct:"prof-correct", wrong:"prof-wrong", streak:"prof-streak", best:"prof-best"};
+  Object.keys(idMap).forEach(function(k){
+    var el = document.getElementById(idMap[k]);
+    if(el) el.textContent = stats[k];
+  });
+  // Today's limit card — free only
+  var limitCard = document.getElementById("profile-limit-card");
+  if(limitCard){
+    limitCard.style.display = (S.plan==="paid") ? "none" : "";
+    if(S.plan !== "paid"){
+      renderProfileLimitGrid();
+    }
+  }
 }
 
-// ─── Clear local progress ───
-function clearLocalProgress(){
-  if(!confirm("This will reset your stats on this device to zero. Your account and past test results are not affected. Continue?")) return;
+// Render limit grid into profile's card (shares renderLimitGrid logic)
+function renderProfileLimitGrid(){
+  var host = document.getElementById("profile-limit-grid");
+  if(!host) return;
+  // Reuse same data collection as renderLimitGrid
+  var rows = [];
+  var concepts = (S.todaysConcepts||["String","List"]).slice();
+  concepts.forEach(function(c){
+    var pct = 0, done = false;
+    if(typeof isConceptDone==="function") done = isConceptDone(c);
+    try{
+      var total = (S.allQuestions[c]||[]).length || 10;
+      var attempted = (S.progress && S.progress[c]) ? Object.keys(S.progress[c]).length : 0;
+      pct = total ? Math.min(100, Math.round(attempted/total*100)) : 0;
+    }catch(e){pct=done?100:0;}
+    if(done) pct = 100;
+    rows.push({name:c, pct:pct, done:done});
+  });
+  var sqlLimit = 3, sqlDone = 0;
   try{
-    // Clear session stats
+    if(typeof sqlGetFreeUsage==="function"){
+      var u = sqlGetFreeUsage() || {};
+      sqlDone = Object.keys(u).reduce(function(s,k){
+        var v = u[k];
+        return s + (typeof v === "number" ? v : 0);
+      }, 0);
+    }
+  }catch(e){}
+  var sqlPct = Math.min(100, Math.round(sqlDone/sqlLimit*100));
+  rows.push({name:"SQL", pct:sqlPct, done:sqlPct>=100, lockIcon:sqlPct>=100});
+  var netLimit = (typeof NET_FREE_DAILY_LIMIT!=="undefined") ? NET_FREE_DAILY_LIMIT : 5;
+  var netDone = 0;
+  try{
+    if(typeof netGetFreeUsage==="function"){
+      var nu = netGetFreeUsage();
+      netDone = (nu && typeof nu === "object") ? (nu.count || 0) : (nu || 0);
+    }
+  }catch(e){}
+  var netPct = Math.min(100, Math.round(netDone/netLimit*100));
+  rows.push({name:"Networking", pct:netPct, done:netPct>=100, lockIcon:netPct>=100});
+  host.innerHTML = rows.map(function(r){
+    var lock = (r.lockIcon || r.done) ? '<span class="sp-limit-lock">🔒</span> ' : '';
+    return '<div class="sp-limit-row'+(r.done?' done':'')+'">'+
+      '<div class="sp-limit-row-top"><span class="sp-limit-row-name">'+lock+r.name+'</span><span class="sp-limit-row-pct">'+r.pct+'%</span></div>'+
+      '<div class="sp-limit-bar"><div class="sp-limit-bar-fill" style="width:'+r.pct+'%"></div></div>'+
+      '</div>';
+  }).join("");
+}
+
+// ─── Clear my stats ───
+function clearLocalProgress(){
+  if(!confirm("This will reset your correct, wrong and streak counters on this device to zero. Continue?")) return;
+  try{
     S.score=0; S.total=0; S.streak=0; S.wrong=0; S.best=0; S.qcount=0;
-    // Clear localStorage keys related to progress
     Object.keys(localStorage).forEach(function(k){
       if(k.indexOf("pyzap_")===0 || k.indexOf("stats")>=0 || k.indexOf("progress")>=0 ||
          k.indexOf("net_")===0 || k.indexOf("sql_")===0 || k.indexOf("NET_")===0){
@@ -2592,14 +2766,24 @@ function clearLocalProgress(){
     if(typeof updHdr==="function") updHdr();
     if(typeof updateFreeBanner==="function") updateFreeBanner();
     if(typeof renderLimitGrid==="function") renderLimitGrid();
-    showToast("Local progress cleared.","success");
+    if(typeof renderProfile==="function") renderProfile();
+    showToast("Stats cleared.","success");
   }catch(e){
-    showToast("Could not clear local progress.","error");
+    showToast("Could not clear stats.","error");
   }
 }
+
 document.addEventListener("DOMContentLoaded", function(){
   var clrBtn = document.getElementById("profile-clear-btn");
   if(clrBtn) clrBtn.addEventListener("click", clearLocalProgress);
+  var soBtn = document.getElementById("profile-signout-btn");
+  if(soBtn) soBtn.addEventListener("click", function(){
+    if(confirm("Sign out of PyZap?")){
+      try{
+        firebase.auth().signOut().then(function(){ location.reload(); }).catch(function(){ location.reload(); });
+      }catch(e){ location.reload(); }
+    }
+  });
 });
 
 // ═══ LAUNCH ═══
@@ -4616,11 +4800,19 @@ function loadAdminTests(){
     var html="";
     snap.forEach(function(doc){
       var t=doc.data(),id=doc.id;
-      var isAttempted=attemptedIds.includes(id),isLocked=t.accessType==="paid"&&S.plan!=="paid";
+      var access = t.accessType || "free";  // legacy default
+      // Visibility logic:
+      //  "paid"     → only paid students see it (free locked with 🔒)
+      //  "free"     → only free students see it (paid skips)
+      //  "everyone" → both see it
+      if(access==="free" && S.plan==="paid") return; // paid skips free-only tests
+      var isLocked = (access==="paid" && S.plan!=="paid");
+      var isAttempted=attemptedIds.includes(id);
       var isActive=t.status==="active",isUpcoming=t.status==="upcoming";
-      var stripeClass=t.accessType==="paid"?"paid":"free";
-      var badgeClass=isAttempted?"done-b":isLocked?"locked-b":t.accessType==="paid"?"paid-b":"free";
-      var badgeText=isAttempted?"Done":t.accessType==="paid"?"Pro":"Free";
+      var stripeClass = access==="paid"?"paid":(access==="everyone"?"everyone":"free");
+      var accessBadgeText = access==="paid"?"Pro":(access==="everyone"?"Everyone":"Free");
+      var badgeClass=isAttempted?"done-b":isLocked?"locked-b":access==="paid"?"paid-b":"free";
+      var badgeText=isAttempted?"Done":accessBadgeText;
       var btnClass=isAttempted||isLocked||isUpcoming?"off":"go";
       var btnText=isAttempted?"Attempted":isLocked?"🔒 Pro Only":isUpcoming?"Upcoming":"Start Test";
       var cardClass=isAttempted?"done-card":isLocked?"locked-card":"";
@@ -4666,52 +4858,595 @@ function startAdminTest(testId){
       S.testMode="admin";S.testId=testId;S.testQuestions=questions;
       S.testTitle=testData.title||"Mock Test";S.durationSecs=testData.duration?testData.duration*60:null;
       S.testAnswers=questions.map(function(){return{answer:null,timeTakenSecs:0,lines:[]};});
-      S.currentQ=0;S.totalTimeSecs=0;S.lastTestType="admin";startTestAttempt();
+      S.currentQ=0;S.totalTimeSecs=0;S.lastTestType="admin";
+      S.testExpiresAt=null; // admin tests don't expire
+      startTestAttempt();
     });
   }).catch(function(e){console.error(e);showToast("Error starting test","error");showScreen("app");});
 }
 
+// ═══════════════════════════════════════════════════════════
+//   MY TEST — per-topic configurator (client-side generator)
+//   Admin-configurable constants (read from Firestore /config/tests if present)
+// ═══════════════════════════════════════════════════════════
+
+var MYTEST_CONFIG = {
+  tests_per_day: 1,
+  max_questions_per_topic: 5,
+  // Per-question time budgets in SECONDS (used for short/medium/max validation)
+  time_budget: {
+    String: 60, List: 60, Tuple: 60, Dictionary: 60, Expressions: 60, Builtin: 60,
+    Functions: 120, Modules: 120, Exception: 120, AssertionReason: 90,
+    SQL: 300,           // 5 min / SQL question
+    Networking: 600     // 10 min / networking case
+  }
+};
+
+// Qtypes available for self-test per topic
+var MYTEST_TOPIC_QTYPES = {
+  String:       ["Indexing","Slicing","SliceIdx","Functions","Membership","Comparison","PredictOutput"],
+  List:         ["Indexing","Slicing","SliceIdx","Functions","Membership","Comparison","PredictOutput"],
+  Tuple:        ["Indexing","Slicing","Functions","Membership","Comparison","PredictOutput"],
+  Dictionary:   ["Operations","Functions","PredictOutput"],
+  Expressions:  ["Mixed"],
+  Builtin:      ["Mixed"],
+  Functions:    ["Practice","Board"],
+  Modules:      ["Practice","Board"],
+  Exception:    ["Practice","Board"],
+  SQL:          ["DDL","DML","JOIN","Aggregate","Schema"],
+  Networking:   ["Practice","Board"]
+};
+
+var _MYTEST_STATE = { topics: [] }; // array of { id, label, qtypes:[ids], count }
+
+// Fetch admin config — cached in localStorage for 24 hours
+function loadMytestConfig(cb){
+  if(typeof db === "undefined"){ if(cb) cb(); return; }
+  // Check localStorage cache first
+  try{
+    var cached = localStorage.getItem("pyzap_mytest_config");
+    if(cached){
+      var c = JSON.parse(cached);
+      if(c && c.ts && (Date.now() - c.ts) < 24*60*60*1000 && c.data){
+        if(c.data.tests_per_day) MYTEST_CONFIG.tests_per_day = c.data.tests_per_day;
+        if(c.data.max_questions_per_topic) MYTEST_CONFIG.max_questions_per_topic = c.data.max_questions_per_topic;
+        if(c.data.time_budget) Object.assign(MYTEST_CONFIG.time_budget, c.data.time_budget);
+        if(cb) cb();
+        return;
+      }
+    }
+  }catch(e){}
+  // Cache miss — fetch from Firestore
+  db.collection("config").doc("tests").get().then(function(snap){
+    if(snap.exists){
+      var d = snap.data();
+      if(d.tests_per_day) MYTEST_CONFIG.tests_per_day = d.tests_per_day;
+      if(d.max_questions_per_topic) MYTEST_CONFIG.max_questions_per_topic = d.max_questions_per_topic;
+      if(d.time_budget) Object.assign(MYTEST_CONFIG.time_budget, d.time_budget);
+      try{ localStorage.setItem("pyzap_mytest_config", JSON.stringify({ts:Date.now(), data:d})); }catch(e){}
+    }
+    if(cb) cb();
+  }).catch(function(){ if(cb) cb(); });
+}
+
+function _mytestTopicLabel(id){
+  var e = TOPIC_CATALOG.find(function(t){return t.id===id;});
+  return e ? e.label : id;
+}
+
+// Daily test quota helpers
+function _mytestQuotaKey(){ return "pyzap_mytest_" + _todayKey(); }
+function _mytestUsedToday(){
+  try{
+    var n = parseInt(localStorage.getItem(_mytestQuotaKey())||"0", 10);
+    return isNaN(n)?0:n;
+  }catch(e){ return 0; }
+}
+function _mytestMarkUsed(){
+  try{ localStorage.setItem(_mytestQuotaKey(), String(_mytestUsedToday()+1)); }catch(e){}
+}
+
+// Split a total count across qtypes as evenly as possible
+function _mytestSplit(total, qtypeCount){
+  if(qtypeCount<=0) return [];
+  var base = Math.floor(total / qtypeCount);
+  var rem = total - base*qtypeCount;
+  var out = [];
+  for(var i=0;i<qtypeCount;i++) out.push(base + (i<rem?1:0));
+  return out;
+}
+
+// ── Main panel renderer ──
 function loadSelfTestPanel(){
-  var el=document.getElementById("self-test-content");
+  var el = document.getElementById("self-test-content");
+  if(!el) return;
   if(S.plan!=="paid"){
     el.innerHTML = '<div class="paid-wall">'+
       '<div class="paid-wall-icon">&#x1F680;</div>'+
       '<div class="paid-wall-title">Build Your Own Tests</div>'+
-      '<div class="paid-wall-sub">Tailor a test to exactly what you want to practice. Pick topics, chapters, question counts, and difficulty &mdash; PyZap generates a fresh test every time. Perfect for last-minute revision before exams.</div>'+
-      '<button class="btn-upgrade" onclick="showUpgrade(&quot;Upgrade to Pro to unlock self-generated tests.&quot;)">Upgrade to Pro &#x26A1;</button>'+
+      '<div class="paid-wall-sub">Tailor a test to exactly what you want to practice. Pick topics, choose question types and set the time &mdash; PyZap generates a fresh test just for you. Perfect for last-minute revision.</div>'+
+      '<button class="btn-upgrade" onclick="showUpgrade(&quot;Upgrade to Pro to unlock custom tests.&quot;)">Upgrade to Pro &#x26A1;</button>'+
       '</div>';
     return;
   }
-  el.innerHTML='<div class="self-setup">'+
-    '<div class="setup-card"><div class="setup-lbl">Data Type</div><div class="opt-grp" id="st-dtype">'+
-      '<button class="opt-pill on" data-val="String">String</button><button class="opt-pill" data-val="List">List</button>'+
-      '<button class="opt-pill" data-val="Tuple">Tuple</button><button class="opt-pill" data-val="Dictionary">Dictionary</button>'+
-      '<button class="opt-pill" data-val="Mixed">Mixed</button></div></div>'+
-    '<div class="setup-card"><div class="setup-lbl">Number of Questions</div><div class="opt-grp" id="st-count">'+
-      '<button class="opt-pill on" data-val="10">10</button><button class="opt-pill" data-val="20">20</button><button class="opt-pill" data-val="30">30</button></div></div>'+
-    '<button class="btn-gen" id="btn-gen-self">Generate My Test ⚡</button></div>';
-  document.querySelectorAll("#st-dtype .opt-pill,#st-count .opt-pill").forEach(function(btn){
-    btn.addEventListener("click",function(){var g=btn.closest(".opt-grp");g.querySelectorAll(".opt-pill").forEach(function(b){b.classList.remove("on");});btn.classList.add("on");});
-  });
-  document.getElementById("btn-gen-self").addEventListener("click",generateSelfTest);
+
+  // Render shell immediately with cached quota, then sync from Firestore in background
+  _MYTEST_STATE = { topics: [] };
+  _mytestRenderShell(el);
+
+  // Sync Firestore quota (one read)
+  if(S.uid){
+    var today = _todayKey();
+    db.collection("users").doc(S.uid).collection("testQuota").doc(today).get().then(function(snap){
+      var serverCount = snap.exists ? (snap.data().count || 0) : 0;
+      try{ localStorage.setItem(_mytestQuotaKey(), String(serverCount)); }catch(e){}
+      _mytestRefreshQuotaUI();
+    }).catch(function(){});
+  }
 }
 
-function generateSelfTest(){
-  var dtype=document.querySelector("#st-dtype .opt-pill.on"),count=document.querySelector("#st-count .opt-pill.on");
-  if(!dtype||!count)return;
-  var btn=document.getElementById("btn-gen-self");btn.disabled=true;btn.textContent="Generating...";
-  document.getElementById("load-text").textContent="Generating your test...";showScreen("loading");
-  fetch(CF_GENERATE_SELF,{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+S.idToken},body:JSON.stringify({dtype:dtype.dataset.val,count:parseInt(count.dataset.val)})})
-  .then(function(res){return res.json().then(function(d){return{ok:res.ok,data:d};});})
-  .then(function(r){
-    if(btn){btn.disabled=false;btn.textContent="Generate My Test ⚡";}
-    if(!r.ok){showToast(r.data.message||"Error generating test","error");showScreen("app");return;}
-    S.testMode="self";S.testId=r.data.testId;S.testQuestions=r.data.questions;
-    S.testTitle="My Custom Test — "+dtype.dataset.val;S.durationSecs=null;
-    S.testAnswers=r.data.questions.map(function(){return{answer:null,timeTakenSecs:0,lines:[]};});
-    S.currentQ=0;S.totalTimeSecs=0;S.lastTestType="self";startTestAttempt();
-  }).catch(function(e){if(btn){btn.disabled=false;btn.textContent="Generate My Test ⚡";}console.error(e);showToast("Error generating test","error");showScreen("app");});
+function _mytestRenderShell(el){
+  var usedToday = _mytestUsedToday();
+  el.innerHTML =
+    '<div class="mt-wrap">'+
+      '<div class="mt-head">'+
+        '<div class="mt-title">Build Your Own Test</div>'+
+        '<div class="mt-sub">Pick topics, question types and time &mdash; up to '+MYTEST_CONFIG.max_questions_per_topic+' questions per topic.</div>'+
+      '</div>'+
+      '<div class="mt-quota" id="mt-quota">You have generated <b>'+usedToday+'</b> of <b>'+MYTEST_CONFIG.tests_per_day+'</b> test'+(MYTEST_CONFIG.tests_per_day>1?"s":"")+' today.</div>'+
+      '<div id="mt-topics"></div>'+
+      '<button class="mt-add-topic" id="mt-add-topic">+ Add topic</button>'+
+      '<div class="mt-section-label">Test duration</div>'+
+      '<div class="mt-time-wrap" id="mt-time-wrap">'+
+        '<div class="mt-time-hint" id="mt-time-hint">Add at least one topic to see time options.</div>'+
+      '</div>'+
+      '<button class="mt-generate" id="mt-generate" disabled>Generate Test &#x26A1;</button>'+
+    '</div>';
+
+  document.getElementById("mt-add-topic").addEventListener("click", _mytestShowTopicPicker);
+  document.getElementById("mt-generate").addEventListener("click", _mytestGenerate);
+  _mytestRenderTopics();
 }
+
+function _mytestRefreshQuotaUI(){
+  var q = document.getElementById("mt-quota");
+  if(!q) return;
+  var used = _mytestUsedToday();
+  q.innerHTML = 'You have generated <b>'+used+'</b> of <b>'+MYTEST_CONFIG.tests_per_day+'</b> test'+(MYTEST_CONFIG.tests_per_day>1?"s":"")+' today.';
+  _mytestUpdateGenerateBtn();
+}
+
+// Show a topic picker modal
+function _mytestShowTopicPicker(){
+  // Filter out already-added topics
+  var added = _MYTEST_STATE.topics.map(function(t){return t.id;});
+  var available = TOPIC_CATALOG.filter(function(t){return added.indexOf(t.id)===-1 && MYTEST_TOPIC_QTYPES[t.id];});
+  if(!available.length){
+    showToast("All available topics already added.","info");
+    return;
+  }
+  // Build a lightweight modal
+  var existing = document.getElementById("mt-picker");
+  if(existing) existing.remove();
+  var mod = document.createElement("div");
+  mod.id = "mt-picker";
+  mod.className = "mt-picker-overlay";
+  mod.innerHTML = '<div class="mt-picker-card">'+
+    '<div class="mt-picker-title">Add a topic</div>'+
+    '<div class="mt-picker-grid">'+
+      available.map(function(t){
+        return '<button class="mt-picker-pill" data-id="'+t.id+'">'+t.label+'</button>';
+      }).join("")+
+    '</div>'+
+    '<button class="mt-picker-close">Cancel</button>'+
+    '</div>';
+  document.body.appendChild(mod);
+  mod.addEventListener("click", function(e){ if(e.target===mod) mod.remove(); });
+  mod.querySelector(".mt-picker-close").addEventListener("click", function(){ mod.remove(); });
+  mod.querySelectorAll(".mt-picker-pill").forEach(function(p){
+    p.addEventListener("click", function(){
+      var id = p.dataset.id;
+      var qtypes = MYTEST_TOPIC_QTYPES[id] || [];
+      _MYTEST_STATE.topics.push({
+        id: id,
+        label: _mytestTopicLabel(id),
+        qtypes: qtypes.length ? [qtypes[0]] : [],   // default first qtype
+        count: Math.min(5, MYTEST_CONFIG.max_questions_per_topic)
+      });
+      mod.remove();
+      _mytestRenderTopics();
+    });
+  });
+}
+
+// Render all added topic cards
+function _mytestRenderTopics(){
+  var host = document.getElementById("mt-topics");
+  if(!host) return;
+  if(!_MYTEST_STATE.topics.length){
+    host.innerHTML = '<div class="mt-empty">No topics added yet. Tap "+ Add topic" to start building your test.</div>';
+  } else {
+    host.innerHTML = _MYTEST_STATE.topics.map(function(t, idx){
+      var qtypes = MYTEST_TOPIC_QTYPES[t.id] || [];
+      return '<div class="mt-topic-card">'+
+        '<div class="mt-topic-head">'+
+          '<span class="mt-topic-name">'+t.label+'</span>'+
+          '<button class="mt-topic-rm" data-idx="'+idx+'" aria-label="Remove topic">&times;</button>'+
+        '</div>'+
+        '<div class="mt-topic-lbl">Question types</div>'+
+        '<div class="mt-qtype-row">'+
+          qtypes.map(function(qt){
+            var checked = t.qtypes.indexOf(qt)>=0;
+            return '<label class="mt-qt-cb'+(checked?" checked":"")+'" data-topic-idx="'+idx+'" data-qt="'+qt+'">'+
+              '<span class="mt-qt-box"></span><span>'+qt+'</span></label>';
+          }).join("")+
+        '</div>'+
+        '<div class="mt-topic-lbl">Number of questions</div>'+
+        '<div class="mt-count-row">'+
+          Array.from({length:MYTEST_CONFIG.max_questions_per_topic}, function(_,i){
+            var n = i+1;
+            return '<button class="mt-count-btn'+(t.count===n?" active":"")+'" data-topic-idx="'+idx+'" data-count="'+n+'">'+n+'</button>';
+          }).join("")+
+        '</div>'+
+        '</div>';
+    }).join("");
+
+    // Wire events
+    host.querySelectorAll(".mt-topic-rm").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var i = parseInt(btn.dataset.idx,10);
+        _MYTEST_STATE.topics.splice(i,1);
+        _mytestRenderTopics();
+      });
+    });
+    host.querySelectorAll(".mt-qt-cb").forEach(function(cb){
+      cb.addEventListener("click", function(e){
+        e.preventDefault();
+        var i = parseInt(cb.dataset.topicIdx,10);
+        var qt = cb.dataset.qt;
+        var topic = _MYTEST_STATE.topics[i];
+        var pos = topic.qtypes.indexOf(qt);
+        if(pos>=0) topic.qtypes.splice(pos,1);
+        else topic.qtypes.push(qt);
+        if(!topic.qtypes.length) topic.qtypes.push(qt); // at least one must remain
+        _mytestRenderTopics();
+      });
+    });
+    host.querySelectorAll(".mt-count-btn").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var i = parseInt(btn.dataset.topicIdx,10);
+        var n = parseInt(btn.dataset.count,10);
+        _MYTEST_STATE.topics[i].count = n;
+        _mytestRenderTopics();
+      });
+    });
+  }
+  _mytestRenderTime();
+  _mytestUpdateGenerateBtn();
+}
+
+// Compute time budget and render time picker
+function _mytestComputeTimes(){
+  var totalSec = 0;
+  _MYTEST_STATE.topics.forEach(function(t){
+    var per = MYTEST_CONFIG.time_budget[t.id] || 90;
+    totalSec += per * t.count;
+  });
+  // Short = 60%, Medium = 100%, Max = 150%
+  var medium = totalSec;
+  var short  = Math.max(60, Math.round(medium * 0.6));
+  var max    = Math.round(medium * 1.5);
+  return { short:short, medium:medium, max:max };
+}
+
+function _mytestRenderTime(){
+  var wrap = document.getElementById("mt-time-wrap");
+  if(!wrap) return;
+  if(!_MYTEST_STATE.topics.length){
+    wrap.innerHTML = '<div class="mt-time-hint">Add at least one topic to see time options.</div>';
+    return;
+  }
+  var t = _mytestComputeTimes();
+  if(!_MYTEST_STATE.timeSec) _MYTEST_STATE.timeSec = t.medium;
+  var currentPreset = (_MYTEST_STATE.timeSec===t.short)?"short":
+                      (_MYTEST_STATE.timeSec===t.medium)?"medium":
+                      (_MYTEST_STATE.timeSec===t.max)?"max":"custom";
+  function fmt(s){
+    var m = Math.round(s/60);
+    if(m < 60) return m+" min";
+    var h = Math.floor(m/60), r = m%60;
+    return h+"h "+(r?r+"m":"");
+  }
+  wrap.innerHTML =
+    '<div class="mt-time-presets">'+
+      '<button class="mt-time-preset'+(currentPreset==="short"?" active":"")+'" data-sec="'+t.short+'">Short<div class="mt-time-val">'+fmt(t.short)+'</div></button>'+
+      '<button class="mt-time-preset'+(currentPreset==="medium"?" active":"")+'" data-sec="'+t.medium+'">Medium<div class="mt-time-val">'+fmt(t.medium)+'</div></button>'+
+      '<button class="mt-time-preset'+(currentPreset==="max"?" active":"")+'" data-sec="'+t.max+'">Max<div class="mt-time-val">'+fmt(t.max)+'</div></button>'+
+    '</div>'+
+    '<div class="mt-time-custom">'+
+      '<label>Custom (min):</label>'+
+      '<input type="number" id="mt-time-input" min="'+Math.max(1,Math.round(t.short/60))+'" max="'+Math.round(t.max/60)+'" value="'+Math.round(_MYTEST_STATE.timeSec/60)+'">'+
+      '<span class="mt-time-range">Allowed: '+fmt(t.short)+' – '+fmt(t.max)+'</span>'+
+    '</div>';
+  wrap.querySelectorAll(".mt-time-preset").forEach(function(b){
+    b.addEventListener("click", function(){
+      _MYTEST_STATE.timeSec = parseInt(b.dataset.sec,10);
+      _mytestRenderTime();
+    });
+  });
+  var inp = document.getElementById("mt-time-input");
+  if(inp){
+    inp.addEventListener("change", function(){
+      var m = parseInt(inp.value,10);
+      if(isNaN(m)) return;
+      var sec = m*60;
+      if(sec < t.short){ sec = t.short; showToast("Minimum time is "+fmt(t.short),"info"); }
+      if(sec > t.max){ sec = t.max; showToast("Maximum time is "+fmt(t.max),"info"); }
+      _MYTEST_STATE.timeSec = sec;
+      _mytestRenderTime();
+    });
+  }
+}
+
+function _mytestUpdateGenerateBtn(){
+  var btn = document.getElementById("mt-generate");
+  if(!btn) return;
+  var ok = _MYTEST_STATE.topics.length>0 && _MYTEST_STATE.timeSec;
+  if(_mytestUsedToday() >= MYTEST_CONFIG.tests_per_day){
+    btn.disabled = true;
+    btn.textContent = "Daily limit reached — try tomorrow";
+  } else {
+    btn.disabled = !ok;
+    btn.textContent = "Generate Test \u26A1";
+  }
+}
+
+// ── Actually generate the test (CF call + Firestore quota check) ──
+function _mytestGenerate(){
+  if(!_MYTEST_STATE.topics.length){
+    showToast("Add at least one topic.","info"); return;
+  }
+  if(!S.uid){ showToast("Please sign in first.","error"); return; }
+
+  var btn = document.getElementById("mt-generate");
+  if(btn){ btn.disabled = true; btn.textContent = "Checking quota..."; }
+
+  var today = _todayKey();
+  var quotaRef = db.collection("users").doc(S.uid).collection("testQuota").doc(today);
+
+  // Step 1: read quota
+  quotaRef.get().then(function(snap){
+    var usedToday = snap.exists ? (snap.data().count || 0) : 0;
+    if(usedToday >= MYTEST_CONFIG.tests_per_day){
+      // Mirror to localStorage for UI display
+      try{ localStorage.setItem(_mytestQuotaKey(), String(usedToday)); }catch(e){}
+      showToast("You've used your daily test quota. Come back tomorrow!","error");
+      if(btn){ btn.disabled=false; btn.textContent="Daily limit reached — try tomorrow"; }
+      return;
+    }
+
+    // Step 2: reserve the slot BEFORE calling CF so concurrent tabs can't double-generate
+    quotaRef.set({
+      count: usedToday + 1,
+      lastGenerated: firebase.firestore.FieldValue.serverTimestamp(),
+      date: today
+    }, {merge:true}).then(function(){
+      try{ localStorage.setItem(_mytestQuotaKey(), String(usedToday + 1)); }catch(e){}
+      _mytestCallCF(btn);
+    }).catch(function(e){
+      console.error("Quota write failed:", e);
+      showToast("Could not start test. Please try again.","error");
+      if(btn){ btn.disabled=false; btn.textContent="Generate Test \u26A1"; }
+    });
+  }).catch(function(e){
+    console.error("Quota check failed:", e);
+    showToast("Could not check quota. Please try again.","error");
+    if(btn){ btn.disabled=false; btn.textContent="Generate Test \u26A1"; }
+  });
+}
+
+// Step 3: call the CF, then merge with locally-generated SQL/Networking questions
+function _mytestCallCF(btn){
+  if(btn){ btn.textContent = "Generating..."; }
+  document.getElementById("load-text").textContent = "Generating your test...";
+  showScreen("loading");
+
+  // Split topics into CF-handled vs local-handled
+  var cfTopics   = [];
+  var localTopics = [];
+  _MYTEST_STATE.topics.forEach(function(t){
+    if(t.id === "SQL" || t.id === "Networking") localTopics.push(t);
+    else cfTopics.push(t);
+  });
+
+  var payload = {
+    topics: cfTopics.map(function(t){
+      return { id:t.id, qtypes:t.qtypes, count:t.count };
+    }),
+    durationSec: _MYTEST_STATE.timeSec
+  };
+
+  var cfPromise;
+  if(cfTopics.length === 0){
+    // No CF topics — skip CF call
+    cfPromise = Promise.resolve({ok:true, data:{questions:[], answers:[]}});
+  } else {
+    cfPromise = fetch(CF_GENERATE_SELF, {
+      method: "POST",
+      headers: {"Content-Type":"application/json","Authorization":"Bearer "+S.idToken},
+      body: JSON.stringify(payload)
+    }).then(function(res){
+      return res.json().then(function(d){return{ok:res.ok, data:d};});
+    });
+  }
+
+  cfPromise.then(function(r){
+    if(!r.ok){
+      showToast((r.data && r.data.message) || "Error generating test","error");
+      if(btn){ btn.disabled=false; btn.textContent="Generate Test \u26A1"; }
+      showScreen("app");
+      return;
+    }
+    var cfQuestions = (r.data && r.data.questions) || [];
+    var cfAnswers   = (r.data && r.data.answers)   || [];
+
+    // Generate SQL/Networking locally
+    var localQs = [], localAns = [];
+    localTopics.forEach(function(topic){
+      var split = _mytestSplit(topic.count, topic.qtypes.length);
+      topic.qtypes.forEach(function(qt, i){
+        var n = split[i];
+        for(var k=0;k<n;k++){
+          var q = _mytestGenerateOne(topic.id, qt);
+          if(q){
+            localQs.push(q);
+            localAns.push({answer:q.answer, explanation:q.explanation||""});
+          }
+        }
+      });
+    });
+
+    // Merge & shuffle
+    var allQ = cfQuestions.concat(localQs);
+    var allA = cfAnswers.concat(localAns);
+    var indices = allQ.map(function(_,i){return i;});
+    for(var i=indices.length-1;i>0;i--){
+      var j = Math.floor(Math.random()*(i+1));
+      var tmp = indices[i]; indices[i]=indices[j]; indices[j]=tmp;
+    }
+    var shuffledQ = indices.map(function(idx){return allQ[idx];});
+    var shuffledA = indices.map(function(idx){return allA[idx];});
+
+    if(!shuffledQ.length){
+      showToast("Could not build test from selected options.","error");
+      if(btn){ btn.disabled=false; btn.textContent="Generate Test \u26A1"; }
+      showScreen("app");
+      return;
+    }
+
+    // Launch test-attempt flow
+    S.testMode = "self";
+    S.testId = (r.data && r.data.testId) || (S.uid + "_self_" + Date.now());
+    S.testQuestions = shuffledQ;
+    S.testTitle = "My Test — " + _MYTEST_STATE.topics.map(function(t){return t.label;}).join(", ");
+    S.durationSecs = _MYTEST_STATE.timeSec;
+    S.testAnswers = shuffledQ.map(function(){return {answer:null, timeTakenSecs:0, lines:[]};});
+    S.currentQ = 0; S.totalTimeSecs = 0; S.lastTestType = "self";
+    S._testAnswerKey = shuffledA;
+    // Expiry tracking
+    S.testExpiresAt = (r.data && r.data.expiresAt) ? new Date(r.data.expiresAt) : new Date(Date.now() + 24*60*60*1000);
+
+    // Guard: in case something keeps the test in memory past expiry
+    if(S.testExpiresAt <= new Date()){
+      showToast("This test has expired. Please generate a new one.","error");
+      if(btn){ btn.disabled=false; btn.textContent="Generate Test \u26A1"; }
+      showScreen("app");
+      return;
+    }
+
+    // Friendly heads-up about expiry
+    showToast("Your test is ready. It will expire in 24 hours.","info");
+
+    startTestAttempt();
+  }).catch(function(e){
+    console.error("Test CF error:", e);
+    showToast("Network error. Please try again.","error");
+    if(btn){ btn.disabled=false; btn.textContent="Generate Test \u26A1"; }
+    showScreen("app");
+  });
+}
+
+// Generate one question given topic + qtype, in a test-friendly shape
+function _mytestGenerateOne(topic, qtype){
+  try{
+    var qd = null;
+    // Route to the right generator
+    if(topic==="Expressions"){ qd = _genExpression(); }
+    else if(topic==="Builtin"){ qd = _genBuiltin(); }
+    else if(topic==="String" && (qtype==="PredictOutput"||!qtype)){ qd = _genStringPredict(); }
+    else if(topic==="List"   && (qtype==="PredictOutput"||!qtype)){ qd = _genListPredict(); }
+    else if(topic==="Tuple"  && (qtype==="PredictOutput"||!qtype)){ qd = _genTuplePredict(); }
+    else if(topic==="Dictionary" && (qtype==="PredictOutput"||!qtype)){ qd = _genDictPredict(); }
+    // For concept topics with legacy qtypes: pull from loaded concept bank if available
+    else if(["String","List","Tuple","Dictionary"].indexOf(topic)>=0){
+      var bank = S.allQuestions[topic];
+      if(bank){
+        var pool;
+        if(Array.isArray(bank)) pool = bank.filter(function(q){return q.qtype===qtype;});
+        else if(bank[qtype]) pool = bank[qtype]; // nested free shape
+        else pool = [];
+        if(pool.length){
+          var pick = pool[Math.floor(Math.random()*pool.length)];
+          return {
+            lines: pick.lines||[],
+            options: pick.options||null,
+            answer: pick.answer,
+            qtype: pick.qtype||qtype,
+            dtype: topic,
+            explanation: pick.explanation||""
+          };
+        }
+      }
+      // Fallback: use PredictOutput generator
+      if(topic==="String") qd = _genStringPredict();
+      else if(topic==="List") qd = _genListPredict();
+      else if(topic==="Tuple") qd = _genTuplePredict();
+      else if(topic==="Dictionary") qd = _genDictPredict();
+    }
+    else if(topic==="SQL"){
+      // Use the SQL generator directly
+      if(typeof generateOneSQL==="function"){
+        var sq = generateOneSQL(qtype);
+        if(sq) return {
+          lines: sq.lines||[],
+          options: sq.options||null,
+          answer: sq.answer,
+          qtype: qtype, dtype: "SQL",
+          explanation: sq.explanation||""
+        };
+      }
+    }
+    else if(["Functions","Modules","Exception"].indexOf(topic)>=0){
+      // Pull from S.allQuestions[topic] filtering by qtype
+      var bk = S.allQuestions[topic] || [];
+      var pool2 = bk.filter(function(q){
+        if(qtype==="Board") return q.source==="board" || q.isBoard;
+        return q.source!=="board" && !q.isBoard;
+      });
+      if(pool2.length){
+        var p2 = pool2[Math.floor(Math.random()*pool2.length)];
+        return {
+          lines: p2.lines||[],
+          options: p2.options||null,
+          answer: p2.answer,
+          qtype: p2.qtype||"mcq", dtype: topic,
+          explanation: p2.explanation||""
+        };
+      }
+    }
+
+    if(!qd) return null;
+    // Build MCQ options
+    var options = _generateDistractors(qd.answer, topic);
+    return {
+      lines: qd.lines,
+      options: options,
+      answer: qd.answer,
+      qtype: qtype || "predict_output",
+      dtype: topic,
+      explanation: ""
+    };
+  }catch(e){
+    console.error("Gen one failed:", topic, qtype, e);
+    return null;
+  }
+}
+
+// Load admin config on startup
+document.addEventListener("DOMContentLoaded", function(){
+  loadMytestConfig();
+});
+
 
 function startTestAttempt(){
   S.currentQ=0;S.totalTimeSecs=0;S.questionStartTime=Date.now();
@@ -4763,6 +5498,13 @@ function startTestTimer(){
   if(S.timerInterval)clearInterval(S.timerInterval);
   var startTime=Date.now();
   S.timerInterval=setInterval(function(){
+    // Hard expiry check — if the Firestore-set expiresAt has passed, auto-submit
+    if(S.testExpiresAt && new Date() >= S.testExpiresAt){
+      clearInterval(S.timerInterval);
+      showToast("This test has expired. Submitting your answers...","info");
+      submitTest(true);
+      return;
+    }
     S.totalTimeSecs=Math.round((Date.now()-startTime)/1000);
     var badge=document.getElementById("timer-badge");
     if(S.durationSecs!==null){
@@ -4787,6 +5529,356 @@ document.getElementById("ta-submit").addEventListener("click",function(){
   else showModal("Submit Test?","Are you sure? You cannot retake this test.","Submit",function(){submitTest(false);});
 });
 
+// ═══════════════════════════════════════════════════════════
+//   TEST REPORT — analytics, PDF generation, auto-download
+// ═══════════════════════════════════════════════════════════
+
+var PASS_THRESHOLD = 35; // CBSE-style pass mark
+
+// Lazy loader for jsPDF + autoTable
+var _pdfLibsLoading = null;
+function loadPdfLibs(){
+  if(_pdfLibsLoading) return _pdfLibsLoading;
+  _pdfLibsLoading = new Promise(function(resolve, reject){
+    if(window.jspdf && window.jspdf.jsPDF){ resolve(); return; }
+    var s1 = document.createElement("script");
+    s1.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+    s1.onload = function(){
+      var s2 = document.createElement("script");
+      s2.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js";
+      s2.onload = resolve;
+      s2.onerror = function(){ reject(new Error("jspdf-autotable load failed")); };
+      document.body.appendChild(s2);
+    };
+    s1.onerror = function(){ reject(new Error("jspdf load failed")); };
+    document.body.appendChild(s1);
+  });
+  return _pdfLibsLoading;
+}
+
+// Derive rich analytics object from in-memory test state
+function deriveTestAnalytics(result){
+  var score = result.score || 0;
+  var total = result.total || (S.testQuestions||[]).length || 0;
+  var percentage = result.percentage || (total>0 ? Math.round((score/total)*100) : 0);
+  var totalTimeSecs = parseInt(result.totalTimeSecs || S.totalTimeSecs || 0, 10);
+  var passed = percentage >= PASS_THRESHOLD;
+  var avgTime = total>0 ? Math.round(totalTimeSecs/total) : 0;
+
+  // Build per-question array from in-memory state
+  var perQ = [];
+  var slowest = { idx:-1, sec:0 };
+  for(var i=0;i<(S.testQuestions||[]).length;i++){
+    var q = S.testQuestions[i];
+    var ans = (S.testAnswers && S.testAnswers[i]) || {};
+    var qr = (result.questions && result.questions[i]) || {};
+    var t = parseInt(ans.timeTakenSecs || 0, 10);
+    if(t > slowest.sec){ slowest = { idx:i, sec:t }; }
+    perQ.push({
+      idx: i+1,
+      lines: (q && q.lines) || [],
+      topic: (q && (q.dtype || q.topic)) || "Unknown",
+      qtype: (q && q.qtype) || "",
+      studentAnswer: ans.answer || "—",
+      correctAnswer: qr.correctAnswer || "",
+      isCorrect: qr.isCorrect === true,
+      timeSec: t
+    });
+  }
+
+  // Per-topic rollup
+  var topicMap = {};
+  perQ.forEach(function(q){
+    if(!topicMap[q.topic]){
+      topicMap[q.topic] = { name:q.topic, totalQuestions:0, correct:0, wrong:0, timeTakenSeconds:0 };
+    }
+    var t = topicMap[q.topic];
+    t.totalQuestions++;
+    if(q.isCorrect) t.correct++; else t.wrong++;
+    t.timeTakenSeconds += q.timeSec;
+  });
+  var topics = Object.values(topicMap).map(function(t){
+    t.accuracyPercent = t.totalQuestions>0 ? Math.round((t.correct/t.totalQuestions)*100) : 0;
+    return t;
+  });
+  topics.sort(function(a,b){ return a.accuracyPercent - b.accuracyPercent; }); // weakest first
+
+  var weakestTopic = topics.length ? topics[0] : null;
+  var strongestTopic = topics.length ? topics[topics.length-1] : null;
+
+  // Slowest with outlier flag (1.8x avg = significant)
+  var slowestOutlier = slowest.idx>=0 && avgTime>0 && slowest.sec > avgTime*1.8;
+
+  return {
+    student: {
+      name: (S.userData && S.userData.name) || "Student",
+      email: (firebase.auth().currentUser && firebase.auth().currentUser.email) || "",
+      uid: S.uid || ""
+    },
+    test: {
+      id: S.testId || "",
+      title: S.testTitle || "Test",
+      type: S.testMode === "self" ? "self_generated" : "admin_published",
+      date: new Date()
+    },
+    score: {
+      correct: score,
+      wrong: total - score,
+      total: total,
+      percentage: percentage,
+      passed: passed,
+      passThreshold: PASS_THRESHOLD
+    },
+    time: {
+      totalSec: totalTimeSecs,
+      avgPerQSec: avgTime,
+      slowestIdx: slowest.idx,
+      slowestSec: slowest.sec,
+      slowestOutlier: slowestOutlier
+    },
+    topics: topics,
+    weakestTopic: weakestTopic,
+    strongestTopic: strongestTopic,
+    questions: perQ
+  };
+}
+
+// Template-based verdict paragraph
+function buildVerdict(a){
+  var lines = [];
+  if(a.score.passed){
+    if(a.score.percentage >= 85) lines.push("Excellent performance — you scored "+a.score.percentage+"% and clearly have a strong grasp of the material.");
+    else if(a.score.percentage >= 60) lines.push("Solid work — you scored "+a.score.percentage+"% and passed comfortably.");
+    else lines.push("You passed with "+a.score.percentage+"%. There is room to push higher — review the topics below where you struggled.");
+  } else {
+    lines.push("You scored "+a.score.percentage+"%, just below the "+a.score.passThreshold+"% pass mark. Don't be discouraged — the breakdown below shows exactly where to focus.");
+  }
+  if(a.weakestTopic && a.topics.length>1 && a.weakestTopic.accuracyPercent < 50){
+    lines.push("Your weakest area is "+a.weakestTopic.name+" at "+a.weakestTopic.accuracyPercent+"% accuracy. Prioritise practice here.");
+  }
+  if(a.strongestTopic && a.topics.length>1 && a.strongestTopic.accuracyPercent >= 80){
+    lines.push("You performed strongest in "+a.strongestTopic.name+" ("+a.strongestTopic.accuracyPercent+"%) — keep that confidence.");
+  }
+  if(a.time.slowestOutlier){
+    lines.push("Question "+a.time.slowestIdx+" took you "+a.time.slowestSec+"s, about "+Math.round(a.time.slowestSec/a.time.avgPerQSec)+"x your average. Look for patterns in questions that slow you down.");
+  }
+  if(a.time.avgPerQSec > 120){
+    lines.push("Your pace averaged "+a.time.avgPerQSec+"s per question. Try to move a little faster on questions you know cold so you have time on the tough ones.");
+  }
+  return lines.join(" ");
+}
+
+// ── PDF BUILDER (pure jsPDF) ──
+function buildTestReportPDF(a){
+  return loadPdfLibs().then(function(){
+    var JS = window.jspdf.jsPDF;
+    var doc = new JS({ unit:"pt", format:"a4" });
+    var W = doc.internal.pageSize.getWidth();
+    var H = doc.internal.pageSize.getHeight();
+    var M = 40; // margin
+    var y = M;
+
+    function line(yy){ doc.setDrawColor(220); doc.line(M, yy, W-M, yy); }
+    function text(t, x, yy, opts){
+      opts = opts || {};
+      doc.setFont("helvetica", opts.bold?"bold":"normal");
+      doc.setFontSize(opts.size || 10);
+      doc.setTextColor.apply(doc, opts.color || [30,30,30]);
+      doc.text(t, x, yy, { align: opts.align || "left" });
+    }
+    function ensureSpace(need){
+      if(y + need > H - M){ doc.addPage(); y = M; }
+    }
+
+    // ── Header ──
+    doc.setFillColor(245,166,35); doc.rect(0,0,W,60,"F");
+    text("PyZap Test Report", M, 38, { size:20, bold:true, color:[0,0,0] });
+    text(a.test.title, W-M, 38, { size:11, color:[50,50,50], align:"right" });
+    y = 80;
+
+    // ── Student + test meta ──
+    text("Student: "+a.student.name, M, y, { size:10, bold:true });
+    text("Date: "+a.test.date.toLocaleString("en-IN"), W-M, y, { size:10, align:"right" });
+    y += 14;
+    text("Email: "+a.student.email, M, y, { size:9, color:[90,90,90] });
+    text("Test Type: "+(a.test.type==="self_generated"?"My Test":"Mock Test"), W-M, y, { size:9, color:[90,90,90], align:"right" });
+    y += 18;
+    line(y); y += 14;
+
+    // ── Score summary + visual bar ──
+    text("Score Summary", M, y, { size:13, bold:true });
+    y += 18;
+    text(a.score.correct+"/"+a.score.total+"  ("+a.score.percentage+"%)", M, y, { size:22, bold:true, color: a.score.passed?[30,160,90]:[200,60,60] });
+    text(a.score.passed?"PASSED":"DID NOT PASS", W-M, y-6, { size:11, bold:true, color: a.score.passed?[30,160,90]:[200,60,60], align:"right" });
+    text("Pass mark: "+a.score.passThreshold+"%", W-M, y+6, { size:9, color:[90,90,90], align:"right" });
+    y += 14;
+    // Correct/wrong bar
+    var barW = W - 2*M, barH = 14;
+    var cW = a.score.total>0 ? (a.score.correct/a.score.total)*barW : 0;
+    doc.setFillColor(220,60,60); doc.rect(M, y, barW, barH, "F"); // wrong background
+    doc.setFillColor(30,160,90); doc.rect(M, y, cW, barH, "F");
+    text(String(a.score.correct)+" correct", M+6, y+10, { size:9, bold:true, color:[255,255,255] });
+    if(a.score.wrong>0) text(String(a.score.wrong)+" wrong", W-M-6, y+10, { size:9, bold:true, color:[255,255,255], align:"right" });
+    y += barH + 22;
+    line(y); y += 14;
+
+    // ── Time analysis ──
+    ensureSpace(100);
+    text("Time Analysis", M, y, { size:13, bold:true }); y += 16;
+    function fmtT(s){ var m=Math.floor(s/60), r=s%60; return m>0?(m+"m "+r+"s"):(r+"s"); }
+    text("Total: "+fmtT(a.time.totalSec), M, y, { size:10 });
+    text("Avg per Q: "+fmtT(a.time.avgPerQSec), M+150, y, { size:10 });
+    text("Slowest: Q"+a.time.slowestIdx+" ("+fmtT(a.time.slowestSec)+(a.time.slowestOutlier?" — flagged":"")+")", M+300, y, { size:10 });
+    y += 20;
+    // Per-question time bars
+    var qCount = a.questions.length;
+    if(qCount>0){
+      var maxT = Math.max.apply(null, a.questions.map(function(q){return q.timeSec;})) || 1;
+      var avaW = W - 2*M - 50; // room for label
+      var each = qCount<=20 ? 14 : 8;
+      a.questions.forEach(function(q){
+        ensureSpace(each+2);
+        var bw = (q.timeSec/maxT) * avaW;
+        // Label
+        text("Q"+q.idx, M, y+each-2, { size:8, color:[80,80,80] });
+        // Bar
+        doc.setFillColor(q.isCorrect?30:220, q.isCorrect?160:60, q.isCorrect?90:60);
+        doc.rect(M+30, y, Math.max(1,bw), each-3, "F");
+        text(fmtT(q.timeSec), M+30+bw+4, y+each-3, { size:7, color:[80,80,80] });
+        y += each;
+      });
+    }
+    y += 8; line(y); y += 14;
+
+    // ── Topic-wise accuracy ──
+    ensureSpace(60 + a.topics.length*16);
+    text("Topic Accuracy", M, y, { size:13, bold:true });
+    if(a.weakestTopic && a.topics.length>1 && a.weakestTopic.accuracyPercent < 50){
+      text("⚠ Weakest: "+a.weakestTopic.name, W-M, y, { size:10, bold:true, color:[200,60,60], align:"right" });
+    }
+    y += 18;
+    a.topics.slice().sort(function(x,y){return y.accuracyPercent-x.accuracyPercent;}).forEach(function(t){
+      text(t.name, M, y+8, { size:10, bold:true });
+      text(t.correct+"/"+t.totalQuestions, W-M-80, y+8, { size:9, color:[80,80,80] });
+      text(t.accuracyPercent+"%", W-M, y+8, { size:10, bold:true, align:"right", color: t.accuracyPercent>=70?[30,160,90]:t.accuracyPercent>=50?[200,150,30]:[200,60,60] });
+      // Bar
+      var tbW = (t.accuracyPercent/100) * (W-2*M-150);
+      doc.setFillColor(230,230,230); doc.rect(M+140, y+3, W-2*M-170, 7, "F");
+      doc.setFillColor(t.accuracyPercent>=70?30:t.accuracyPercent>=50?200:220, t.accuracyPercent>=70?160:t.accuracyPercent>=50?150:60, t.accuracyPercent>=70?90:t.accuracyPercent>=50?30:60);
+      doc.rect(M+140, y+3, Math.max(1,tbW), 7, "F");
+      y += 16;
+    });
+    y += 8; line(y); y += 14;
+
+    // ── Verdict ──
+    ensureSpace(80);
+    text("Performance Summary", M, y, { size:13, bold:true }); y += 16;
+    var verdict = buildVerdict(a);
+    var wrapped = doc.splitTextToSize(verdict, W-2*M);
+    doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(50,50,50);
+    doc.text(wrapped, M, y);
+    y += wrapped.length * 13 + 14;
+    line(y); y += 14;
+
+    // ── Question-by-question table (autoTable) ──
+    ensureSpace(40);
+    text("Question-by-Question Breakdown", M, y, { size:13, bold:true }); y += 14;
+    doc.autoTable({
+      startY: y,
+      head: [["#", "Topic", "Your Answer", "Correct", "Time", "Result"]],
+      body: a.questions.map(function(q){
+        return [
+          "Q"+q.idx,
+          q.topic,
+          (q.studentAnswer||"—").toString().slice(0,30),
+          (q.correctAnswer||"").toString().slice(0,30),
+          fmtT(q.timeSec),
+          q.isCorrect ? "Correct" : "Wrong"
+        ];
+      }),
+      styles: { font:"helvetica", fontSize:8, cellPadding:4, overflow:"linebreak" },
+      headStyles: { fillColor:[245,166,35], textColor:[0,0,0], fontStyle:"bold" },
+      alternateRowStyles: { fillColor:[250,250,250] },
+      columnStyles: {
+        0: { cellWidth:30 },
+        1: { cellWidth:70 },
+        2: { cellWidth:130 },
+        3: { cellWidth:130 },
+        4: { cellWidth:45 },
+        5: { cellWidth:50, fontStyle:"bold", halign:"center" }
+      },
+      didParseCell: function(d){
+        if(d.section==="body" && d.column.index===5){
+          d.cell.styles.textColor = d.cell.raw==="Correct" ? [30,160,90] : [200,60,60];
+        }
+      },
+      margin: { left:M, right:M }
+    });
+
+    // Footer
+    var pages = doc.internal.getNumberOfPages();
+    for(var p=1;p<=pages;p++){
+      doc.setPage(p);
+      text("PyZap Test Report · "+a.test.date.toLocaleDateString("en-IN")+"   ·   Page "+p+" of "+pages, W/2, H-20, { size:8, color:[140,140,140], align:"center" });
+    }
+
+    var fileName = "PyZap-"+(a.test.title||"Test").replace(/[^A-Za-z0-9]/g,"_")+"-"+a.test.date.toISOString().slice(0,10)+".pdf";
+    doc.save(fileName);
+    return true;
+  });
+}
+
+// Augment existing results/{resultId} doc with rich analytics + persist
+function writeAnalyticsToFirestore(a){
+  if(!S.uid || !a.test.id) return Promise.resolve();
+  var resultId = S.uid + "_" + a.test.id;
+  var payload = {
+    // augment — these fields are added to the existing doc written by the CF
+    analytics: {
+      passed: a.score.passed,
+      passThreshold: a.score.passThreshold,
+      avgTimePerQSec: a.time.avgPerQSec,
+      slowestIdx: a.time.slowestIdx,
+      slowestSec: a.time.slowestSec,
+      slowestOutlier: a.time.slowestOutlier,
+      topicAnalytics: a.topics.map(function(t){
+        return {
+          name: t.name,
+          totalQuestions: t.totalQuestions,
+          correct: t.correct,
+          wrong: t.wrong,
+          timeTakenSeconds: t.timeTakenSeconds,
+          accuracyPercent: t.accuracyPercent
+        };
+      }),
+      weakestTopic: a.weakestTopic ? a.weakestTopic.name : null,
+      strongestTopic: a.strongestTopic ? a.strongestTopic.name : null,
+      reportGeneratedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }
+  };
+  return db.collection("results").doc(resultId).set(payload, {merge:true}).catch(function(e){
+    console.warn("Analytics write failed:", e);
+  });
+}
+
+// Orchestration — called after successful submit
+function finalizeTestWithReport(result){
+  var analytics;
+  try{ analytics = deriveTestAnalytics(result); }
+  catch(e){ console.error("Analytics derivation failed:", e); return; }
+
+  // 1) Write to Firestore FIRST (retry-friendly if PDF fails)
+  writeAnalyticsToFirestore(analytics).then(function(){
+    // 2) Auto-download PDF
+    return buildTestReportPDF(analytics);
+  }).then(function(){
+    showToast("Report downloaded.","success");
+  }).catch(function(e){
+    console.error("Report generation failed:", e);
+    showToast("Could not generate PDF report. Your score is saved.","error");
+  });
+}
+
 function submitTest(auto){
   if(S.timerInterval){clearInterval(S.timerInterval);S.timerInterval=null;}
   saveTestAnswer();
@@ -4799,6 +5891,8 @@ function submitTest(auto){
     S.lastResult=r.data;S.lastTestId=S.testId;
     db.collection("users").doc(S.uid).get().then(function(snap){if(snap.exists){S.userData=snap.data();S.plan=snap.data().plan||"free";}});
     renderResult(r.data);showScreen("result");
+    // Auto-generate and download report, then write analytics to Firestore
+    try{ finalizeTestWithReport(r.data); }catch(e){ console.error(e); }
   }).catch(function(e){console.error(e);showToast("Submission failed.","error");showScreen("app");});
 }
 
@@ -4875,13 +5969,28 @@ function loadHistory(){
   var el=document.getElementById("history-content");
   if(!attempted.length){el.innerHTML='<div class="empty-state" style="margin-top:20px">No tests attempted yet.</div>';return;}
   var sorted=attempted.slice().sort(function(a,b){return new Date(b.submittedAt)-new Date(a.submittedAt);});
+  function fmtTime(s){
+    s = parseInt(s,10)||0;
+    var m = Math.floor(s/60), r = s%60;
+    return m>0 ? m+"m "+(r?r+"s":"") : s+"s";
+  }
   var html='<div class="hist-list">';
   sorted.forEach(function(t){
     var pct=t.percentage||Math.round((t.score/t.total)*100)||0;
     var color=pct>=80?"var(--green)":pct>=50?"var(--amber)":"var(--red)";
-    var date=t.submittedAt?new Date(t.submittedAt).toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"}):"—";
-    var title=t.title||(t.testType==="self_generated"?"My Test — "+(t.dtype||"Mixed"):"Mock Test");
-    html+='<div class="hist-item"><div class="hist-left"><div class="hist-title">'+esc(title)+'</div><div class="hist-meta">'+date+' · '+(t.testType==="self_generated"?"Self Generated":"Mock Test")+'</div></div><div class="hist-right"><div class="hist-score" style="color:'+color+'">'+t.score+'/'+t.total+'</div><div class="hist-pct">'+pct+'%</div></div></div>';
+    var date=t.submittedAt?new Date(t.submittedAt).toLocaleString("en-IN",{day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"}):"—";
+    var title=t.title||(t.testType==="self_generated"?"My Test":"Mock Test");
+    var topicsStr = "";
+    if(t.topics && t.topics.length){ topicsStr = t.topics.join(", "); }
+    else if(t.dtype && t.dtype!=="Mixed"){ topicsStr = t.dtype; }
+    var timeStr = t.totalTimeSecs ? fmtTime(t.totalTimeSecs) : "";
+    var meta = [
+      date,
+      (t.testType==="self_generated"?"My Test":"Mock Test"),
+      timeStr ? "⏱ "+timeStr : null,
+      topicsStr ? topicsStr : null
+    ].filter(Boolean).join(" · ");
+    html+='<div class="hist-item"><div class="hist-left"><div class="hist-title">'+esc(title)+'</div><div class="hist-meta">'+meta+'</div></div><div class="hist-right"><div class="hist-score" style="color:'+color+'">'+t.score+'/'+t.total+'</div><div class="hist-pct">'+pct+'%</div></div></div>';
   });
   html+='</div>';el.innerHTML=html;
 }
@@ -5156,7 +6265,7 @@ var SQL_DOMAIN_DEFS = [
       {n:"dept_id",t:"INT"},
       {n:"salary",t:"INT"}
     ],data:{name:SQL_NAMES,speciality:["Cardiology","Ortho","Neurology","Pediatrics","ENT","Dermatology"],dept_id:[1,2,3,4,5],salary:[80000,75000,90000,70000,85000]}},
-    fk:{child:"doctors",fk:"dept_id",parent:"patients",pk:"patient_id"}
+    fk:null
   },
   {
     name:"pharmacy",
@@ -5787,7 +6896,14 @@ function sqlPickDomain(){
 }
 
 function sqlPickDomainForJoin(){
-  var withFK = SQL_DOMAIN_DEFS.filter(function(d){return d.t2&&d.fk;});
+  var withFK = SQL_DOMAIN_DEFS.filter(function(d){
+    if(!d.t2 || !d.fk) return false;
+    // Validate the FK column actually exists in child, and PK column in parent
+    var fkCol = d.fk.fk, pkCol = d.fk.pk;
+    var childCols = (d.t1.cols||[]).map(function(c){return c.n;});
+    var parentCols = (d.t2.cols||[]).map(function(c){return c.n;});
+    return childCols.indexOf(fkCol)>=0 && parentCols.indexOf(pkCol)>=0;
+  });
   return sqlPick(withFK);
 }
 
