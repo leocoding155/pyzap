@@ -1341,7 +1341,7 @@ function showLoginScreen(){
 function handleAdminUser(user){
   if(_adminHandled) return;
   _adminHandled=true;
-  console.log("[Admin] Checking access for:", user.email);
+  console.log("[Admin] Checking access for:", user.email, "UID:", user.uid);
   db.collection("admin").doc(user.uid).get().then(function(snap){
     if(snap.exists){
       document.getElementById("login-screen").classList.add("hidden");
@@ -1350,17 +1350,26 @@ function handleAdminUser(user){
       if(emailEl) emailEl.textContent=user.email||"Admin";
       initAdmin();
     } else {
+      console.warn("[Admin] No doc found at admin/" + user.uid);
       auth.signOut();
       _adminHandled=false;
       showLoginScreen();
-      document.getElementById("lb-err").textContent="Access denied. Not an admin account.";
+      document.getElementById("lb-err").innerHTML =
+        "Access denied.<br>" +
+        "<small style='font-size:10px;color:#94A3B8;display:block;margin-top:6px;word-break:break-all;'>" +
+        "Email: " + (user.email||"?") + "<br>" +
+        "UID: " + user.uid + "<br>" +
+        "Add this UID to <b>admin</b> collection in Firestore.</small>";
     }
   }).catch(function(e){
-    console.error(e);
+    console.error("[Admin] Firestore error:", e);
     auth.signOut();
     _adminHandled=false;
     showLoginScreen();
-    document.getElementById("lb-err").textContent="Error verifying access.";
+    document.getElementById("lb-err").innerHTML =
+      "Error verifying access.<br>" +
+      "<small style='font-size:10px;color:#94A3B8;display:block;margin-top:6px;'>" +
+      (e.code||"unknown") + ": " + (e.message||"see console") + "</small>";
   });
 }
 
